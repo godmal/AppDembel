@@ -7,6 +7,9 @@
 //
 
 #import "AppDelegate.h"
+#import "PeopleStore.h"
+#import "People.h"
+#import "Person.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +20,22 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    PeopleStore* store = [[PeopleStore alloc] init];
+    People* people = [[People alloc] initWithStore:store];
+    
+    Person* bolt = [[Person alloc] initWithName:@"Bolt" andDate:@"17.12.2016"];
+    Person* bandit = [[Person alloc] initWithName:@"Iluha" andDate:@"NI HACHU"];
+    Person* illusionist = [[Person alloc] initWithName:@"DIMAS" andDate: @"NE GODEN"];
+    
+    [people add:bolt];
+    [people add:bandit];
+    [people add:illusionist];
+    [people save];
+    
+    for (Person* person in [[store load] allValues]) {
+        NSLog(@"%@, %@", person.name, person.date);
+    }
+    
     return YES;
 }
 
