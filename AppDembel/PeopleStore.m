@@ -60,4 +60,9 @@
     return decodedPeople;
 }
 
+
+-(void) removeAll {
+    [[[NSDictionary alloc] init] writeToFile:_plistPath atomically:YES];
+}
+
 @end

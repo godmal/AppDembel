@@ -23,15 +23,11 @@
     PeopleStore* store = [[PeopleStore alloc] init];
     People* people = [[People alloc] initWithStore:store];
     
-    Person* bolt = [[Person alloc] initWithName:@"Bolt" andDate:@"17.12.2016"];
-    Person* bandit = [[Person alloc] initWithName:@"Iluha" andDate:@"NI HACHU"];
-    Person* illusionist = [[Person alloc] initWithName:@"DIMAS" andDate: @"NE GODEN"];
-    
-    [people add:bolt];
-    [people add:bandit];
-    [people add:illusionist];
-    [people save];
-    
+//    Person* bolt = [[Person alloc] initWithName:@"Bolt" andDate:@"17.12.2016"];
+//    [people add:bolt];
+//    [people saveToStore];
+    [people removeAllFromStore];
+ 
     for (Person* person in [[store load] allValues]) {
         NSLog(@"%@, %@", person.name, person.date);
     }

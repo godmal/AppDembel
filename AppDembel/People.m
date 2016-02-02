@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         self.store = store;
-        self.people = [[NSMutableDictionary alloc] init];
+        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self.store load]];
     }
     return self;
 }
@@ -27,7 +27,7 @@
     [self.people setObject:person forKey:[self generateID]];
 }
 
--(void) save {
+-(void) saveToStore {
     [self.store save: self.people];
 }
 
@@ -42,6 +42,10 @@
         resultID = [[NSNumber numberWithInt:maxID.intValue + 1] stringValue];
     }
     return resultID;
+}
+
+-(void) removeAllFromStore {
+    [self.store removeAll];
 }
 
 @end

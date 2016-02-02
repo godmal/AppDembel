@@ -14,5 +14,6 @@
 -(NSMutableDictionary*) load;
 -(NSMutableDictionary*) encodePeopleToData:(NSMutableDictionary*) people;
 -(NSMutableDictionary*) decodePeopleFromData:(NSDictionary*) encodedPeople;
+-(void) removeAll;
 
 @end
