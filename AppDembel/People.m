@@ -25,22 +25,38 @@
 
 -(void) add:(Person*) person {
     [self.people setObject:person forKey:[self generateID]];
+    [self saveToStore];
 }
 
 -(void) saveToStore {
     [self.store save: self.people];
 }
 
--(NSString*) generateID {
-    NSString* resultID = [[NSString alloc] init];
+//-(NSString*) generateID {
+//    NSString* resultID = [[NSString alloc] init];
+//    
+//    if (self.people.count == 0) {
+//        resultID = [[NSNumber numberWithInt:0] stringValue];
+//    } else {
+//        NSArray* existedIDs = [self.people allKeys];
+//        NSNumber* maxID = [existedIDs valueForKeyPath:@"@max.self"];
+//        resultID = [[NSNumber numberWithInt:maxID.intValue + 1] stringValue];
+//    }
+//    NSLog(@"%@", resultID);
+//    return resultID;
+//}
+
+-(NSNumber*) generateID {
+    NSNumber* resultID = [[NSNumber alloc] init];
     
     if (self.people.count == 0) {
-        resultID = [[NSNumber numberWithInt:0] stringValue];
+        resultID = [NSNumber numberWithInt:0];
     } else {
         NSArray* existedIDs = [self.people allKeys];
         NSNumber* maxID = [existedIDs valueForKeyPath:@"@max.self"];
-        resultID = [[NSNumber numberWithInt:maxID.intValue + 1] stringValue];
+        resultID = [NSNumber numberWithInt:maxID.intValue + 1];
     }
+    NSLog(@"%@", resultID);
     return resultID;
 }
 

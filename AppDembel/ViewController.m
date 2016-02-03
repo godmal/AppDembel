@@ -7,6 +7,8 @@
 //
 
 #import "ViewController.h"
+#import "People.h"
+#import "PeopleStore.h"
 
 @interface ViewController ()
 
@@ -14,10 +16,22 @@
 
 @implementation ViewController
 
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    self = [super initWithCoder:coder];
+    if (self) {
+        PeopleStore* store = [[PeopleStore alloc] init];
+        self.model = [[People alloc] initWithStore:store];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self.model removeAllFromStore];
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

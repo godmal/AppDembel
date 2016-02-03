@@ -19,18 +19,6 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-    PeopleStore* store = [[PeopleStore alloc] init];
-    People* people = [[People alloc] initWithStore:store];
-    
-//    Person* bolt = [[Person alloc] initWithName:@"Bolt" andDate:@"17.12.2016"];
-//    [people add:bolt];
-//    [people saveToStore];
-    [people removeAllFromStore];
- 
-    for (Person* person in [[store load] allValues]) {
-        NSLog(@"%@, %@", person.name, person.date);
-    }
     
     return YES;
 }

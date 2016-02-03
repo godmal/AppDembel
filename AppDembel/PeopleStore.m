@@ -36,6 +36,7 @@
 }
 
 -(NSDictionary*) load {
+    [self removeAll];
     NSDictionary* encodedPeople = [[NSDictionary alloc] initWithContentsOfFile:_plistPath];
     return [self decodePeopleFromData:encodedPeople];
 }
@@ -43,9 +44,11 @@
 -(NSMutableDictionary*) encodePeopleToData:(NSMutableDictionary*) people {
     NSMutableDictionary* encodedPeople = [[NSMutableDictionary alloc] init];
     
-    for (NSString* ID in people) {
-        NSData* convertedValue = [NSKeyedArchiver archivedDataWithRootObject:[people valueForKey:ID]];
-        [encodedPeople setObject:convertedValue forKey:ID];
+    for (NSNumber* ID in people) {
+        NSString* stringID = [ID stringValue];
+        NSData* convertedValue = [NSKeyedArchiver archivedDataWithRootObject:[people objectForKey:ID]];
+        [encodedPeople setObject:convertedValue forKey:stringID];
+        
     }
     return encodedPeople;
 }
@@ -54,15 +57,16 @@
     NSMutableDictionary* decodedPeople = [[NSMutableDictionary alloc] init];
     
     for (NSString* ID in encodedPeople) {
+        NSNumber* numberID = [[NSNumber alloc] initWithInt:[ID intValue]];
         NSData* undecodedPerson = [encodedPeople valueForKey:ID];
-        [decodedPeople setObject:[NSKeyedUnarchiver unarchiveObjectWithData:undecodedPerson] forKey:ID];
+        [decodedPeople setObject:[NSKeyedUnarchiver unarchiveObjectWithData:undecodedPerson] forKey:numberID];
     }
     return decodedPeople;
 }
 
 
 -(void) removeAll {
-    [[[NSDictionary alloc] init] writeToFile:_plistPath atomically:YES];
+    [@{} writeToFile:_plistPath atomically:YES];
 }
 
 @end

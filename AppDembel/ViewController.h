@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@class People;
 
+@interface ViewController : UIViewController
+@property (strong, nonatomic) People* model;
 
 @end
-
