@@ -36,7 +36,6 @@
 }
 
 -(NSDictionary*) load {
-    [self removeAll];
     NSDictionary* encodedPeople = [[NSDictionary alloc] initWithContentsOfFile:_plistPath];
     return [self decodePeopleFromData:encodedPeople];
 }
@@ -48,7 +47,6 @@
         NSString* stringID = [ID stringValue];
         NSData* convertedValue = [NSKeyedArchiver archivedDataWithRootObject:[people objectForKey:ID]];
         [encodedPeople setObject:convertedValue forKey:stringID];
-        
     }
     return encodedPeople;
 }

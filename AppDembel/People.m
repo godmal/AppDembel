@@ -32,19 +32,13 @@
     [self.store save: self.people];
 }
 
-//-(NSString*) generateID {
-//    NSString* resultID = [[NSString alloc] init];
-//    
-//    if (self.people.count == 0) {
-//        resultID = [[NSNumber numberWithInt:0] stringValue];
-//    } else {
-//        NSArray* existedIDs = [self.people allKeys];
-//        NSNumber* maxID = [existedIDs valueForKeyPath:@"@max.self"];
-//        resultID = [[NSNumber numberWithInt:maxID.intValue + 1] stringValue];
-//    }
-//    NSLog(@"%@", resultID);
-//    return resultID;
-//}
+-(NSDictionary*) loadFromStore {
+    return [self.store load];
+}
+
+-(void) removeAllFromStore {
+    [self.store removeAll];
+}
 
 -(NSNumber*) generateID {
     NSNumber* resultID = [[NSNumber alloc] init];
@@ -56,12 +50,7 @@
         NSNumber* maxID = [existedIDs valueForKeyPath:@"@max.self"];
         resultID = [NSNumber numberWithInt:maxID.intValue + 1];
     }
-    NSLog(@"%@", resultID);
     return resultID;
-}
-
--(void) removeAllFromStore {
-    [self.store removeAll];
 }
 
 @end

@@ -46,8 +46,12 @@
     NSString* name = self.name.text;
     NSString* date = self.date.text;
     [self.model add:[[Person alloc] initWithName:name andDate:date]];
-//    NSLog(@"%@", self.model.people);
-    NSLog(@"%@", [self.model.store load]);
+    NSDictionary* data = [self.model loadFromStore];
+    
+    for (NSNumber* ID in data) {
+        Person* person = [data objectForKey:ID];
+        NSLog(@"%@", person.name);
+    }
 }
 
 @end
