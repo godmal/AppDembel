@@ -62,9 +62,4 @@
     return decodedPeople;
 }
 
-
--(void) removeAll {
-    [@{} writeToFile:_plistPath atomically:YES];
-}
-
 @end
