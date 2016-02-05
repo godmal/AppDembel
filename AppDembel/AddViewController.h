@@ -11,6 +11,8 @@
 @interface AddViewController: ViewController
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *date;
+- (IBAction)removeButton:(id)sender;
+
 
 - (IBAction)savePerson:(id)sender;
 

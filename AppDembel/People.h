@@ -17,6 +17,7 @@
 
 -(instancetype)initWithStore:(PeopleStore*) store;
 -(void) add:(Person*) person;
+-(void) removeAll;
 -(void) saveToStore;
 -(NSString*) generateID;
 

@@ -28,6 +28,11 @@
     [self saveToStore];
 }
 
+-(void) removeAll {
+    self.people = [[NSMutableDictionary alloc] init];
+    [self saveToStore];
+}
+
 -(void) saveToStore {
     [self.store save:self.people];
 }

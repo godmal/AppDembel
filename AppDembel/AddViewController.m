@@ -42,6 +42,10 @@
 }
 */
 
+- (IBAction)removeButton:(id)sender {
+    [self.model removeAll];
+}
+
 - (IBAction)savePerson:(id)sender {
     NSString* name = self.name.text;
     NSString* date = self.date.text;
