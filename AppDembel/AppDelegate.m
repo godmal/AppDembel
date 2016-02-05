@@ -7,9 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "PeopleStore.h"
-#import "People.h"
-#import "Person.h"
 
 @interface AppDelegate ()
 
