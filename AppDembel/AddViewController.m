@@ -46,6 +46,7 @@
     NSString* name = self.name.text;
     NSString* date = self.date.text;
     [self.model add:[[Person alloc] initWithName:name andDate:date]];
+    NSLog(@"%@", self.model.people);
 }
 
 @end

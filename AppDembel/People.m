@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         self.store = store;
-        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self loadFromStore]];
+        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self.store load]];
     }
     return self;
 }
@@ -29,15 +29,7 @@
 }
 
 -(void) saveToStore {
-    [self.store save: self.people];
-}
-
--(NSDictionary*) loadFromStore {
-    return [self.store load];
-}
-
--(void) removeAllFromStore {
-    [self.store removeAll];
+    [self.store save:self.people];
 }
 
 -(NSNumber*) generateID {
