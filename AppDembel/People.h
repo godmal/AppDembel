@@ -12,13 +12,12 @@
 @class PeopleStore;
 
 @interface People : NSObject
+
 @property (strong, nonatomic) PeopleStore* store;
 @property (strong, nonatomic) NSMutableDictionary* people;
 
 -(instancetype)initWithStore:(PeopleStore*) store;
 -(void) add:(Person*) person;
 -(void) removeAll;
--(void) saveToStore;
--(NSString*) generateID;
 
 @end
