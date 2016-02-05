@@ -13,8 +13,8 @@
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSString* date;
 
--(id)initWithCoder:(NSCoder *)aDecoder;
 -(instancetype)initWithName:(NSString*) name andDate:(NSString*) date;
+-(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 
 
