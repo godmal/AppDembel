@@ -18,7 +18,7 @@
     self = [super init];
     if (self) {
         self.store = store;
-        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self.store load]];
+        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self loadFromStore]];
     }
     return self;
 }
