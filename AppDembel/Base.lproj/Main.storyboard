@@ -24,7 +24,7 @@
         <!--View Controller-->
         <scene sceneID="iCC-1M-2mD">
             <objects>
-                <viewController id="XDu-oY-leg" customClass="ViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="XDu-oY-leg" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="QfK-i6-mMf"/>
                         <viewControllerLayoutGuide type="bottom" id="Yrg-s9-AYb"/>
@@ -53,7 +53,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qOb-cA-uPm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="262" y="57"/>
+            <point key="canvasLocation" x="272" y="60"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="sWY-m5-u6H">

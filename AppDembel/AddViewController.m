@@ -51,6 +51,14 @@
     NSString* date = self.date.text;
     [self.model add:[[Person alloc] initWithName:name andDate:date]];
     NSLog(@"%@", self.model.people);
+    self.name.text = self.date.text = @"";
+    [self moveToHomeView];
+}
+
+-(void) moveToHomeView {
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"Home" ];
+    [self.navigationController pushViewController:home animated:YES];
 }
 
 @end
