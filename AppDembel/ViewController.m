@@ -16,16 +16,13 @@
 @end
 
 @implementation ViewController {
-    PeopleStore* store;
-    NSString* personName;
-    NSMutableArray* stringArray;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        store = [[PeopleStore alloc] init];
-        self.model = [[People alloc] initWithStore:store];
+        [self setViewState];
+        [self observeState];
     }
     return self;
 }
@@ -36,27 +33,41 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    NSLog(@"%@", self.model.people);
 }
 
 -(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
+-(void) setViewState {
+    PeopleStore* store = [[PeopleStore alloc] init];
+    self.model = [[People alloc] initWithStore:store];
+    [self viewDidLoad];
+}
+
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    store = [[PeopleStore alloc] init];
-    NSArray* arrayID = [[store load] allKeys];
+    NSArray* arrayID = [self.model.people allKeys];
     return [arrayID count];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    stringArray = [[NSMutableArray alloc] init];
-    NSArray* numberArray = [[store load] allValues];
+    
+    NSMutableArray* stringArray = [[NSMutableArray alloc] init];
+    NSArray* numberArray = [self.model.people allValues];
     for (Person* person in numberArray) {
         [stringArray addObject:person.name];
     }
     cell.textLabel.text = [stringArray objectAtIndex:indexPath.row];
     return cell;
+}
+
+-(void) observeState {
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(setViewState)
+                                                 name: @"appStateChanged"
+                                               object: nil];
 }
 
 - (void)didReceiveMemoryWarning {

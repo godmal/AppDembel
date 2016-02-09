@@ -45,7 +45,6 @@
 
 - (IBAction)removeButton:(id)sender {
     [self.model removeAll];
-    NSLog(@"%@", self.model.people);
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -26,11 +26,13 @@
 -(void) add:(Person*) person {
     [self.people setObject:person forKey:[self generateID]];
     [self saveToStore];
+    [self notify];
 }
 
 -(void) removeAll {
     self.people = [[NSMutableDictionary alloc] init];
     [self saveToStore];
+    [self notify];
 }
 
 -(void) saveToStore {
@@ -48,6 +50,10 @@
         resultID = [NSNumber numberWithInt:maxID.intValue + 1];
     }
     return resultID;
+}
+
+-(void) notify {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"appStateChanged" object:nil];
 }
 
 @end
