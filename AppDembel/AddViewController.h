@@ -8,11 +8,10 @@
 
 #import "ViewController.h"
 
-@interface AddViewController: ViewController
+@interface AddViewController: ViewController <UIAlertViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *name;
 @property (weak, nonatomic) IBOutlet UITextField *date;
 - (IBAction)removeButton:(id)sender;
-
 
 - (IBAction)savePerson:(id)sender;
 
