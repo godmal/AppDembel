@@ -10,13 +10,14 @@
 #import "People.h"
 #import "Person.h"
 #import "PeopleStore.h"
+#import "ViewController.h"
 
 @interface AddViewController ()
 
 @end
 
 @implementation AddViewController{
-    NSString* dateString;
+    
 }
 
 - (void)viewDidLoad {
@@ -27,6 +28,7 @@
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     datePicker.backgroundColor = [UIColor whiteColor];
     [self.date setInputView:datePicker];
+   
 }
 
 -(void) dateTextField:(id)sender {
@@ -34,9 +36,10 @@
     NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
     NSDate *eventDate = picker.date;
     [dateFormat setDateFormat:@"dd.MM.yyyy"];
-    dateString = [dateFormat stringFromDate:eventDate];
+    NSString* dateString = [dateFormat stringFromDate:eventDate];
     self.date.text = [NSString stringWithFormat:@"%@",dateString];
 }
+
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.name resignFirstResponder];
@@ -49,13 +52,27 @@
 }
 
 - (IBAction)savePerson:(id)sender {
-    NSString* name = self.name.text;
-    NSString* date = self.date.text;
-    [self.model add:[[Person alloc] initWithName:name andDate:date]];
-    NSLog(@"%@", self.model.people);
-    self.name.text = self.date.text = @"";
-    [self dismissViewControllerAnimated:YES completion:nil];
- 
+    if ([self.name.text length] == 0 || [self.date.text length] == 0)  {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action) {
+                                 [alert dismissViewControllerAnimated:YES completion:nil];
+                             }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Передумал" style:UIAlertActionStyleDefault
+                                 handler:^(UIAlertAction * action) {
+                                     [alert dismissViewControllerAnimated:YES completion:nil];
+                                     [self dismissViewControllerAnimated:YES completion:nil];
+                                 }];
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        NSString* name = self.name.text;
+        NSString* date = self.date.text;
+        [self.model add:[[Person alloc] initWithName:name andDate:date]];
+        self.name.text = self.date.text = @"";
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 -(void) moveToHomeView {
@@ -63,13 +80,6 @@
     ViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"Home" ];
     [self.navigationController pushViewController:home animated:YES];
 }
-
-
-//-(void) refresh {
-//    ViewController *wc = [[UIStoryboard storyboardWithName:@"Main" bundle:nil]
-//                       instantiateViewControllerWithIdentifier:@"Home"];
-//    [self.navigationController pushViewController:wc animated:YES];
-//}
 /*
  #pragma mark - Navigation
  

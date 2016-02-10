@@ -10,12 +10,14 @@
 #import "People.h"
 #import "Person.h"
 #import "PeopleStore.h"
-
+#import "DetailViewController.h"
 @interface ViewController ()
 
 @end
 
 @implementation ViewController {
+    NSMutableArray* nameArray;
+    NSMutableArray* dateArray;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
@@ -33,11 +35,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    NSLog(@"%@", self.model.people);
-}
-
--(BOOL) tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
 -(void) setViewState {
@@ -53,26 +51,35 @@
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    
-    NSMutableArray* stringArray = [[NSMutableArray alloc] init];
+    nameArray = [[NSMutableArray alloc] init];
+    dateArray = [[NSMutableArray alloc] init];
     NSArray* numberArray = [self.model.people allValues];
     for (Person* person in numberArray) {
-        [stringArray addObject:person.name];
+        [dateArray addObject:person.date];
+        [nameArray addObject:person.name];
     }
-    cell.textLabel.text = [stringArray objectAtIndex:indexPath.row];
+    cell.textLabel.text = [nameArray objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [dateArray objectAtIndex:indexPath.row];
+    NSLog(@"%@", dateArray);
     return cell;
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"segue"]) {
+        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
+        DetailViewController *destViewController = segue.destinationViewController;
+        destViewController.name = [nameArray objectAtIndex:indexPath.row];
+        destViewController.date = [dateArray objectAtIndex:indexPath.row];
+    }
+}
+
 -(void) observeState {
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(setViewState)
-                                                 name: @"appStateChanged"
+    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(setViewState) name: @"appStateChanged"
                                                object: nil];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

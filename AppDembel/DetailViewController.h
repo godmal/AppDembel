@@ -1,0 +1,19 @@
+//
+//  DetailViewController.h
+//  AppDembel
+//
+//  Created by Дмитрий Горбачев on 10.02.16.
+//  Copyright © 2016 Дмитрий Горбачев. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@interface DetailViewController : UIViewController
+
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSString *date;
+@property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
+
+@end
