@@ -11,6 +11,8 @@
 #import "Person.h"
 #import "PeopleStore.h"
 #import "DetailViewController.h"
+#import "DateUtils.h"
+
 @interface ViewController ()
 
 @end
@@ -45,22 +47,21 @@
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSArray* arrayID = [self.model.people allKeys];
-    return [arrayID count];
+    return [self.model.people count];
 }
 
 -(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     nameArray = [[NSMutableArray alloc] init];
     dateArray = [[NSMutableArray alloc] init];
+    NSDateFormatter *dateFormat = [DateUtils getFormatter];
     NSArray* numberArray = [self.model.people allValues];
     for (Person* person in numberArray) {
-        [dateArray addObject:person.date];
+        [dateArray addObject:[dateFormat stringFromDate:person.date]];
         [nameArray addObject:person.name];
     }
     cell.textLabel.text = [nameArray objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [dateArray objectAtIndex:indexPath.row];
-    NSLog(@"%@", dateArray);
     return cell;
 }
 

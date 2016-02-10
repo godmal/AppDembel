@@ -168,8 +168,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="weZ-Er-AQc"/>
                     <connections>
-                        <outlet property="date" destination="2Yt-w5-EmF" id="4O2-VE-s5c"/>
-                        <outlet property="name" destination="1Mm-AB-yiA" id="UV5-11-kQ0"/>
+                        <outlet property="dateInput" destination="2Yt-w5-EmF" id="OMw-Qb-TqS"/>
+                        <outlet property="nameInput" destination="1Mm-AB-yiA" id="Fmp-4I-hdg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UPr-EB-ONT" userLabel="First Responder" sceneMemberID="firstResponder"/>

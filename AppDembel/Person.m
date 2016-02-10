@@ -9,28 +9,27 @@
 #import "Person.h"
 
 @implementation Person {
-    NSString* _name;
-    NSString* _date;
+
 }
 
--(instancetype)initWithName:(NSString*) name andDate:(NSString*) date {
+-(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date {
     self = [super init];
     if (self) {
-        _name = name;
-        _date = date;
+        self.name = name;
+        self.date = date;
     }
     return self;
 }
 
 -(void)encodeWithCoder:(NSCoder *)aCoder {
-    [aCoder encodeObject:_name forKey:@"name"];
-    [aCoder encodeObject:_date forKey:@"date"];
+    [aCoder encodeObject:self.name forKey:@"name"];
+    [aCoder encodeObject:self.date forKey:@"date"];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super init]) {
-        _name = [aDecoder decodeObjectForKey:@"name"];
-        _date = [aDecoder decodeObjectForKey:@"date"];
+        self.name = [aDecoder decodeObjectForKey:@"name"];
+        self.date = [aDecoder decodeObjectForKey:@"date"];
     }
     return self;
 }

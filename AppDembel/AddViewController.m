@@ -11,12 +11,14 @@
 #import "Person.h"
 #import "PeopleStore.h"
 #import "ViewController.h"
+#import "DateUtils.h"
 
 @interface AddViewController ()
 
 @end
 
 @implementation AddViewController{
+    NSDate* _date;
     
 }
 
@@ -27,22 +29,21 @@
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     datePicker.backgroundColor = [UIColor whiteColor];
-    [self.date setInputView:datePicker];
+    [self.dateInput setInputView:datePicker];
    
 }
 
 -(void) dateTextField:(id)sender {
-    UIDatePicker *picker = (UIDatePicker*)self.date.inputView;
-    NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-    NSDate *eventDate = picker.date;
-    [dateFormat setDateFormat:@"dd.MM.yyyy"];
-    NSString* dateString = [dateFormat stringFromDate:eventDate];
-    self.date.text = [NSString stringWithFormat:@"%@",dateString];
+    UIDatePicker *picker = (UIDatePicker*)self.dateInput.inputView;
+    _date = picker.date;
+    NSDateFormatter *dateFormat = [DateUtils getFormatter];
+    NSString* dateString = [dateFormat stringFromDate:_date];
+    self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [self.name resignFirstResponder];
+    [self.nameInput resignFirstResponder];
     return YES;
 }
 
@@ -52,7 +53,7 @@
 }
 
 - (IBAction)savePerson:(id)sender {
-    if ([self.name.text length] == 0 || [self.date.text length] == 0)  {
+    if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
         UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action) {
@@ -67,10 +68,7 @@
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     } else {
-        NSString* name = self.name.text;
-        NSString* date = self.date.text;
-        [self.model add:[[Person alloc] initWithName:name andDate:date]];
-        self.name.text = self.date.text = @"";
+        [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date]];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }

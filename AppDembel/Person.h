@@ -11,9 +11,9 @@
 @interface Person : NSObject
 
 @property (strong, nonatomic) NSString* name;
-@property (strong, nonatomic) NSString* date;
+@property (strong, nonatomic) NSDate* date;
 
--(instancetype)initWithName:(NSString*) name andDate:(NSString*) date;
+-(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date;
 -(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 
