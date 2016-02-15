@@ -13,6 +13,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;
 - (IBAction)removeButton:(id)sender;
 
-- (IBAction)savePerson:(id)sender;
+- (IBAction)saveButtonClick:(id)sender;
 
 @end

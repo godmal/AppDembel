@@ -7,13 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@class Person;
 
 @interface DetailViewController : UIViewController
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *date;
+@property (nonatomic, strong) Person* person;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *updateDateLabel;
+@property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
 
 @end

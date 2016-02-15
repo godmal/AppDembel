@@ -7,6 +7,8 @@
 //
 
 #import "DetailViewController.h"
+#import "DateUtils.h"
+#import "Person.h"
 
 @interface DetailViewController ()
 
@@ -16,29 +18,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _nameLabel.text = _name;
-    _dateLabel.text = _date;
      [self.navigationController setNavigationBarHidden:NO animated:NO];
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-    NSDate *dateFromString = [[NSDate alloc] init];
+
+    NSDateFormatter *dateFormatter = [DateUtils getFormatter];
+    self.nameLabel.text = self.person.name;
+    self.dateLabel.text = [dateFormatter stringFromDate:self.person.date];
+    self.demobilizationDateLabel.text = [dateFormatter stringFromDate:[self.person calculateDemobilizationDate]];
     
-    dateFromString = [dateFormatter dateFromString:_date];
-    int daysToAdd = 365;
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setDay:daysToAdd];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    NSDate *newDate = [gregorian dateByAddingComponents:components toDate:dateFromString options:0];
-    NSDateFormatter *dateFormatter1 = [[NSDateFormatter alloc] init];
-    [dateFormatter1 setDateFormat:@"dd-MM-yyyy"];
-    _date = [dateFormatter stringFromDate:newDate];
-    self.updateDateLabel.text =_date;
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*

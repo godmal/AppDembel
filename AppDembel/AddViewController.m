@@ -52,14 +52,14 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (IBAction)savePerson:(id)sender {
+- (IBAction)saveButtonClick:(id)sender {
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Хорошо" style:UIAlertActionStyleDefault
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
                              handler:^(UIAlertAction * action) {
                                  [alert dismissViewControllerAnimated:YES completion:nil];
                              }];
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Передумал" style:UIAlertActionStyleDefault
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Дезертирую!" style:UIAlertActionStyleDefault
                                  handler:^(UIAlertAction * action) {
                                      [alert dismissViewControllerAnimated:YES completion:nil];
                                      [self dismissViewControllerAnimated:YES completion:nil];
@@ -68,29 +68,17 @@
         [alert addAction:cancel];
         [self presentViewController:alert animated:YES completion:nil];
     } else {
-        [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date]];
+        [self savePerson];
         [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
--(void) moveToHomeView {
-    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    ViewController *home = [storyboard instantiateViewControllerWithIdentifier:@"Home" ];
-    [self.navigationController pushViewController:home animated:YES];
+-(void) savePerson {
+    [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date]];
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

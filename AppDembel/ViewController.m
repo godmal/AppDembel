@@ -25,8 +25,8 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     self = [super initWithCoder:coder];
     if (self) {
-        [self setViewState];
         [self observeState];
+        [self setViewState];
     }
     return self;
 }
@@ -38,6 +38,13 @@
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
     [self.navigationController setNavigationBarHidden:YES animated:NO];
+}
+
+-(void) observeState {
+    [[NSNotificationCenter defaultCenter] addObserver: self
+                                             selector: @selector(setViewState)
+                                                 name: @"appStateChanged"
+                                               object: nil];
 }
 
 -(void) setViewState {
@@ -69,14 +76,8 @@
     if ([segue.identifier isEqualToString:@"segue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *destViewController = segue.destinationViewController;
-        destViewController.name = [nameArray objectAtIndex:indexPath.row];
-        destViewController.date = [dateArray objectAtIndex:indexPath.row];
+        destViewController.person = [self.model.people objectForKey:[NSNumber numberWithInt:0]];
     }
-}
-
--(void) observeState {
-    [[NSNotificationCenter defaultCenter] addObserver: self selector: @selector(setViewState) name: @"appStateChanged"
-                                               object: nil];
 }
 
 - (void)didReceiveMemoryWarning {

@@ -16,6 +16,7 @@
 -(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date;
 -(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
+-(NSDate*)calculateDemobilizationDate;
 
 
 @end
