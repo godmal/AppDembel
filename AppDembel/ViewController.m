@@ -33,6 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -62,8 +63,8 @@
     nameArray = [[NSMutableArray alloc] init];
     dateArray = [[NSMutableArray alloc] init];
     NSDateFormatter *dateFormat = [DateUtils getFormatter];
-    NSArray* numberArray = [self.model.people allValues];
-    for (Person* person in numberArray) {
+
+    for (Person* person in self.model.people) {
         [dateArray addObject:[dateFormat stringFromDate:person.date]];
         [nameArray addObject:person.name];
     }
@@ -76,7 +77,7 @@
     if ([segue.identifier isEqualToString:@"segue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *destViewController = segue.destinationViewController;
-        destViewController.person = [self.model.people objectForKey:[NSNumber numberWithInt:0]];
+        destViewController.person = [self.model.people objectAtIndex:indexPath.row];
     }
 }
 

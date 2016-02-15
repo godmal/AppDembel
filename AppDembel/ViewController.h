@@ -14,7 +14,6 @@
 }
 
 @property (strong, nonatomic) People* model;
-@property (weak, nonatomic) IBOutlet UILabel *personLabel;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

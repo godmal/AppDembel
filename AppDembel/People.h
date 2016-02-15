@@ -14,7 +14,7 @@
 @interface People : NSObject
 
 @property (strong, nonatomic) PeopleStore* store;
-@property (strong, nonatomic) NSMutableDictionary* people;
+@property (strong, nonatomic) NSMutableArray* people;
 
 -(instancetype)initWithStore:(PeopleStore*) store;
 -(void) add:(Person*) person;

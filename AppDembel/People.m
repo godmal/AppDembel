@@ -18,38 +18,25 @@
     self = [super init];
     if (self) {
         self.store = store;
-        self.people = [[NSMutableDictionary alloc] initWithDictionary:[self.store load]];
+        self.people = [[NSMutableArray alloc] initWithArray:[self.store load]];
     }
     return self;
 }
 
 -(void) add:(Person*) person {
-    [self.people setObject:person forKey:[self generateID]];
+    [self.people addObject:person];
     [self saveToStore];
     [self notify];
 }
 
 -(void) removeAll {
-    self.people = [[NSMutableDictionary alloc] init];
+    self.people = [[NSMutableArray alloc] init];
     [self saveToStore];
     [self notify];
 }
 
 -(void) saveToStore {
     [self.store save:self.people];
-}
-
--(NSNumber*) generateID {
-    NSNumber* resultID = [[NSNumber alloc] init];
-    
-    if (self.people.count == 0) {
-        resultID = [NSNumber numberWithInt:0];
-    } else {
-        NSArray* existedIDs = [self.people allKeys];
-        NSNumber* maxID = [existedIDs valueForKeyPath:@"@max.self"];
-        resultID = [NSNumber numberWithInt:maxID.intValue + 1];
-    }
-    return resultID;
 }
 
 -(void) notify {

@@ -10,7 +10,7 @@
 
 @interface PeopleStore : NSObject
 
--(void) save:(NSMutableDictionary*) people;
--(NSMutableDictionary*) load;
+-(void) save:(NSMutableArray*) people;
+-(NSArray*) load;
 
 @end

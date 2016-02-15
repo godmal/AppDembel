@@ -7,7 +7,7 @@
 //
 
 #import "PeopleStore.h"
-
+#import "Person.h"
 
 @implementation PeopleStore {
     NSString* _plistPath;
@@ -23,7 +23,7 @@
     return self;
 }
 
-- (void) save: (NSMutableDictionary*) people {
+- (void) save: (NSMutableArray*) people {
     NSError *error = nil;
     NSData *representation = [NSPropertyListSerialization
         dataWithPropertyList:[self encodePeopleToData: people]
@@ -31,35 +31,33 @@
         options:0
         error:&error
     ];
-    
     [representation writeToFile:_plistPath atomically:YES];
 }
 
--(NSDictionary*) load {
+-(NSArray*) load {
     NSDictionary* encodedPeople = [[NSDictionary alloc] initWithContentsOfFile:_plistPath];
+
     return [self decodePeopleFromData:encodedPeople];
 }
 
--(NSMutableDictionary*) encodePeopleToData:(NSMutableDictionary*) people {
+-(NSMutableDictionary*) encodePeopleToData:(NSMutableArray*) people {
     NSMutableDictionary* encodedPeople = [[NSMutableDictionary alloc] init];
-    
-    for (NSNumber* ID in people) {
-        NSString* stringID = [ID stringValue];
-        NSData* convertedValue = [NSKeyedArchiver archivedDataWithRootObject:[people objectForKey:ID]];
+    for (id person in people) {
+        NSString* stringID = [NSString stringWithFormat:@"%lu", (unsigned long)[people indexOfObject:person]];
+        NSData* convertedValue = [NSKeyedArchiver archivedDataWithRootObject:person];
         [encodedPeople setObject:convertedValue forKey:stringID];
     }
     return encodedPeople;
 }
 
--(NSMutableDictionary*) decodePeopleFromData: (NSDictionary*) encodedPeople {
+-(NSArray*) decodePeopleFromData: (NSDictionary*) encodedPeople {
     NSMutableDictionary* decodedPeople = [[NSMutableDictionary alloc] init];
-    
     for (NSString* ID in encodedPeople) {
         NSNumber* numberID = [[NSNumber alloc] initWithInt:[ID intValue]];
         NSData* undecodedPerson = [encodedPeople valueForKey:ID];
         [decodedPeople setObject:[NSKeyedUnarchiver unarchiveObjectWithData:undecodedPerson] forKey:numberID];
     }
-    return decodedPeople;
+    return [decodedPeople allValues];
 }
 
 @end
