@@ -45,7 +45,7 @@
     NSDate* today = [NSDate date];
     float servedDays = [DateUtils getDaysBetween:self.date and:today];
     float allDays = [DateUtils getDaysBetween:self.date and:[self calculateDemobilizationDate]];
-    return servedDays / allDays;
+    return servedDays / allDays * 100;
 }
 
 @end

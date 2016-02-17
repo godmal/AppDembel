@@ -9,6 +9,7 @@
 #import "DetailViewController.h"
 #import "DateUtils.h"
 #import "Person.h"
+#import "MBCircularProgressBarView.h"
 
 @interface DetailViewController ()
 
@@ -23,7 +24,7 @@
     self.nameLabel.text = self.person.name;
     self.dateLabel.text = [DateUtils convertDateToString:self.person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
-    NSLog(@"%f", [self.person calculateProgress]);
+    [self.progressBar setValue:[self.person calculateProgress] animateWithDuration:1];
 }
 
 - (void)didReceiveMemoryWarning {

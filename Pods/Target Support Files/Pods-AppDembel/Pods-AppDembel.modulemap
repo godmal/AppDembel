@@ -1,0 +1,6 @@
+framework module Pods_AppDembel {
+  umbrella header "Pods-AppDembel-umbrella.h"
+
+  export *
+  module * { export * }
+}

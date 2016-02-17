@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class Person;
+@class MBCircularProgressBarView;
 
 @interface DetailViewController : UIViewController
 
@@ -15,5 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
+@property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
 
 @end
