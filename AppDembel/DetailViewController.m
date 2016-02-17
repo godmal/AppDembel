@@ -19,8 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
      [self.navigationController setNavigationBarHidden:NO animated:NO];
-
+    NSLog(@"%@", self.person.date);
     NSDateFormatter *dateFormatter = [DateUtils getFormatter];
+    
     self.nameLabel.text = self.person.name;
     self.dateLabel.text = [dateFormatter stringFromDate:self.person.date];
     self.demobilizationDateLabel.text = [dateFormatter stringFromDate:[self.person calculateDemobilizationDate]];

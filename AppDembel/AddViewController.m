@@ -30,7 +30,7 @@
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     datePicker.backgroundColor = [UIColor whiteColor];
     [self.dateInput setInputView:datePicker];
-   
+    [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
 }
 
 -(void) dateTextField:(id)sender {

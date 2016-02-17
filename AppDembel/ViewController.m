@@ -33,6 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self roundMyView:_addButton borderRadius:5.0f borderWidth:0.0f color:nil];
+    [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     
 }
 
@@ -63,7 +65,6 @@
     nameArray = [[NSMutableArray alloc] init];
     dateArray = [[NSMutableArray alloc] init];
     NSDateFormatter *dateFormat = [DateUtils getFormatter];
-
     for (Person* person in self.model.people) {
         [dateArray addObject:[dateFormat stringFromDate:person.date]];
         [nameArray addObject:person.name];
@@ -83,6 +84,17 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)roundMyView:(UIView*)view
+       borderRadius:(CGFloat)radius
+        borderWidth:(CGFloat)border
+              color:(UIColor*)color
+{
+    CALayer *layer = [view layer];
+    layer.masksToBounds = YES;
+    layer.cornerRadius = radius;
+    layer.borderColor = color.CGColor;
 }
 
 @end
