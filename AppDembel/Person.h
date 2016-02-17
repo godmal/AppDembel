@@ -17,6 +17,6 @@
 -(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 -(NSDate*)calculateDemobilizationDate;
-
+-(float) calculateProgress;
 
 @end

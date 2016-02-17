@@ -7,6 +7,7 @@
 //
 
 #import "Person.h"
+#import "DateUtils.h"
 
 @implementation Person {
 
@@ -37,8 +38,14 @@
 -(NSDate*)calculateDemobilizationDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:365];
-    NSCalendar *gregorian = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-    return [gregorian dateByAddingComponents:components toDate:self.date options:0];
+    return [[DateUtils getCalendar] dateByAddingComponents:components toDate:self.date options:0];
+}
+
+-(float) calculateProgress {
+    NSDate* today = [NSDate date];
+    float servedDays = [DateUtils getDaysBetween:self.date and:today];
+    float allDays = [DateUtils getDaysBetween:self.date and:[self calculateDemobilizationDate]];
+    return servedDays / allDays;
 }
 
 @end

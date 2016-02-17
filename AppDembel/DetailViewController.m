@@ -18,14 +18,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-     [self.navigationController setNavigationBarHidden:NO animated:NO];
-    NSLog(@"%@", self.person.date);
-    NSDateFormatter *dateFormatter = [DateUtils getFormatter];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
     
     self.nameLabel.text = self.person.name;
-    self.dateLabel.text = [dateFormatter stringFromDate:self.person.date];
-    self.demobilizationDateLabel.text = [dateFormatter stringFromDate:[self.person calculateDemobilizationDate]];
-    
+    self.dateLabel.text = [DateUtils convertDateToString:self.person.date];
+    self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
+    NSLog(@"%f", [self.person calculateProgress]);
 }
 
 - (void)didReceiveMemoryWarning {

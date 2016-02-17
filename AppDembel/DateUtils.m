@@ -16,4 +16,19 @@
     return dateFormatter;
 }
 
++(NSString*) convertDateToString:(NSDate*) date {
+    return [[self getFormatter] stringFromDate:date];
+}
+
++ (NSCalendar*) getCalendar {
+    return [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
+}
+
++ (float) getDaysBetween:(NSDate*) firstDate and:(NSDate*) secondDate {
+    return (float)[[[self getCalendar] components:NSCalendarUnitDay
+                                                              fromDate:firstDate
+                                                                toDate:secondDate
+                                                               options:NSCalendarWrapComponents] day];
+}
+
 @end

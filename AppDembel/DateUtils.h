@@ -11,5 +11,8 @@
 @interface DateUtils : NSObject
 
 + (NSDateFormatter*) getFormatter;
++ (NSCalendar*) getCalendar;
++ (float) getDaysBetween:(NSDate*) firstDate and:(NSDate*) secondDate;
++ (NSString*) convertDateToString:(NSDate*) date;
 
 @end
