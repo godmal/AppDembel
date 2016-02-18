@@ -35,8 +35,7 @@
     [super viewDidLoad];
     [self roundMyView:_addButton borderRadius:5.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
-    
-    
+
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -65,9 +64,8 @@
     UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
     nameArray = [[NSMutableArray alloc] init];
     dateArray = [[NSMutableArray alloc] init];
-    NSDateFormatter *dateFormat = [DateUtils getFormatter];
     for (Person* person in self.model.people) {
-        [dateArray addObject:[dateFormat stringFromDate:person.date]];
+        [dateArray addObject:[DateUtils convertDateToString:person.date]];
         [nameArray addObject:person.name];
     }
     cell.textLabel.text = [nameArray objectAtIndex:indexPath.row];

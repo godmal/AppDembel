@@ -16,7 +16,7 @@
     return dateFormatter;
 }
 
-+(NSString*) convertDateToString:(NSDate*) date {
++ (NSString*) convertDateToString:(NSDate*) date {
     return [[self getFormatter] stringFromDate:date];
 }
 

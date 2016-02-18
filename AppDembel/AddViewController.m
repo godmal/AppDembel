@@ -22,6 +22,7 @@
     
 }
 
+//TODO: VALIDATION DATAPICKERVALUES
 - (void)viewDidLoad {
     [super viewDidLoad];
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];

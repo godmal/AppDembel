@@ -19,12 +19,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];
-    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];    
     self.nameLabel.text = self.person.name;
     self.dateLabel.text = [DateUtils convertDateToString:self.person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
-    [self.progressBar setValue:[self.person calculateProgress] animateWithDuration:1];
+    
+    [self.progressBar setValue:[self.person calculatePercentProgress] animateWithDuration:10000.f];
+    self.progressBar.decimalPlaces = 1;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -41,4 +42,12 @@
 }
 */
 
+- (IBAction)changeView:(id)sender {
+    self.progressBar.decimalPlaces = 0;
+    self.progressBar.maxValue = 365;
+    self.progressBar.unitString = @" days";
+    [self.progressBar setValue:[self.person calculateDaysProgress] animateWithDuration:5.0f];
+
+    
+}
 @end

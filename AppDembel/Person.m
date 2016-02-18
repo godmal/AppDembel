@@ -35,17 +35,23 @@
     return self;
 }
 
+//TODO: VALIDATION  
 -(NSDate*)calculateDemobilizationDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:365];
     return [[DateUtils getCalendar] dateByAddingComponents:components toDate:self.date options:0];
 }
 
--(float) calculateProgress {
+-(float) calculatePercentProgress {
     NSDate* today = [NSDate date];
     float servedDays = [DateUtils getDaysBetween:self.date and:today];
     float allDays = [DateUtils getDaysBetween:self.date and:[self calculateDemobilizationDate]];
     return servedDays / allDays * 100;
+}
+
+-(float) calculateDaysProgress {
+    NSDate* today = [NSDate date];
+    return [DateUtils getDaysBetween:self.date and:today];
 }
 
 @end
