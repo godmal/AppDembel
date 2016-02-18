@@ -85,11 +85,7 @@
     [super didReceiveMemoryWarning];
 }
 
-- (void)roundMyView:(UIView*)view
-       borderRadius:(CGFloat)radius
-        borderWidth:(CGFloat)border
-              color:(UIColor*)color
-{
+- (void)roundMyView:(UIView*)view borderRadius:(CGFloat)radius borderWidth:(CGFloat)border color:(UIColor*)color {
     CALayer *layer = [view layer];
     layer.masksToBounds = YES;
     layer.cornerRadius = radius;
