@@ -35,6 +35,13 @@
     [self notify];
 }
 
+
+-(void) removePerson:(NSUInteger) personID {
+    [self.people removeObjectAtIndex:personID];
+    [self saveToStore];
+    [self notify];
+}
+
 -(void) saveToStore {
     [self.store save:self.people];
 }

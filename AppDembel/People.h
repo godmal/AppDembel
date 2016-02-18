@@ -18,6 +18,7 @@
 
 -(instancetype)initWithStore:(PeopleStore*) store;
 -(void) add:(Person*) person;
+-(void) removePerson:(NSUInteger) personID;
 -(void) removeAll;
 
 @end

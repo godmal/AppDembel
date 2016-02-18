@@ -36,7 +36,6 @@
 
 -(NSArray*) load {
     NSDictionary* encodedPeople = [[NSDictionary alloc] initWithContentsOfFile:_plistPath];
-
     return [self decodePeopleFromData:encodedPeople];
 }
 
