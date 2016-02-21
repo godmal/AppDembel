@@ -50,8 +50,11 @@
 }
 
 -(float) calculateDaysProgress {
-    NSDate* today = [NSDate date];
-    return [DateUtils getDaysBetween:self.date and:today];
+    return [DateUtils getDaysBetween:self.date and:[NSDate date]];
+}
+
+-(float) calculateLeftDays {
+    return [DateUtils getDaysBetween:[NSDate date] and:[self calculateDemobilizationDate]];
 }
 
 @end

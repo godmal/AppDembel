@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "PeopleStore.h"
+#import "People.h"
+#import "Person.h"
 @interface AppDelegate ()
 
 @end
@@ -19,8 +21,11 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
-    
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    PeopleStore * store = [[PeopleStore alloc] init];
+    People* model = [[People alloc] initWithStore:store];
+    Person* ualal = [[Person alloc] initWithName:@"Bandit" andDate:[NSDate date]];
+    [model updatePersonBy:1 with:ualal];
     return YES;
 }
 

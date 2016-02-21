@@ -23,15 +23,13 @@
     self.nameLabel.text = self.person.name;
     self.dateLabel.text = [DateUtils convertDateToString:self.person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
-    
-    [self.progressBar setValue:[self.person calculatePercentProgress] animateWithDuration:10000.f];
+    NSLog(@"days left - %f", [self.person calculateLeftDays]);
+}
+
+-(void) viewDidAppear:(BOOL)animated {
+    [self.progressBar setValue:[self.person calculatePercentProgress] animateWithDuration:0.5f];
     self.progressBar.decimalPlaces = 1;
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 /*
 #pragma mark - Navigation
 
@@ -46,8 +44,11 @@
     self.progressBar.decimalPlaces = 0;
     self.progressBar.maxValue = 365;
     self.progressBar.unitString = @" days";
-    [self.progressBar setValue:[self.person calculateDaysProgress] animateWithDuration:5.0f];
-
-    
+    [self.progressBar setValue:[self.person calculateDaysProgress] animateWithDuration:0.5f];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 @end

@@ -19,5 +19,6 @@
 -(NSDate*)calculateDemobilizationDate;
 -(float) calculatePercentProgress;
 -(float) calculateDaysProgress;
+-(float) calculateLeftDays;
 
 @end

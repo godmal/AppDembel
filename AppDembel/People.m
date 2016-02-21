@@ -22,24 +22,25 @@
     }
     return self;
 }
-
+//TODO: VALIDATE INPUT
 -(void) add:(Person*) person {
     [self.people addObject:person];
-    [self saveToStore];
-    [self notify];
+    [self saveAndNotify];
 }
 
 -(void) removeAll {
     self.people = [[NSMutableArray alloc] init];
-    [self saveToStore];
-    [self notify];
+    [self saveAndNotify];
 }
-
 
 -(void) removePerson:(NSUInteger) personID {
     [self.people removeObjectAtIndex:personID];
-    [self saveToStore];
-    [self notify];
+    [self saveAndNotify];
+}
+
+-(void) updatePersonBy:(NSUInteger) personID with:(Person*) updatedPerson {
+    [self.people replaceObjectAtIndex:personID withObject:updatedPerson];
+    [self saveAndNotify];
 }
 
 -(void) saveToStore {
@@ -50,4 +51,8 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"appStateChanged" object:nil];
 }
 
+-(void) saveAndNotify {
+    [self saveToStore];
+    [self notify];
+}
 @end

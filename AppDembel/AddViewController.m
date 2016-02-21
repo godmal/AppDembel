@@ -19,7 +19,6 @@
 
 @implementation AddViewController{
     NSDate* _date;
-    
 }
 
 //TODO: VALIDATION DATAPICKERVALUES
@@ -41,7 +40,6 @@
     NSString* dateString = [dateFormat stringFromDate:_date];
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
 }
-
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.nameInput resignFirstResponder];
