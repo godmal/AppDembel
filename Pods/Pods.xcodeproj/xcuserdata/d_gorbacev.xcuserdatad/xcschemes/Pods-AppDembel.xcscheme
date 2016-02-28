@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '953C6D5BE88BA7E74C70790A'
+               BlueprintIdentifier = 'F6A0928F5C8449928E41F9F3'
                BlueprintName = 'Pods-AppDembel'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pods_AppDembel.framework'>

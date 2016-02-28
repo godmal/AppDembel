@@ -85,7 +85,11 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods-AppDembel/MBCircularProgressBar.framework"
+  install_framework "Pods-AppDembel/MGSwipeTableCell.framework"
+  install_framework "Pods-AppDembel/Underscore_m.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods-AppDembel/MBCircularProgressBar.framework"
+  install_framework "Pods-AppDembel/MGSwipeTableCell.framework"
+  install_framework "Pods-AppDembel/Underscore_m.framework"
 fi

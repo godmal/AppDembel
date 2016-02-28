@@ -12,6 +12,8 @@
 #import "PeopleStore.h"
 #import "DetailViewController.h"
 #import "DateUtils.h"
+#import "MGSwipeTableCell.h"
+#import "EditViewController.h"
 
 @interface ViewController ()
 
@@ -60,16 +62,33 @@
     return [self.model.people count];
 }
 
--(UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell* cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
-    nameArray = [[NSMutableArray alloc] init];
-    dateArray = [[NSMutableArray alloc] init];
-    for (Person* person in self.model.people) {
-        [dateArray addObject:[DateUtils convertDateToString:person.date]];
-        [nameArray addObject:person.name];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * reuseIdentifier = @"Cell";
+    MGSwipeTableCell * cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+
+    if (!cell) {
+        cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     }
-    cell.textLabel.text = [nameArray objectAtIndex:indexPath.row];
-    cell.detailTextLabel.text = [dateArray objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = [[self.model getAllNames] objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [[self.model getAllDatesStrings] objectAtIndex:indexPath.row];
+    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Edit" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender)
+    {
+        EditViewController* modalViewController=[[EditViewController alloc] init];
+        [self presentViewController:modalViewController animated:YES completion:nil];
+        return YES;
+    }],];
+
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
+    {
+        [self.model removePerson:indexPath.row];
+        [self.tableView reloadData];
+        return YES;
+    }], ];
+    cell.leftSwipeSettings.transition = MGSwipeTransition3D;
+    cell.rightSwipeSettings.transition = MGSwipeTransition3D;
+    
+    [self roundMyView: cell borderRadius:15.0f borderWidth:0.0f color:nil];
     return cell;
 }
 
@@ -81,15 +100,8 @@
     }
 }
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    return YES;
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.model removePerson:indexPath.row];
-        [self.tableView reloadData];
-    }
+- (void) fillTableRow {
+    
 }
 
 - (void)didReceiveMemoryWarning {

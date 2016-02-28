@@ -21,5 +21,7 @@
 -(void) updatePersonBy:(NSUInteger) personID with:(Person*) updatedPerson;
 -(void) removePerson:(NSUInteger) personID;
 -(void) removeAll;
+-(NSArray*) getAllNames;
+-(NSArray*) getAllDatesStrings;
 
 @end

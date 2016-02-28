@@ -5,6 +5,8 @@ use_frameworks!
 
 link_with 'AppDembel' 
 target 'AppDembel' do
-    pod "MBCircularProgressBar"
+    pod ‘MBCircularProgressBar’
+    pod 'MGSwipeTableCell’
+    pod ‘Underscore.m’
 end
 

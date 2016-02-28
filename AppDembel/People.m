@@ -9,6 +9,10 @@
 #import "People.h"
 #import "PeopleStore.h"
 #import "Person.h"
+#import "Underscore.h"
+#import "DateUtils.h"
+
+#define _ Underscore
 
 @implementation People {
 
@@ -55,4 +59,18 @@
     [self saveToStore];
     [self notify];
 }
+
+-(NSArray*) getAllNames {
+    return _.arrayMap(self.people, ^(Person* person) {
+        return person.name;
+    });
+}
+
+-(NSArray*) getAllDatesStrings {
+    return _.arrayMap(self.people, ^(Person* person) {
+        return [DateUtils convertDateToString:person.date];
+    });
+}
+
+
 @end

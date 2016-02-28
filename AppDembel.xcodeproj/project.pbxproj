@@ -12,6 +12,7 @@
 		5A3F00551C6B255A00054BDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F00541C6B255A00054BDD /* DetailViewController.m */; };
 		5A3F00581C6BD70900054BDD /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F00571C6BD70900054BDD /* DateUtils.m */; };
 		5A3F005A1C74958A00054BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3F00591C74958A00054BDD /* QuartzCore.framework */; };
+		5A3F005D1C83966600054BDD /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F005C1C83966500054BDD /* EditViewController.m */; };
 		5A4B9B6A1C5AA511000A7537 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4B9B691C5AA511000A7537 /* People.m */; };
 		5AB8E5BF1C4F6A330062688E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5BE1C4F6A330062688E /* main.m */; };
 		5AB8E5C21C4F6A330062688E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C11C4F6A330062688E /* AppDelegate.m */; };
@@ -32,6 +33,8 @@
 		5A3F00561C6BD70900054BDD /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		5A3F00571C6BD70900054BDD /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		5A3F00591C74958A00054BDD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A3F005B1C83966500054BDD /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
+		5A3F005C1C83966500054BDD /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
 		5A4B9B681C5AA511000A7537 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
 		5A4B9B691C5AA511000A7537 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
 		5AB8E5BA1C4F6A330062688E /* AppDembel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDembel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,6 +104,8 @@
 				5A20BA681C615B0100F127DB /* AddViewController.m */,
 				5AB8E5C31C4F6A330062688E /* ViewController.h */,
 				5AB8E5C41C4F6A330062688E /* ViewController.m */,
+				5A3F005B1C83966500054BDD /* EditViewController.h */,
+				5A3F005C1C83966500054BDD /* EditViewController.m */,
 				5A3F00531C6B255A00054BDD /* DetailViewController.h */,
 				5A3F00541C6B255A00054BDD /* DetailViewController.m */,
 			);
@@ -294,6 +299,7 @@
 				5AB8E5C51C4F6A330062688E /* ViewController.m in Sources */,
 				5AB8E5C21C4F6A330062688E /* AppDelegate.m in Sources */,
 				5A3F00551C6B255A00054BDD /* DetailViewController.m in Sources */,
+				5A3F005D1C83966600054BDD /* EditViewController.m in Sources */,
 				5A20BA691C615B0100F127DB /* AddViewController.m in Sources */,
 				5AB8E5DB1C4FDA970062688E /* Person.m in Sources */,
 				5AB8E5D61C4F6E1C0062688E /* PeopleStore.m in Sources */,

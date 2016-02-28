@@ -29,7 +29,7 @@
                                 <rect key="frame" x="40" y="89" width="240" height="193"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="76T-Lp-9d6" detailTextLabel="LIE-Bl-qh2" rowHeight="46" style="IBUITableViewCellStyleValue1" id="mV4-Qa-Q0b">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Cell" textLabel="76T-Lp-9d6" detailTextLabel="LIE-Bl-qh2" rowHeight="46" style="IBUITableViewCellStyleValue1" id="mV4-Qa-Q0b" customClass="MGSwipeTableCell">
                                         <rect key="frame" x="0.0" y="28" width="240" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="Cell" tableViewCell="mV4-Qa-Q0b" id="tcU-c6-NO2">
@@ -78,7 +78,7 @@
         <!--Detail View Controller-->
         <scene sceneID="6zB-lT-OBu">
             <objects>
-                <viewController id="fsV-Cc-Qur" customClass="DetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="detail" id="fsV-Cc-Qur" customClass="DetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="g22-VF-3cT"/>
                         <viewControllerLayoutGuide type="bottom" id="TO8-lF-IjP"/>
@@ -148,6 +148,33 @@
             </objects>
             <point key="canvasLocation" x="1271" y="377"/>
         </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="pVt-Hk-qFO">
+            <objects>
+                <viewController id="wcq-TB-uwf" customClass="EditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="drX-kw-WLj"/>
+                        <viewControllerLayoutGuide type="bottom" id="gYw-kx-9um"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="o7N-Ya-yc4">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7V-VN-uCD">
+                                <rect key="frame" x="20" y="292" width="280" height="30"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="editPerson:" destination="wcq-TB-uwf" eventType="touchUpInside" id="p67-rV-wUe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Twd-g2-EAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="804" y="720"/>
+        </scene>
         <!--Add View Controller-->
         <scene sceneID="sWY-m5-u6H">
             <objects>
@@ -190,7 +217,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.3529411764705882" green="0.73333333333333328" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="weZ-Er-AQc"/>
                     <connections>

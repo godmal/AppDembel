@@ -27,8 +27,8 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:[NSDate date]];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
-    datePicker.backgroundColor = [UIColor whiteColor];
     [self.dateInput setInputView:datePicker];
     [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
 }

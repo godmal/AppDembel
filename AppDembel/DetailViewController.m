@@ -23,7 +23,6 @@
     self.nameLabel.text = self.person.name;
     self.dateLabel.text = [DateUtils convertDateToString:self.person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
-    NSLog(@"days left - %f", [self.person calculateLeftDays]);
 }
 
 -(void) viewDidAppear:(BOOL)animated {

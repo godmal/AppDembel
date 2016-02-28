@@ -14,7 +14,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MGSwipeTableCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-AppDembel.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Underscore.m.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -22,7 +32,17 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>76204F10DE39823A1FEA53A53DDC8E71</key>
+		<key>2F5EDD2B803AEA5A92F28E3EB15529A5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4E1263BFF45F6446CF3DE29AE234C893</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8223344F855C0A4E1CE888FBD7648DD7</key>
 		<dict>
 			<key>primary</key>
 			<true/>

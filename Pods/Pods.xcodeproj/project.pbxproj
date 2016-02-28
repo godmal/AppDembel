@@ -7,26 +7,58 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B95200755F4983D22E37C984284F956 /* MBCircularProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = FA76794C421875E4D18DC4B7E4B9BAB7 /* MBCircularProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0F7D3C5B49EE1E3A6C5D4AA65D1795B3 /* Underscore+Times.h in Headers */ = {isa = PBXBuildFile; fileRef = 41E1641276965E5399C20D7BE0C98D79 /* Underscore+Times.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		18D66786A908E371EEF56C87820139B2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		1D54E6EC43B2B4250E1FE53B0C0A6662 /* MGSwipeTableCell-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C64926235CA6EB89242480C6FB42D52E /* MGSwipeTableCell-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2B95200755F4983D22E37C984284F956 /* MBCircularProgressBarLayer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1E552671CB4185724B0832D6F7E0D02B /* MBCircularProgressBarLayer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2F522E7B2A4A9DFD43C47A2929E57180 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		6221DDF3996B32A4AEE64027F6643A0C /* Pods-AppDembel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C3FA2D1EEB782EBE7742AE6E9BFE669 /* Pods-AppDembel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6447B5362DD395075EB2433CEE8C21D4 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 20F342BB9464CBE9E011761C5E8F219B /* MBCircularProgressBarView.m */; };
-		7BAE4455C4DA6E996C1DA22D03981A2B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
-		8546F815857BF9C93440151A864EB626 /* MBCircularProgressBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6BD35769D63591356C545CAAE34EC01C /* MBCircularProgressBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		86C96CE9BF21B8D10756F22C071EFBC5 /* MBCircularProgressBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AAA197DD89C3165666FF7E60CB42481 /* MBCircularProgressBar-dummy.m */; };
-		E912798811F25351DFFFCFEF1B153B2A /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA6549BFA602EA373B78E538AD4B48F /* MBCircularProgressBarLayer.m */; };
-		EB70BEA373CD78800BE63150747CE860 /* MBCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = 425F504176F335E6CD67E6A87AFD9C26 /* MBCircularProgressBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ED95D27C8C06BAC40A314B5474F5FFF2 /* Pods-AppDembel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1434FC3C043BEB896F5D3655CAEA72A9 /* Pods-AppDembel-dummy.m */; };
-		F88D157974522F8674E5DFA82F8B0A2A /* MBCircularProgressBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F6B13F6D210FED4FA6086288D19D4D83 /* MBCircularProgressBar.bundle */; };
+		3769892F53482AC2894B2ED1095277F1 /* Underscore+Functional.h in Headers */ = {isa = PBXBuildFile; fileRef = FEA7AFB581E83C0D26569B0A23E24D84 /* Underscore+Functional.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		46378D6B57C804858D6BBB80C6E80F3D /* USDictionaryWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FFBECE63CDC51AC83A72FCBA450B556 /* USDictionaryWrapper.m */; };
+		4D9A52CBE1DB686BF241CBEFAC859623 /* Underscore+Strings.h in Headers */ = {isa = PBXBuildFile; fileRef = 1928F57001834C6ED5FEC6865604604D /* Underscore+Strings.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4F9E71E16D7B3510EE74EBF775EE8690 /* USConstants.h in Headers */ = {isa = PBXBuildFile; fileRef = BF47D6C89456B6C7034FDBE6F428DA8E /* USConstants.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		50420DE98195493D74CD6B1B6A9A3058 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		569D057F4C7A6F69AEA4AB0BD6D9900E /* MGSwipeTableCell-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 286A6AA73DDB9147FB68909360EA7E0E /* MGSwipeTableCell-dummy.m */; };
+		5A9D3D48B182CC30C8EFBC078D89EA05 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
+		5B05E4842AC4AC104BA15FDA4392BCE1 /* Pods-AppDembel-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1434FC3C043BEB896F5D3655CAEA72A9 /* Pods-AppDembel-dummy.m */; };
+		5C4FAF7AA3CCF1EE34A2BC0EA1DA2A51 /* Underscore.m in Sources */ = {isa = PBXBuildFile; fileRef = C79AD25047020E089486B40379578EF6 /* Underscore.m */; };
+		62FEB568D39ECED932C46C16F2F63B6B /* USStringWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E6445E52B01A61B6037359479588557F /* USStringWrapper.m */; };
+		63A405DA898E30B609912C8DC419FA2C /* Pods-AppDembel-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1C3FA2D1EEB782EBE7742AE6E9BFE669 /* Pods-AppDembel-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		63DC27806C23AFFC9B7115E5EEAB9CBF /* MGSwipeButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 29D1344061B1735141055F8F416FE6C2 /* MGSwipeButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6447B5362DD395075EB2433CEE8C21D4 /* MBCircularProgressBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = 08ECA3AADCB35AD645DC08F537B16209 /* MBCircularProgressBarView.m */; };
+		67558B72295110F846C2420C9540A52A /* MGSwipeTableCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 032905DD56FC7D11225273B011B40B51 /* MGSwipeTableCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		69D9B3BAF01D681EA7A8926854DE8803 /* USArrayWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 45EBC301C869E4A0177069DB5FC87C47 /* USArrayWrapper.m */; };
+		6AE815EF5D6241264A5C79561292A1BB /* USDictionaryWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F57463F841F9FA03EB89C5B2EEED294 /* USDictionaryWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		72293B40068FD5C992D7593161863F2E /* Underscore+Functional.m in Sources */ = {isa = PBXBuildFile; fileRef = E665D9F4E7265AA0A939269F6177DB10 /* Underscore+Functional.m */; };
+		72690F9A6FA78B787FC56E8298046F74 /* Underscore.m-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7FC4D48865FD2EF3948A24DEF3352BED /* Underscore.m-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		83B010596EE0F015AA8298B1A0C1C5E6 /* USArrayWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 10AAE7EE9EA8BF87F9E7B6539F7763B7 /* USArrayWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8546F815857BF9C93440151A864EB626 /* MBCircularProgressBar-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 90B472D3C6E9A10F25D6B66495C3FCAA /* MBCircularProgressBar-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		86C96CE9BF21B8D10756F22C071EFBC5 /* MBCircularProgressBar-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 94937B523865C2A29BA9B1778F13D98D /* MBCircularProgressBar-dummy.m */; };
+		89D6406E7A7F56701C1D7F80724F1268 /* Underscore.h in Headers */ = {isa = PBXBuildFile; fileRef = C4B75A0D6B74B9D5E699C63E661AB7AE /* Underscore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		95E41293E05A8ABB9866D6F3AED0CA10 /* MGSwipeTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E4EE2573EE7602F1361E757E16B83AF1 /* MGSwipeTableCell.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		C2B7E904B5FC06563D3C20EBF685D520 /* Underscore+Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = 7CC8D3715AC9AC8E424F84EE35CCA0FC /* Underscore+Strings.m */; };
+		C8FD669C32DE47E548CBB0153988C1E2 /* MGSwipeButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 16B88A80DE56EF4897C21692EE28886B /* MGSwipeButton.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		CFC0671727BB298FBC93C656530794C0 /* USStringWrapper.h in Headers */ = {isa = PBXBuildFile; fileRef = 5641EBE9F83A46C01D07F330D58D1248 /* USStringWrapper.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		D176667C15FE4574DF5F13187A055C9C /* Underscore.m-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9686A3F9FEAA62519481C955F33BDAB4 /* Underscore.m-dummy.m */; };
+		D465C0E161D1EC8A2A830EC915F4FE64 /* Underscore+Times.m in Sources */ = {isa = PBXBuildFile; fileRef = 12AD7A0CC5973C4BD9A600CE44117193 /* Underscore+Times.m */; };
+		E912798811F25351DFFFCFEF1B153B2A /* MBCircularProgressBarLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 0327198A6395AE49B70A0C23A038B12C /* MBCircularProgressBarLayer.m */; };
+		EB70BEA373CD78800BE63150747CE860 /* MBCircularProgressBarView.h in Headers */ = {isa = PBXBuildFile; fileRef = A2CDA17F06E9F90B1469144246A6C2A4 /* MBCircularProgressBarView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F88D157974522F8674E5DFA82F8B0A2A /* MBCircularProgressBar.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 31302D52C5F358981AFD76A2562C36AA /* MBCircularProgressBar.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		50E4DBE3A27678F70120664DD38CC0ED /* PBXContainerItemProxy */ = {
+		AB68BCC99C3C5387065480B6BFC6B8C4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 860A9179BCFD9F1C616D8653DB2B4F91;
-			remoteInfo = MBCircularProgressBar;
+			remoteGlobalIDString = 4E1263BFF45F6446CF3DE29AE234C893;
+			remoteInfo = MGSwipeTableCell;
+		};
+		CA6E96507BCFA972E1D473EE87CE3593 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2F5EDD2B803AEA5A92F28E3EB15529A5;
+			remoteInfo = Underscore.m;
 		};
 		EBC59F00882F35808CD4B15930E9008E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -35,42 +67,82 @@
 			remoteGlobalIDString = 8FC4B2785BB68892651401B8A26A15AD;
 			remoteInfo = "MBCircularProgressBar-MBCircularProgressBar";
 		};
+		FB99A2A690B7D6EC22049AF9D73C6438 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 860A9179BCFD9F1C616D8653DB2B4F91;
+			remoteInfo = MBCircularProgressBar;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0327198A6395AE49B70A0C23A038B12C /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarLayer.m; path = Pod/Classes/MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		032905DD56FC7D11225273B011B40B51 /* MGSwipeTableCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeTableCell.h; path = MGSwipeTableCell/MGSwipeTableCell.h; sourceTree = "<group>"; };
+		076AFC6964964BB095D08BDA87534464 /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		08ECA3AADCB35AD645DC08F537B16209 /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarView.m; path = Pod/Classes/MBCircularProgressBarView.m; sourceTree = "<group>"; };
+		0F57463F841F9FA03EB89C5B2EEED294 /* USDictionaryWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = USDictionaryWrapper.h; path = Underscore/USDictionaryWrapper.h; sourceTree = "<group>"; };
+		10467A83DBB829904D706BC16D28A5AF /* MBCircularProgressBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBCircularProgressBar.modulemap; sourceTree = "<group>"; };
+		10AAE7EE9EA8BF87F9E7B6539F7763B7 /* USArrayWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = USArrayWrapper.h; path = Underscore/USArrayWrapper.h; sourceTree = "<group>"; };
+		12AD7A0CC5973C4BD9A600CE44117193 /* Underscore+Times.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Underscore+Times.m"; path = "Underscore/Times/Underscore+Times.m"; sourceTree = "<group>"; };
+		14056B7D24638C2D9ADB0ED320279480 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1434FC3C043BEB896F5D3655CAEA72A9 /* Pods-AppDembel-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-AppDembel-dummy.m"; sourceTree = "<group>"; };
+		16B88A80DE56EF4897C21692EE28886B /* MGSwipeButton.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeButton.m; path = MGSwipeTableCell/MGSwipeButton.m; sourceTree = "<group>"; };
+		1928F57001834C6ED5FEC6865604604D /* Underscore+Strings.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Underscore+Strings.h"; path = "Underscore/Strings/Underscore+Strings.h"; sourceTree = "<group>"; };
 		1C3FA2D1EEB782EBE7742AE6E9BFE669 /* Pods-AppDembel-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-AppDembel-umbrella.h"; sourceTree = "<group>"; };
-		20F342BB9464CBE9E011761C5E8F219B /* MBCircularProgressBarView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarView.m; path = Pod/Classes/MBCircularProgressBarView.m; sourceTree = "<group>"; };
+		1E552671CB4185724B0832D6F7E0D02B /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarLayer.h; path = Pod/Classes/MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
+		227030906DDA758F78013DDB79097A01 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		286A6AA73DDB9147FB68909360EA7E0E /* MGSwipeTableCell-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MGSwipeTableCell-dummy.m"; sourceTree = "<group>"; };
+		29D1344061B1735141055F8F416FE6C2 /* MGSwipeButton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MGSwipeButton.h; path = MGSwipeTableCell/MGSwipeButton.h; sourceTree = "<group>"; };
+		31302D52C5F358981AFD76A2562C36AA /* MBCircularProgressBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBCircularProgressBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		317D4D6B78B2994F19CABB84618DC14C /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3202F0ED8E46181FB4B64B459F9736C0 /* MBCircularProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBCircularProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		3EB607E5E54B3DB73142B4C0E7DAAF20 /* Pods-AppDembel-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-AppDembel-acknowledgements.plist"; sourceTree = "<group>"; };
-		425F504176F335E6CD67E6A87AFD9C26 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarView.h; path = Pod/Classes/MBCircularProgressBarView.h; sourceTree = "<group>"; };
+		41C440F2111A92B6F730C236A5A4BA84 /* MGSwipeTableCell.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MGSwipeTableCell.modulemap; sourceTree = "<group>"; };
+		41E1641276965E5399C20D7BE0C98D79 /* Underscore+Times.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Underscore+Times.h"; path = "Underscore/Times/Underscore+Times.h"; sourceTree = "<group>"; };
 		45C2ABDFABD4EED7F915B41326C87B0A /* Pods-AppDembel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-AppDembel.modulemap"; sourceTree = "<group>"; };
-		4FA6549BFA602EA373B78E538AD4B48F /* MBCircularProgressBarLayer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MBCircularProgressBarLayer.m; path = Pod/Classes/MBCircularProgressBarLayer.m; sourceTree = "<group>"; };
+		45EBC301C869E4A0177069DB5FC87C47 /* USArrayWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = USArrayWrapper.m; path = Underscore/USArrayWrapper.m; sourceTree = "<group>"; };
+		501B6584688A340C0FB5B651F8C76AE8 /* Underscore.m-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Underscore.m-prefix.pch"; sourceTree = "<group>"; };
+		51F5D1783EE398A0CD9E81DB9D066436 /* Underscore.m.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Underscore.m.modulemap; sourceTree = "<group>"; };
+		5641EBE9F83A46C01D07F330D58D1248 /* USStringWrapper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = USStringWrapper.h; path = Underscore/Strings/USStringWrapper.h; sourceTree = "<group>"; };
 		5B2DD0CB8634D51F33279E98A43EA3FF /* Pods-AppDembel-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-AppDembel-acknowledgements.markdown"; sourceTree = "<group>"; };
 		5CE189ED2C847EA1F4FAB76CC66C6511 /* Pods-AppDembel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AppDembel.release.xcconfig"; sourceTree = "<group>"; };
+		5CE945AFE5D65A7D9794E020F54EE2BF /* MGSwipeTableCell-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-prefix.pch"; sourceTree = "<group>"; };
 		62542D09606334893C98FAF4732AF885 /* Pods-AppDembel-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AppDembel-frameworks.sh"; sourceTree = "<group>"; };
 		64B11BAD5BBE2F6AB3AD591F873740E4 /* Pods-AppDembel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-AppDembel.debug.xcconfig"; sourceTree = "<group>"; };
-		67DEF50F9ED22A70C5A97942D3A649BB /* Pods_AppDembel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDembel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6BD35769D63591356C545CAAE34EC01C /* MBCircularProgressBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-umbrella.h"; sourceTree = "<group>"; };
-		73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.xcconfig; sourceTree = "<group>"; };
-		9AAA197DD89C3165666FF7E60CB42481 /* MBCircularProgressBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBCircularProgressBar-dummy.m"; sourceTree = "<group>"; };
-		AF8F7160FBBA9AC071E03D5450042C10 /* MBCircularProgressBar.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = MBCircularProgressBar.modulemap; sourceTree = "<group>"; };
-		B604EE62537DEEFA463FA87F02B6FDC3 /* MBCircularProgressBar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBCircularProgressBar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C7B33EA9E474738A2E1F88F942908CC /* Underscore_m.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Underscore_m.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7CC8D3715AC9AC8E424F84EE35CCA0FC /* Underscore+Strings.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Underscore+Strings.m"; path = "Underscore/Strings/Underscore+Strings.m"; sourceTree = "<group>"; };
+		7FC4D48865FD2EF3948A24DEF3352BED /* Underscore.m-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Underscore.m-umbrella.h"; sourceTree = "<group>"; };
+		90B472D3C6E9A10F25D6B66495C3FCAA /* MBCircularProgressBar-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-umbrella.h"; sourceTree = "<group>"; };
+		94937B523865C2A29BA9B1778F13D98D /* MBCircularProgressBar-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "MBCircularProgressBar-dummy.m"; sourceTree = "<group>"; };
+		9686A3F9FEAA62519481C955F33BDAB4 /* Underscore.m-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Underscore.m-dummy.m"; sourceTree = "<group>"; };
+		9D225FE14FD4B15C56E83D0AEF4D1CB4 /* Underscore.m.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Underscore.m.xcconfig; sourceTree = "<group>"; };
+		9FFBECE63CDC51AC83A72FCBA450B556 /* USDictionaryWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = USDictionaryWrapper.m; path = Underscore/USDictionaryWrapper.m; sourceTree = "<group>"; };
+		A2CDA17F06E9F90B1469144246A6C2A4 /* MBCircularProgressBarView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarView.h; path = Pod/Classes/MBCircularProgressBarView.h; sourceTree = "<group>"; };
+		AEF87F4B46779F0CB881B38D8E5D295A /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		BC65467DA817ED58BE64971D70921F9F /* MBCircularProgressBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-prefix.pch"; sourceTree = "<group>"; };
+		BF47D6C89456B6C7034FDBE6F428DA8E /* USConstants.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = USConstants.h; path = Underscore/USConstants.h; sourceTree = "<group>"; };
+		C48C0059414282A6FF05E1D9B9736203 /* MBCircularProgressBar-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MBCircularProgressBar-prefix.pch"; sourceTree = "<group>"; };
+		C4B75A0D6B74B9D5E699C63E661AB7AE /* Underscore.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Underscore.h; path = Underscore/Underscore.h; sourceTree = "<group>"; };
+		C64926235CA6EB89242480C6FB42D52E /* MGSwipeTableCell-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "MGSwipeTableCell-umbrella.h"; sourceTree = "<group>"; };
+		C79AD25047020E089486B40379578EF6 /* Underscore.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = Underscore.m; path = Underscore/Underscore.m; sourceTree = "<group>"; };
 		CF4A4CD50509EDCA0B2CCABCFD08A59E /* Pods-AppDembel-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-AppDembel-resources.sh"; sourceTree = "<group>"; };
-		DAF0A3D686CA83F4CE5B4CE3633EC4F4 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F6B13F6D210FED4FA6086288D19D4D83 /* MBCircularProgressBar.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MBCircularProgressBar.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA76794C421875E4D18DC4B7E4B9BAB7 /* MBCircularProgressBarLayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = MBCircularProgressBarLayer.h; path = Pod/Classes/MBCircularProgressBarLayer.h; sourceTree = "<group>"; };
+		DB2DDD69D8F9AD1F4D9B0B7DFD0D7DF2 /* MGSwipeTableCell.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MGSwipeTableCell.xcconfig; sourceTree = "<group>"; };
+		E43E2449669242DF2970E2CF451D84A9 /* Pods_AppDembel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDembel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4EE2573EE7602F1361E757E16B83AF1 /* MGSwipeTableCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = MGSwipeTableCell.m; path = MGSwipeTableCell/MGSwipeTableCell.m; sourceTree = "<group>"; };
+		E6445E52B01A61B6037359479588557F /* USStringWrapper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = USStringWrapper.m; path = Underscore/Strings/USStringWrapper.m; sourceTree = "<group>"; };
+		E665D9F4E7265AA0A939269F6177DB10 /* Underscore+Functional.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "Underscore+Functional.m"; path = "Underscore/Underscore+Functional.m"; sourceTree = "<group>"; };
+		F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = MBCircularProgressBar.xcconfig; sourceTree = "<group>"; };
+		FEA7AFB581E83C0D26569B0A23E24D84 /* Underscore+Functional.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "Underscore+Functional.h"; path = "Underscore/Underscore+Functional.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		79665FE597530F16243ECF4AD99EDA57 /* Frameworks */ = {
+		609D004504DEA9334D36273E4213DFAE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7BAE4455C4DA6E996C1DA22D03981A2B /* Foundation.framework in Frameworks */,
+				50420DE98195493D74CD6B1B6A9A3058 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +150,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AC0271E88F65B17975F56915CAAD607F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5A9D3D48B182CC30C8EFBC078D89EA05 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,9 +169,31 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E1BB2E35F7D0E92019C787CAC6DAF6BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				18D66786A908E371EEF56C87820139B2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		11CBCAD544D248D0B2168AEF55AED935 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				AEF87F4B46779F0CB881B38D8E5D295A /* Info.plist */,
+				41C440F2111A92B6F730C236A5A4BA84 /* MGSwipeTableCell.modulemap */,
+				DB2DDD69D8F9AD1F4D9B0B7DFD0D7DF2 /* MGSwipeTableCell.xcconfig */,
+				286A6AA73DDB9147FB68909360EA7E0E /* MGSwipeTableCell-dummy.m */,
+				5CE945AFE5D65A7D9794E020F54EE2BF /* MGSwipeTableCell-prefix.pch */,
+				C64926235CA6EB89242480C6FB42D52E /* MGSwipeTableCell-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/MGSwipeTableCell";
+			sourceTree = "<group>";
+		};
 		160B6C6EA193A9A592B391242C65FD9F /* Pods-AppDembel */ = {
 			isa = PBXGroup;
 			children = (
@@ -110,14 +212,18 @@
 			path = "Target Support Files/Pods-AppDembel";
 			sourceTree = "<group>";
 		};
-		1B48D879C472A1D0D234457C22FD034F /* Products */ = {
+		17631C104599ED397FC4D3230353B3F0 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				F6B13F6D210FED4FA6086288D19D4D83 /* MBCircularProgressBar.bundle */,
-				B604EE62537DEEFA463FA87F02B6FDC3 /* MBCircularProgressBar.framework */,
-				67DEF50F9ED22A70C5A97942D3A649BB /* Pods_AppDembel.framework */,
+				227030906DDA758F78013DDB79097A01 /* Info.plist */,
+				10467A83DBB829904D706BC16D28A5AF /* MBCircularProgressBar.modulemap */,
+				F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */,
+				94937B523865C2A29BA9B1778F13D98D /* MBCircularProgressBar-dummy.m */,
+				C48C0059414282A6FF05E1D9B9736203 /* MBCircularProgressBar-prefix.pch */,
+				90B472D3C6E9A10F25D6B66495C3FCAA /* MBCircularProgressBar-umbrella.h */,
 			);
-			name = Products;
+			name = "Support Files";
+			path = "../Target Support Files/MBCircularProgressBar";
 			sourceTree = "<group>";
 		};
 		1D56789C3CB060FC10511A68A371E7C7 /* Targets Support Files */ = {
@@ -128,12 +234,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3ACFAF19BEFBBF55764618D8F5C99954 /* Pods */ = {
+		60275686ED1554041C4FA4F7E067199A /* MGSwipeTableCell */ = {
 			isa = PBXGroup;
 			children = (
-				B6DC26CF54D3E8E58A8682670C1E0447 /* MBCircularProgressBar */,
+				29D1344061B1735141055F8F416FE6C2 /* MGSwipeButton.h */,
+				16B88A80DE56EF4897C21692EE28886B /* MGSwipeButton.m */,
+				032905DD56FC7D11225273B011B40B51 /* MGSwipeTableCell.h */,
+				E4EE2573EE7602F1361E757E16B83AF1 /* MGSwipeTableCell.m */,
+				11CBCAD544D248D0B2168AEF55AED935 /* Support Files */,
 			);
-			name = Pods;
+			path = MGSwipeTableCell;
+			sourceTree = "<group>";
+		};
+		62286A60E1D7AA1DB3EF3266F20036C8 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				14056B7D24638C2D9ADB0ED320279480 /* Info.plist */,
+				51F5D1783EE398A0CD9E81DB9D066436 /* Underscore.m.modulemap */,
+				9D225FE14FD4B15C56E83D0AEF4D1CB4 /* Underscore.m.xcconfig */,
+				9686A3F9FEAA62519481C955F33BDAB4 /* Underscore.m-dummy.m */,
+				501B6584688A340C0FB5B651F8C76AE8 /* Underscore.m-prefix.pch */,
+				7FC4D48865FD2EF3948A24DEF3352BED /* Underscore.m-umbrella.h */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Underscore.m";
+			sourceTree = "<group>";
+		};
+		7437FB9667B34E16A5517D6A061977D9 /* Underscore.m */ = {
+			isa = PBXGroup;
+			children = (
+				C4B75A0D6B74B9D5E699C63E661AB7AE /* Underscore.h */,
+				C79AD25047020E089486B40379578EF6 /* Underscore.m */,
+				FEA7AFB581E83C0D26569B0A23E24D84 /* Underscore+Functional.h */,
+				E665D9F4E7265AA0A939269F6177DB10 /* Underscore+Functional.m */,
+				1928F57001834C6ED5FEC6865604604D /* Underscore+Strings.h */,
+				7CC8D3715AC9AC8E424F84EE35CCA0FC /* Underscore+Strings.m */,
+				41E1641276965E5399C20D7BE0C98D79 /* Underscore+Times.h */,
+				12AD7A0CC5973C4BD9A600CE44117193 /* Underscore+Times.m */,
+				10AAE7EE9EA8BF87F9E7B6539F7763B7 /* USArrayWrapper.h */,
+				45EBC301C869E4A0177069DB5FC87C47 /* USArrayWrapper.m */,
+				BF47D6C89456B6C7034FDBE6F428DA8E /* USConstants.h */,
+				0F57463F841F9FA03EB89C5B2EEED294 /* USDictionaryWrapper.h */,
+				9FFBECE63CDC51AC83A72FCBA450B556 /* USDictionaryWrapper.m */,
+				5641EBE9F83A46C01D07F330D58D1248 /* USStringWrapper.h */,
+				E6445E52B01A61B6037359479588557F /* USStringWrapper.m */,
+				62286A60E1D7AA1DB3EF3266F20036C8 /* Support Files */,
+			);
+			path = Underscore.m;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -141,22 +288,44 @@
 			children = (
 				BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				3ACFAF19BEFBBF55764618D8F5C99954 /* Pods */,
-				1B48D879C472A1D0D234457C22FD034F /* Products */,
+				AB3EAD395093F78A01D4A1843246E518 /* Pods */,
+				938FFE496F9B55BF5574F7A2673C2EC0 /* Products */,
 				1D56789C3CB060FC10511A68A371E7C7 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		B6DC26CF54D3E8E58A8682670C1E0447 /* MBCircularProgressBar */ = {
+		938FFE496F9B55BF5574F7A2673C2EC0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				FA76794C421875E4D18DC4B7E4B9BAB7 /* MBCircularProgressBarLayer.h */,
-				4FA6549BFA602EA373B78E538AD4B48F /* MBCircularProgressBarLayer.m */,
-				425F504176F335E6CD67E6A87AFD9C26 /* MBCircularProgressBarView.h */,
-				20F342BB9464CBE9E011761C5E8F219B /* MBCircularProgressBarView.m */,
-				F2EDFC6E48579C35BF42EAEED2080138 /* Support Files */,
+				31302D52C5F358981AFD76A2562C36AA /* MBCircularProgressBar.bundle */,
+				3202F0ED8E46181FB4B64B459F9736C0 /* MBCircularProgressBar.framework */,
+				076AFC6964964BB095D08BDA87534464 /* MGSwipeTableCell.framework */,
+				E43E2449669242DF2970E2CF451D84A9 /* Pods_AppDembel.framework */,
+				6C7B33EA9E474738A2E1F88F942908CC /* Underscore_m.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9A99963348F69CD0AD36D9A268B329C2 /* MBCircularProgressBar */ = {
+			isa = PBXGroup;
+			children = (
+				1E552671CB4185724B0832D6F7E0D02B /* MBCircularProgressBarLayer.h */,
+				0327198A6395AE49B70A0C23A038B12C /* MBCircularProgressBarLayer.m */,
+				A2CDA17F06E9F90B1469144246A6C2A4 /* MBCircularProgressBarView.h */,
+				08ECA3AADCB35AD645DC08F537B16209 /* MBCircularProgressBarView.m */,
+				17631C104599ED397FC4D3230353B3F0 /* Support Files */,
 			);
 			path = MBCircularProgressBar;
+			sourceTree = "<group>";
+		};
+		AB3EAD395093F78A01D4A1843246E518 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9A99963348F69CD0AD36D9A268B329C2 /* MBCircularProgressBar */,
+				60275686ED1554041C4FA4F7E067199A /* MGSwipeTableCell */,
+				7437FB9667B34E16A5517D6A061977D9 /* Underscore.m */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
@@ -175,28 +344,40 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		F2EDFC6E48579C35BF42EAEED2080138 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				DAF0A3D686CA83F4CE5B4CE3633EC4F4 /* Info.plist */,
-				AF8F7160FBBA9AC071E03D5450042C10 /* MBCircularProgressBar.modulemap */,
-				73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */,
-				9AAA197DD89C3165666FF7E60CB42481 /* MBCircularProgressBar-dummy.m */,
-				BC65467DA817ED58BE64971D70921F9F /* MBCircularProgressBar-prefix.pch */,
-				6BD35769D63591356C545CAAE34EC01C /* MBCircularProgressBar-umbrella.h */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/MBCircularProgressBar";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		629EBC5D263C04A4CFE8B11C10E9A068 /* Headers */ = {
+		1E754E9D399930F33BC210A07296168D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6221DDF3996B32A4AEE64027F6643A0C /* Pods-AppDembel-umbrella.h in Headers */,
+				63DC27806C23AFFC9B7115E5EEAB9CBF /* MGSwipeButton.h in Headers */,
+				1D54E6EC43B2B4250E1FE53B0C0A6662 /* MGSwipeTableCell-umbrella.h in Headers */,
+				67558B72295110F846C2420C9540A52A /* MGSwipeTableCell.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		AA6E9A3168D9628094FC40A363EC312D /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3769892F53482AC2894B2ED1095277F1 /* Underscore+Functional.h in Headers */,
+				4D9A52CBE1DB686BF241CBEFAC859623 /* Underscore+Strings.h in Headers */,
+				0F7D3C5B49EE1E3A6C5D4AA65D1795B3 /* Underscore+Times.h in Headers */,
+				89D6406E7A7F56701C1D7F80724F1268 /* Underscore.h in Headers */,
+				72690F9A6FA78B787FC56E8298046F74 /* Underscore.m-umbrella.h in Headers */,
+				83B010596EE0F015AA8298B1A0C1C5E6 /* USArrayWrapper.h in Headers */,
+				4F9E71E16D7B3510EE74EBF775EE8690 /* USConstants.h in Headers */,
+				6AE815EF5D6241264A5C79561292A1BB /* USDictionaryWrapper.h in Headers */,
+				CFC0671727BB298FBC93C656530794C0 /* USStringWrapper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DDC96983EB83E070263C603D6F01BC9F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				63A405DA898E30B609912C8DC419FA2C /* Pods-AppDembel-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,22 +394,58 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		76204F10DE39823A1FEA53A53DDC8E71 /* Pods-AppDembel */ = {
+		2F5EDD2B803AEA5A92F28E3EB15529A5 /* Underscore.m */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CB9EC69C921F780BB68ED2CD3F47CC19 /* Build configuration list for PBXNativeTarget "Pods-AppDembel" */;
+			buildConfigurationList = 64C1ABE34EC8E8BD47B397CEEC004255 /* Build configuration list for PBXNativeTarget "Underscore.m" */;
 			buildPhases = (
-				94959E53040042A441175FE7ADDB1F1C /* Sources */,
-				79665FE597530F16243ECF4AD99EDA57 /* Frameworks */,
-				629EBC5D263C04A4CFE8B11C10E9A068 /* Headers */,
+				F432A90F1A1AC811BA69CDAD86AD3F6E /* Sources */,
+				E1BB2E35F7D0E92019C787CAC6DAF6BA /* Frameworks */,
+				AA6E9A3168D9628094FC40A363EC312D /* Headers */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				13DC8B186A52C6C52FB74F18FB18EC60 /* PBXTargetDependency */,
+			);
+			name = Underscore.m;
+			productName = Underscore.m;
+			productReference = 6C7B33EA9E474738A2E1F88F942908CC /* Underscore_m.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		4E1263BFF45F6446CF3DE29AE234C893 /* MGSwipeTableCell */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7B05C24F339BF84D6E16E6538A947C90 /* Build configuration list for PBXNativeTarget "MGSwipeTableCell" */;
+			buildPhases = (
+				C8C13026DC462129E945B064D7D89D95 /* Sources */,
+				AC0271E88F65B17975F56915CAAD607F /* Frameworks */,
+				1E754E9D399930F33BC210A07296168D /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MGSwipeTableCell;
+			productName = MGSwipeTableCell;
+			productReference = 076AFC6964964BB095D08BDA87534464 /* MGSwipeTableCell.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		8223344F855C0A4E1CE888FBD7648DD7 /* Pods-AppDembel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9D04103E1674A57D64DEC984CF15958C /* Build configuration list for PBXNativeTarget "Pods-AppDembel" */;
+			buildPhases = (
+				E19BA372B098D9299E0AE865C6F11770 /* Sources */,
+				609D004504DEA9334D36273E4213DFAE /* Frameworks */,
+				DDC96983EB83E070263C603D6F01BC9F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C51F862CA449EAF70438224093C22DCC /* PBXTargetDependency */,
+				51EE259235946C89847B590DD3B86275 /* PBXTargetDependency */,
+				6766652680CF7DEA42C08E99300370F5 /* PBXTargetDependency */,
 			);
 			name = "Pods-AppDembel";
 			productName = "Pods-AppDembel";
-			productReference = 67DEF50F9ED22A70C5A97942D3A649BB /* Pods_AppDembel.framework */;
+			productReference = E43E2449669242DF2970E2CF451D84A9 /* Pods_AppDembel.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		860A9179BCFD9F1C616D8653DB2B4F91 /* MBCircularProgressBar */ = {
@@ -247,7 +464,7 @@
 			);
 			name = MBCircularProgressBar;
 			productName = MBCircularProgressBar;
-			productReference = B604EE62537DEEFA463FA87F02B6FDC3 /* MBCircularProgressBar.framework */;
+			productReference = 3202F0ED8E46181FB4B64B459F9736C0 /* MBCircularProgressBar.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		8FC4B2785BB68892651401B8A26A15AD /* MBCircularProgressBar-MBCircularProgressBar */ = {
@@ -264,7 +481,7 @@
 			);
 			name = "MBCircularProgressBar-MBCircularProgressBar";
 			productName = "MBCircularProgressBar-MBCircularProgressBar";
-			productReference = F6B13F6D210FED4FA6086288D19D4D83 /* MBCircularProgressBar.bundle */;
+			productReference = 31302D52C5F358981AFD76A2562C36AA /* MBCircularProgressBar.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -284,13 +501,15 @@
 				en,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 1B48D879C472A1D0D234457C22FD034F /* Products */;
+			productRefGroup = 938FFE496F9B55BF5574F7A2673C2EC0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				860A9179BCFD9F1C616D8653DB2B4F91 /* MBCircularProgressBar */,
 				8FC4B2785BB68892651401B8A26A15AD /* MBCircularProgressBar-MBCircularProgressBar */,
-				76204F10DE39823A1FEA53A53DDC8E71 /* Pods-AppDembel */,
+				4E1263BFF45F6446CF3DE29AE234C893 /* MGSwipeTableCell */,
+				8223344F855C0A4E1CE888FBD7648DD7 /* Pods-AppDembel */,
+				2F5EDD2B803AEA5A92F28E3EB15529A5 /* Underscore.m */,
 			);
 		};
 /* End PBXProject section */
@@ -324,14 +543,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		94959E53040042A441175FE7ADDB1F1C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				ED95D27C8C06BAC40A314B5474F5FFF2 /* Pods-AppDembel-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		A733E3C23F3D8D660A96DF919F3EB865 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -339,14 +550,53 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		C8C13026DC462129E945B064D7D89D95 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C8FD669C32DE47E548CBB0153988C1E2 /* MGSwipeButton.m in Sources */,
+				569D057F4C7A6F69AEA4AB0BD6D9900E /* MGSwipeTableCell-dummy.m in Sources */,
+				95E41293E05A8ABB9866D6F3AED0CA10 /* MGSwipeTableCell.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E19BA372B098D9299E0AE865C6F11770 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5B05E4842AC4AC104BA15FDA4392BCE1 /* Pods-AppDembel-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F432A90F1A1AC811BA69CDAD86AD3F6E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				72293B40068FD5C992D7593161863F2E /* Underscore+Functional.m in Sources */,
+				C2B7E904B5FC06563D3C20EBF685D520 /* Underscore+Strings.m in Sources */,
+				D465C0E161D1EC8A2A830EC915F4FE64 /* Underscore+Times.m in Sources */,
+				5C4FAF7AA3CCF1EE34A2BC0EA1DA2A51 /* Underscore.m in Sources */,
+				D176667C15FE4574DF5F13187A055C9C /* Underscore.m-dummy.m in Sources */,
+				69D9B3BAF01D681EA7A8926854DE8803 /* USArrayWrapper.m in Sources */,
+				46378D6B57C804858D6BBB80C6E80F3D /* USDictionaryWrapper.m in Sources */,
+				62FEB568D39ECED932C46C16F2F63B6B /* USStringWrapper.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		13DC8B186A52C6C52FB74F18FB18EC60 /* PBXTargetDependency */ = {
+		51EE259235946C89847B590DD3B86275 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = MBCircularProgressBar;
-			target = 860A9179BCFD9F1C616D8653DB2B4F91 /* MBCircularProgressBar */;
-			targetProxy = 50E4DBE3A27678F70120664DD38CC0ED /* PBXContainerItemProxy */;
+			name = MGSwipeTableCell;
+			target = 4E1263BFF45F6446CF3DE29AE234C893 /* MGSwipeTableCell */;
+			targetProxy = AB68BCC99C3C5387065480B6BFC6B8C4 /* PBXContainerItemProxy */;
+		};
+		6766652680CF7DEA42C08E99300370F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Underscore.m;
+			target = 2F5EDD2B803AEA5A92F28E3EB15529A5 /* Underscore.m */;
+			targetProxy = CA6E96507BCFA972E1D473EE87CE3593 /* PBXContainerItemProxy */;
 		};
 		91C55659061E9F3551A2E1576571AA74 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -354,12 +604,72 @@
 			target = 8FC4B2785BB68892651401B8A26A15AD /* MBCircularProgressBar-MBCircularProgressBar */;
 			targetProxy = EBC59F00882F35808CD4B15930E9008E /* PBXContainerItemProxy */;
 		};
+		C51F862CA449EAF70438224093C22DCC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = MBCircularProgressBar;
+			target = 860A9179BCFD9F1C616D8653DB2B4F91 /* MBCircularProgressBar */;
+			targetProxy = FB99A2A690B7D6EC22049AF9D73C6438 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0A273B691CB10D3D2F88960B13FEFF2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB2DDD69D8F9AD1F4D9B0B7DFD0D7DF2 /* MGSwipeTableCell.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MGSwipeTableCell/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = MGSwipeTableCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		131A20562F5B4234F00547C5AC76651C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB2DDD69D8F9AD1F4D9B0B7DFD0D7DF2 /* MGSwipeTableCell.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/MGSwipeTableCell/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/MGSwipeTableCell/MGSwipeTableCell.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = MGSwipeTableCell;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		2455F15BB7F638D41BDA225B723E1AED /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */;
+			baseConfigurationReference = F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -384,9 +694,9 @@
 			};
 			name = Debug;
 		};
-		40E071896EA60592AF3FB9E1DC986C0D /* Release */ = {
+		375FFDFD85B5AE43B37B6E929C81F037 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5CE189ED2C847EA1F4FAB76CC66C6511 /* Pods-AppDembel.release.xcconfig */;
+			baseConfigurationReference = 64B11BAD5BBE2F6AB3AD591F873740E4 /* Pods-AppDembel.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -401,7 +711,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-AppDembel/Pods-AppDembel.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -412,17 +722,71 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
+		};
+		4BFE987481E1B2488E2A1FE4C2CCE3A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D225FE14FD4B15C56E83D0AEF4D1CB4 /* Underscore.m.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Underscore.m/Underscore.m-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Underscore.m/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Underscore.m/Underscore.m.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = Underscore_m;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
 		};
 		6A3FCA7ECB0DF14216ECAA345C5CDF67 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */;
+			baseConfigurationReference = F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = MBCircularProgressBar;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				WRAPPER_EXTENSION = bundle;
+			};
+			name = Release;
+		};
+		86B8AFD64C1E6AB8D6F9CFA63994C827 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9D225FE14FD4B15C56E83D0AEF4D1CB4 /* Underscore.m.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/Underscore.m/Underscore.m-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/Underscore.m/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/Underscore.m/Underscore.m.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = Underscore_m;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
@@ -467,7 +831,7 @@
 		};
 		A4AB4D0F954941052ADE779B709BF51D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */;
+			baseConfigurationReference = F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */;
 			buildSettings = {
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				PRODUCT_NAME = MBCircularProgressBar;
@@ -477,9 +841,9 @@
 			};
 			name = Debug;
 		};
-		AD4DAAB4399FA1493FF3718224D8A440 /* Debug */ = {
+		B32D03077DBA969C928BABA533BBBF8C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 64B11BAD5BBE2F6AB3AD591F873740E4 /* Pods-AppDembel.debug.xcconfig */;
+			baseConfigurationReference = 5CE189ED2C847EA1F4FAB76CC66C6511 /* Pods-AppDembel.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -494,7 +858,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-AppDembel/Pods-AppDembel.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -505,7 +869,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		C5A18280E9321A9268D1C80B7DA43967 /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -543,7 +907,7 @@
 		};
 		D9D9E60514E6EF1C8241D05D75E31156 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 73505674D7035879628236B46DBC512B /* MBCircularProgressBar.xcconfig */;
+			baseConfigurationReference = F6467BBBFB9489EB3746FBB5900ABCC5 /* MBCircularProgressBar.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
@@ -580,6 +944,24 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		64C1ABE34EC8E8BD47B397CEEC004255 /* Build configuration list for PBXNativeTarget "Underscore.m" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4BFE987481E1B2488E2A1FE4C2CCE3A4 /* Debug */,
+				86B8AFD64C1E6AB8D6F9CFA63994C827 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7B05C24F339BF84D6E16E6538A947C90 /* Build configuration list for PBXNativeTarget "MGSwipeTableCell" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A273B691CB10D3D2F88960B13FEFF2A /* Debug */,
+				131A20562F5B4234F00547C5AC76651C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9292B5CEC4480FF9860A000BCCC4EA9D /* Build configuration list for PBXNativeTarget "MBCircularProgressBar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -589,11 +971,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CB9EC69C921F780BB68ED2CD3F47CC19 /* Build configuration list for PBXNativeTarget "Pods-AppDembel" */ = {
+		9D04103E1674A57D64DEC984CF15958C /* Build configuration list for PBXNativeTarget "Pods-AppDembel" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				AD4DAAB4399FA1493FF3718224D8A440 /* Debug */,
-				40E071896EA60592AF3FB9E1DC986C0D /* Release */,
+				375FFDFD85B5AE43B37B6E929C81F037 /* Debug */,
+				B32D03077DBA969C928BABA533BBBF8C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
