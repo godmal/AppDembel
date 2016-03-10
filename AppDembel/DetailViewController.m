@@ -9,7 +9,8 @@
 #import "DetailViewController.h"
 #import "DateUtils.h"
 #import "Person.h"
-#import "MBCircularProgressBarView.h"
+#import "ContainerViewController.h"
+#import "EditViewController.h"
 
 @interface DetailViewController ()
 
@@ -25,26 +26,25 @@
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[self.person calculateDemobilizationDate]];
 }
 
--(void) viewDidAppear:(BOOL)animated {
-    [self.progressBar setValue:[self.person calculatePercentProgress] animateWithDuration:0.5f];
-    self.progressBar.decimalPlaces = 1;
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    NSString* segueName = segue.identifier;
+    if ([segueName isEqualToString: @"containerSegue"]) {
+        ContainerViewController* containerView = (ContainerViewController *) [segue destinationViewController];
+        containerView.person = self.person;
+    } else if ([segueName isEqualToString:@"editSegue"]) {
+        EditViewController* editView = (EditViewController*) [segue destinationViewController];
+        editView.person = self.person;
+    }
+    
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (IBAction)changeView:(id)sender {
-    self.progressBar.decimalPlaces = 0;
-    self.progressBar.maxValue = 365;
-    self.progressBar.unitString = @" days";
-    [self.progressBar setValue:[self.person calculateDaysProgress] animateWithDuration:0.5f];
-}
+//- (IBAction)changeView:(id)sender {
+//    self.progressBar.decimalPlaces = 0;
+//    self.progressBar.maxValue = 365;
+//    self.progressBar.unitString = @" days";
+//    [self.progressBar setValue:[self.person calculateDaysProgress] animateWithDuration:0.5f];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

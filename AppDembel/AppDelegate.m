@@ -21,7 +21,14 @@
     [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init]
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
+    
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+    
+    UIPageControl *pageControl = [UIPageControl appearance];
+    pageControl.pageIndicatorTintColor = [UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor = [UIColor blackColor];
+    pageControl.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
+    
 //    PeopleStore * store = [[PeopleStore alloc] init];
 //    People* model = [[People alloc] initWithStore:store];
 //    Person* ualal = [[Person alloc] initWithName:@"Bandit" andDate:[NSDate date]];

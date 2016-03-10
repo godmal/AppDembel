@@ -2,13 +2,16 @@
 //  EditViewController.m
 //  AppDembel
 //
-//  Created by Дмитрий Горбачев on 28.02.16.
+//  Created by Дмитрий Горбачев on 09.03.16.
 //  Copyright © 2016 Дмитрий Горбачев. All rights reserved.
 //
 
 #import "EditViewController.h"
-#import "People.h"
+#import "AddViewController.h"
 #import "Person.h"
+#import "DateUtils.h"
+#import "ViewController.h"
+
 
 @interface EditViewController ()
 
@@ -18,13 +21,30 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.view.backgroundColor = [UIColor whiteColor];
-    // Do any additional setup after loading the view.
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setDate:self.person.date];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
+    [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.dateInput setInputView:datePicker];
+    self.nameInput.text = self.person.name;
+    self.dateInput.text = [DateUtils convertDateToString:self.person.date];
+}
+
+-(void) dateTextField:(id)sender {
+    UIDatePicker *picker = (UIDatePicker*)self.dateInput.inputView;
+    NSDateFormatter *dateFormat = [DateUtils getFormatter];
+    NSString* dateString = [dateFormat stringFromDate:picker.date];
+    self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self.nameInput resignFirstResponder];
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 /*
@@ -37,8 +57,6 @@
 }
 */
 
-- (IBAction)editPerson:(id)sender {
-    [self.model updatePersonBy:1 with:[[Person alloc] initWithName:@"ALoha" andDate:[NSDate date]]];
-    [self dismissViewControllerAnimated:YES completion:nil];
+- (IBAction)saveButton:(id)sender {
 }
 @end

@@ -17,7 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
-@property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
-- (IBAction)changeView:(id)sender;
+//- (IBAction)changeView:(id)sender;
+
 
 @end

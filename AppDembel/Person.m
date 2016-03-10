@@ -43,8 +43,7 @@
 }
 
 -(float) calculatePercentProgress {
-    NSDate* today = [NSDate date];
-    float servedDays = [DateUtils getDaysBetween:self.date and:today];
+    float servedDays = [DateUtils getDaysBetween:self.date and:[NSDate date]];
     float allDays = [DateUtils getDaysBetween:self.date and:[self calculateDemobilizationDate]];
     return servedDays / allDays * 100;
 }

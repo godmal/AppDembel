@@ -13,7 +13,7 @@
 #import "DetailViewController.h"
 #import "DateUtils.h"
 #import "MGSwipeTableCell.h"
-#import "EditViewController.h"
+
 
 @interface ViewController ()
 
@@ -65,19 +65,11 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * reuseIdentifier = @"Cell";
     MGSwipeTableCell * cell = [self.tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
-
     if (!cell) {
         cell = [[MGSwipeTableCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
     }
-    
     cell.textLabel.text = [[self.model getAllNames] objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [[self.model getAllDatesStrings] objectAtIndex:indexPath.row];
-    cell.leftButtons = @[[MGSwipeButton buttonWithTitle:@"Edit" backgroundColor:[UIColor lightGrayColor] callback:^BOOL(MGSwipeTableCell *sender)
-    {
-        EditViewController* modalViewController=[[EditViewController alloc] init];
-        [self presentViewController:modalViewController animated:YES completion:nil];
-        return YES;
-    }],];
 
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
     {
@@ -85,10 +77,8 @@
         [self.tableView reloadData];
         return YES;
     }], ];
-    cell.leftSwipeSettings.transition = MGSwipeTransition3D;
-    cell.rightSwipeSettings.transition = MGSwipeTransition3D;
-    
-    [self roundMyView: cell borderRadius:15.0f borderWidth:0.0f color:nil];
+
+    cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
     return cell;
 }
 
@@ -98,10 +88,6 @@
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.person = [self.model.people objectAtIndex:indexPath.row];
     }
-}
-
-- (void) fillTableRow {
-    
 }
 
 - (void)didReceiveMemoryWarning {

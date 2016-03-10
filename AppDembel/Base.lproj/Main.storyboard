@@ -53,7 +53,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="fsV-Cc-Qur" kind="push" identifier="segue" id="1G4-yz-TfD"/>
+                                            <segue destination="fsV-Cc-Qur" kind="push" identifier="segue" id="9lE-96-N7b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -105,75 +105,39 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-Qd-pSM" customClass="MBCircularProgressBarView">
-                                <rect key="frame" x="20" y="196" width="280" height="277"/>
-                                <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
-                                        <real key="value" value="0.0"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
-                                        <color key="value" red="0.82542198896408081" green="0.91188651323318481" blue="0.32827019691467285" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="decimalPlaces">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
-                                        <color key="value" red="0.3529411764705882" green="0.73333333333333328" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sh1-mE-hAk">
-                                <rect key="frame" x="137" y="78" width="46" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YH7-ii-RVt">
+                                <rect key="frame" x="40" y="199" width="240" height="278"/>
                                 <connections>
-                                    <action selector="changeView:" destination="fsV-Cc-Qur" eventType="touchUpInside" id="09A-Yw-Tvz"/>
+                                    <segue destination="u3g-K2-0Zx" kind="embed" identifier="containerSegue" id="oe8-2b-4Jb"/>
                                 </connections>
-                            </button>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.3529411764705882" green="0.73333333333333328" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <navigationItem key="navigationItem" id="yUH-GE-tlT"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="yUH-GE-tlT">
+                        <barButtonItem key="rightBarButtonItem" id="pMI-7V-Dcj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="uvi-vk-Uv5">
+                                <rect key="frame" x="233" y="7" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="LaT-5X-UEi" kind="modal" identifier="editSegue" id="GiU-6b-Zy9"/>
+                                </connections>
+                            </button>
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateLabel" destination="Uvi-lM-yKs" id="vQD-b5-ZDZ"/>
                         <outlet property="demobilizationDateLabel" destination="SJe-cV-f6Z" id="Rvc-nH-bKU"/>
                         <outlet property="nameLabel" destination="PC5-nJ-0ev" id="KNO-Sg-gMr"/>
-                        <outlet property="progressBar" destination="VdE-Qd-pSM" id="lpq-Fw-hog"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RZW-zr-e0t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1271" y="377"/>
-        </scene>
-        <!--Edit View Controller-->
-        <scene sceneID="pVt-Hk-qFO">
-            <objects>
-                <viewController id="wcq-TB-uwf" customClass="EditViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="drX-kw-WLj"/>
-                        <viewControllerLayoutGuide type="bottom" id="gYw-kx-9um"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="o7N-Ya-yc4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M7V-VN-uCD">
-                                <rect key="frame" x="20" y="292" width="280" height="30"/>
-                                <state key="normal" title="Edit"/>
-                                <connections>
-                                    <action selector="editPerson:" destination="wcq-TB-uwf" eventType="touchUpInside" id="p67-rV-wUe"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Twd-g2-EAa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="804" y="720"/>
+            <point key="canvasLocation" x="804" y="797"/>
         </scene>
         <!--Add View Controller-->
         <scene sceneID="sWY-m5-u6H">
@@ -208,14 +172,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G3h-5U-dGg">
-                                <rect key="frame" x="63" y="518" width="195" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <state key="normal" title="Remove"/>
-                                <connections>
-                                    <action selector="removeButton:" destination="uGm-Rg-Wx4" eventType="touchUpInside" id="EUQ-df-SHZ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -253,6 +209,127 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qtO-xF-3Na" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="272" y="60"/>
+        </scene>
+        <!--Edit View Controller-->
+        <scene sceneID="6hp-A7-XLY">
+            <objects>
+                <viewController id="LaT-5X-UEi" customClass="EditViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Pdg-uk-Tlc"/>
+                        <viewControllerLayoutGuide type="bottom" id="xv1-7P-OhU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eKK-tN-zI8">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Edp-QV-GsV">
+                                <rect key="frame" x="20" y="57" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="LaT-5X-UEi" id="nnm-an-wpp"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lZl-ku-Xtj">
+                                <rect key="frame" x="20" y="109" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0F-tf-tYg">
+                                <rect key="frame" x="20" y="202" width="280" height="30"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="saveButton:" destination="LaT-5X-UEi" eventType="touchUpInside" id="48q-Uo-3u8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jvA-fu-lqB"/>
+                    <connections>
+                        <outlet property="dateInput" destination="lZl-ku-Xtj" id="lBR-mI-TSt"/>
+                        <outlet property="nameInput" destination="Edp-QV-GsV" id="FGG-iJ-JqP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lqD-bX-EOn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1255" y="552"/>
+        </scene>
+        <!--Container View Controller-->
+        <scene sceneID="d0c-Xy-snj">
+            <objects>
+                <viewController storyboardIdentifier="Conta" id="u3g-K2-0Zx" customClass="ContainerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="pg2-Py-umE"/>
+                        <viewControllerLayoutGuide type="bottom" id="kvx-Ib-kvQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eD1-qp-lYi">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="278"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QCk-5J-4bH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1231" y="1065"/>
+        </scene>
+        <!--Page Content View Controller-->
+        <scene sceneID="e5r-5G-c5C">
+            <objects>
+                <viewController storyboardIdentifier="PageContentViewController" id="ps8-Vf-xKN" customClass="PageContentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oDF-ax-r4k"/>
+                        <viewControllerLayoutGuide type="bottom" id="HuB-nC-23m"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EYd-27-qZC">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="240"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VdE-Qd-pSM" customClass="MBCircularProgressBarView">
+                                <rect key="frame" x="0.0" y="6" width="240" height="214"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="progressAngle">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressColor">
+                                        <color key="value" red="0.82542198896408081" green="0.91188651323318481" blue="0.32827019691467285" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="decimalPlaces">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="progressStrokeColor">
+                                        <color key="value" red="0.3529411764705882" green="0.73333333333333328" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.35294117650000001" green="0.73333333329999995" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="240" height="240"/>
+                    <connections>
+                        <outlet property="progressView" destination="VdE-Qd-pSM" id="ILZ-8D-bgq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bg4-PH-fnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="1065"/>
+        </scene>
+        <!--Page View Controller-->
+        <scene sceneID="Cmf-N2-uYi">
+            <objects>
+                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="0eS-JZ-c1F" sceneMemberID="viewController">
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="240" height="240"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="anh-Rd-Qqh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1793" y="759"/>
         </scene>
     </scenes>
 </document>

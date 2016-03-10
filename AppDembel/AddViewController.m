@@ -46,11 +46,6 @@
     return YES;
 }
 
-- (IBAction)removeButton:(id)sender {
-    [self.model removeAll];
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
 - (IBAction)saveButtonClick:(id)sender {
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
