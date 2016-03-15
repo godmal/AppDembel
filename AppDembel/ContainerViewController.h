@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "PageContentViewController.h"
+#import "BaseViewController.h"
+#import "Person.h"
 
-@interface ContainerViewController : UIViewController <UIPageViewControllerDataSource>
+@interface ContainerViewController : BaseViewController <UIPageViewControllerDataSource>
 
 @property (strong, nonatomic) UIPageViewController* pageViewController;
 @property (strong, nonatomic) NSArray* slides;
-@property (strong, nonatomic) Person* person;
+@property (assign, nonatomic) NSUInteger index;
+
 
 @end

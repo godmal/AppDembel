@@ -9,7 +9,6 @@
 #import "PageContentViewController.h"
 #import "MBCircularProgressBarView.h"
 
-
 @interface PageContentViewController ()
 
 @end
@@ -18,7 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    if (self.pageIndex == 1) {
+        self.progressLabel.text = @"Тебе осталось служить:";
+    } else
+        self.progressLabel.text = @"Ты уже отслужил:";
 }
 
 - (void)didReceiveMemoryWarning {
@@ -27,12 +29,11 @@
 }
 
 -(void) viewDidAppear:(BOOL)animated {
+    [self.progressView setValue:self.progress animateWithDuration: 0.5f];
     if (self.pageIndex == 1) {
         self.progressView.decimalPlaces = 0;
         self.progressView.maxValue = 365;
         self.progressView.unitString = @" days";
     }
-    [self.progressView setValue:self.progress animateWithDuration: 0.5f];
 }
-
 @end

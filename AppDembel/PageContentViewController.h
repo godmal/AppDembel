@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Person.h"
+#import "BaseViewController.h"
 
 @class MBCircularProgressBarView;
 
@@ -16,5 +16,6 @@
 @property NSUInteger pageIndex;
 @property (assign) float progress;
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressView;
+@property (weak, nonatomic) IBOutlet UILabel *progressLabel;
 
 @end

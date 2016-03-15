@@ -10,6 +10,7 @@
 #import "PeopleStore.h"
 #import "People.h"
 #import "Person.h"
+
 @interface AppDelegate ()
 
 @end
@@ -31,8 +32,7 @@
     
 //    PeopleStore * store = [[PeopleStore alloc] init];
 //    People* model = [[People alloc] initWithStore:store];
-//    Person* ualal = [[Person alloc] initWithName:@"Bandit" andDate:[NSDate date]];
-//    [model updatePersonBy:1 with:ualal];
+//    [model removeAll];
     return YES;
 }
 

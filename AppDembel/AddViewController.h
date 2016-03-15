@@ -8,7 +8,9 @@
 
 #import "ViewController.h"
 
-@interface AddViewController: ViewController <UIAlertViewDelegate>
+@interface AddViewController: BaseViewController <UIAlertViewDelegate>
+
+
 
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;

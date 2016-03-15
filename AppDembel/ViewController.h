@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "BaseViewController.h"
 
-@class People;
 
-@interface ViewController : UIViewController <UITableViewDelegate, UITableViewDataSource> {
-}
+@interface ViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) People* model;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 

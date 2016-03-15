@@ -16,6 +16,7 @@
 		5A64BBE91C88162E00EC6090 /* PageContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64BBE81C88162E00EC6090 /* PageContentViewController.m */; };
 		5A64BBEC1C88168900EC6090 /* ContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64BBEB1C88168900EC6090 /* ContainerViewController.m */; };
 		5A64BBEF1C90730100EC6090 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64BBEE1C90730100EC6090 /* EditViewController.m */; };
+		5A9B9DCD1C961AF10056AE6F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */; };
 		5AB8E5BF1C4F6A330062688E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5BE1C4F6A330062688E /* main.m */; };
 		5AB8E5C21C4F6A330062688E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C11C4F6A330062688E /* AppDelegate.m */; };
 		5AB8E5C51C4F6A330062688E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C41C4F6A330062688E /* ViewController.m */; };
@@ -43,6 +44,8 @@
 		5A64BBEB1C88168900EC6090 /* ContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContainerViewController.m; sourceTree = "<group>"; };
 		5A64BBED1C90730100EC6090 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		5A64BBEE1C90730100EC6090 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		5A9B9DCB1C961AF10056AE6F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
+		5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5AB8E5BA1C4F6A330062688E /* AppDembel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDembel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB8E5BE1C4F6A330062688E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5AB8E5C01C4F6A330062688E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -106,6 +109,8 @@
 		5A6062F01C65589B0002E44C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				5A9B9DCB1C961AF10056AE6F /* BaseViewController.h */,
+				5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */,
 				5A64BBEA1C88168900EC6090 /* ContainerViewController.h */,
 				5A64BBEB1C88168900EC6090 /* ContainerViewController.m */,
 				5A64BBE71C88162E00EC6090 /* PageContentViewController.h */,
@@ -314,6 +319,7 @@
 				5AB8E5DB1C4FDA970062688E /* Person.m in Sources */,
 				5AB8E5D61C4F6E1C0062688E /* PeopleStore.m in Sources */,
 				5A64BBEC1C88168900EC6090 /* ContainerViewController.m in Sources */,
+				5A9B9DCD1C961AF10056AE6F /* BaseViewController.m in Sources */,
 				5A64BBE91C88162E00EC6090 /* PageContentViewController.m in Sources */,
 				5A3F00581C6BD70900054BDD /* DateUtils.m in Sources */,
 				5AB8E5BF1C4F6A330062688E /* main.m in Sources */,
@@ -428,9 +434,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AppDembel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -440,9 +448,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = AppDembel/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

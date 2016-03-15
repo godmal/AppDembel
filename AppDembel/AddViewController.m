@@ -10,7 +10,6 @@
 #import "People.h"
 #import "Person.h"
 #import "PeopleStore.h"
-#import "ViewController.h"
 #import "DateUtils.h"
 
 @interface AddViewController ()
@@ -30,7 +29,6 @@
     datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
-    [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
 }
 
 -(void) dateTextField:(id)sender {

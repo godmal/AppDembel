@@ -7,17 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BaseViewController.h"
+#import "Person.h"
 
-@class Person;
 @class MBCircularProgressBarView;
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : BaseViewController
 
-@property (nonatomic, strong) Person* person;
+@property (assign, nonatomic) NSUInteger index;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
-//- (IBAction)changeView:(id)sender;
 
 
 @end

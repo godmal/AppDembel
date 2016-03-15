@@ -24,20 +24,10 @@
     NSMutableArray* dateArray;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)coder {
-    self = [super initWithCoder:coder];
-    if (self) {
-        [self observeState];
-        [self setViewState];
-    }
-    return self;
-}
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self roundMyView:_addButton borderRadius:5.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
-    
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -45,18 +35,6 @@
     [self.navigationController setNavigationBarHidden:YES animated:NO];
 }
 
--(void) observeState {
-    [[NSNotificationCenter defaultCenter] addObserver: self
-                                             selector: @selector(setViewState)
-                                                 name: @"appStateChanged"
-                                               object: nil];
-}
-
--(void) setViewState {
-    PeopleStore* store = [[PeopleStore alloc] init];
-    self.model = [[People alloc] initWithStore:store];
-    [self viewDidLoad];
-}
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.model.people count];
@@ -86,7 +64,7 @@
     if ([segue.identifier isEqualToString:@"segue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *destViewController = segue.destinationViewController;
-        destViewController.person = [self.model.people objectAtIndex:indexPath.row];
+        destViewController.index = indexPath.row;
     }
 }
 
