@@ -53,19 +53,7 @@
 - (IBAction)saveButton:(id)sender {
     
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
-                                                   handler:^(UIAlertAction * action) {
-                                                       [alert dismissViewControllerAnimated:YES completion:nil];
-                                                   }];
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Дезертирую!" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           [alert dismissViewControllerAnimated:YES completion:nil];
-                                                           [self dismissViewControllerAnimated:YES completion:nil];
-                                                       }];
-        [alert addAction:ok];
-        [alert addAction:cancel];
-        [self presentViewController:alert animated:YES completion:nil];
+        [self createAlert];
     } else {
         
         Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date];
