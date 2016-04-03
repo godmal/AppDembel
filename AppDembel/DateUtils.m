@@ -31,4 +31,20 @@
                                                                options:NSCalendarWrapComponents] day];
 }
 
++ (BOOL) compareNowWith:(NSDate*) personDate {
+    if (personDate == [personDate earlierDate:[NSDate date]]) {
+        NSLog(@"lalalalala");
+        NSDateComponents *components = [[NSDateComponents alloc] init];
+        [components setDay:-365];
+        NSDate* minDate = [[self getCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];
+    
+        if (personDate == [personDate earlierDate:minDate]) {
+            NSLog(@"IDI NAHUI");
+            return false;
+        }
+        return true;
+    }
+    return true;
+}
+
 @end

@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DetailViewController.h"
 #import "BaseViewController.h"
 
 @interface EditViewController : BaseViewController

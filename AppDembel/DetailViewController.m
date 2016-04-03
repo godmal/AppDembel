@@ -9,7 +9,6 @@
 #import "DetailViewController.h"
 #import "DateUtils.h"
 #import "People.h"
-#import "ContainerViewController.h"
 #import "EditViewController.h"
 
 @interface DetailViewController ()
@@ -27,22 +26,19 @@
     self.nameLabel.text = _person.name;
     self.dateLabel.text = [DateUtils convertDateToString:_person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[_person calculateDemobilizationDate]];
+}
 
+-(void) viewDidAppear:(BOOL)animated {
+    [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+    self.progressBar.maxValue = 365;
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString* segueName = segue.identifier;
-    if ([segueName isEqualToString: @"containerSegue"]) {
-        ContainerViewController* containerView = (ContainerViewController *) [segue destinationViewController];
-        containerView.model = self.model;
-        containerView.index = self.index;
-
-    }
     [segueName isEqualToString:@"editSegue"];
     EditViewController* editView = (EditViewController*) [segue destinationViewController];
     editView.index = self.index;
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

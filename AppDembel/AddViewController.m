@@ -18,17 +18,23 @@
 
 @implementation AddViewController{
     NSDate* _date;
+    UIDatePicker *_datePicker;
 }
+
 
 //TODO: VALIDATION DATAPICKERVALUES
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    [datePicker setDate:[NSDate date]];
-    datePicker.datePickerMode = UIDatePickerModeDate;
-    datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
-    [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
-    [self.dateInput setInputView:datePicker];
+    _datePicker = [[UIDatePicker alloc]init];
+    [_datePicker setDate:[NSDate date]];
+    _datePicker.datePickerMode = UIDatePickerModeDate;
+    _datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
+    [_datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.dateInput setInputView:_datePicker];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 -(void) dateTextField:(id)sender {

@@ -28,8 +28,10 @@
 }
 //TODO: VALIDATE INPUT
 -(void) add:(Person*) person {
-    [self.people addObject:person];
-    [self saveAndNotify];
+    if ([DateUtils compareNowWith:person.date]) {
+        [self.people addObject:person];
+        [self saveAndNotify];
+    }
 }
 
 -(void) removeAll {
@@ -43,8 +45,10 @@
 }
 
 -(void) updatePersonBy:(NSUInteger) personID with:(Person*) updatedPerson {
-    [self.people replaceObjectAtIndex:personID withObject:updatedPerson];
-    [self saveAndNotify];
+    if ([DateUtils compareNowWith:updatedPerson.date]) {
+        [self.people replaceObjectAtIndex:personID withObject:updatedPerson];
+        [self saveAndNotify];
+    }
 }
 
 -(void) saveToStore {
@@ -71,6 +75,5 @@
         return [DateUtils convertDateToString:person.date];
     });
 }
-
 
 @end

@@ -35,7 +35,7 @@
     return self;
 }
 
-//TODO: VALIDATION  
+//TODO: VALIDATION
 -(NSDate*)calculateDemobilizationDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:365];

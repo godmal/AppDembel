@@ -19,7 +19,6 @@
 @implementation EditViewController {
     Person* _person;
 }
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     _person = [self.model.people objectAtIndex:self.index];
@@ -31,6 +30,11 @@
     [self.dateInput setInputView:datePicker];
     self.nameInput.text = _person.name;
     self.dateInput.text = [DateUtils convertDateToString:_person.date];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 -(void) dateTextField:(id)sender {
@@ -47,9 +51,29 @@
 }
 
 - (IBAction)saveButton:(id)sender {
-    Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date];
-    [self.model updatePersonBy:self.index with:updatedPerson];
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
+        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Дезертирую!" style:UIAlertActionStyleDefault
+                                                       handler:^(UIAlertAction * action) {
+                                                           [alert dismissViewControllerAnimated:YES completion:nil];
+                                                           [self dismissViewControllerAnimated:YES completion:nil];
+                                                       }];
+        [alert addAction:ok];
+        [alert addAction:cancel];
+        [self presentViewController:alert animated:YES completion:nil];
+    } else {
+        
+        Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date];
+        [self.model updatePersonBy:self.index with:updatedPerson];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+        
+    
 }
 
 - (void)didReceiveMemoryWarning {

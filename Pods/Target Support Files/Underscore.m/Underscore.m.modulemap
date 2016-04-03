@@ -1,0 +1,6 @@
+framework module Underscore_m {
+  umbrella header "Underscore.m-umbrella.h"
+
+  export *
+  module * { export * }
+}

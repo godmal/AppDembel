@@ -9,10 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @class People;
+@class Person;
 
 @interface BaseViewController : UIViewController 
 
-@property (strong, nonatomic) People* model;
 
+@property (strong, nonatomic) People* model;
+@property (strong, nonatomic) Person* person;
 
 @end
