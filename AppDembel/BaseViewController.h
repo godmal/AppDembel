@@ -17,4 +17,6 @@
 @property (strong, nonatomic) People* model;
 @property (strong, nonatomic) Person* person;
 
+-(void) createAlert;
+
 @end

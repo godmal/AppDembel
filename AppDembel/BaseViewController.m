@@ -41,15 +41,31 @@
     [self viewDidLoad];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 -(void) configureModel {
     PeopleStore* store = [[PeopleStore alloc] init];
     self.model = [[People alloc] initWithStore:store];
 
+}
+
+-(void) createAlert {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Дезертирую!" style:UIAlertActionStyleDefault
+                                                   handler:^(UIAlertAction * action) {
+                                                       [alert dismissViewControllerAnimated:YES completion:nil];
+                                                       [self dismissViewControllerAnimated:YES completion:nil];
+                                                   }];
+    [alert addAction:ok];
+    [alert addAction:cancel];
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
 }
 
 @end
