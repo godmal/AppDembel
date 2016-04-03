@@ -33,7 +33,7 @@
 
 + (BOOL) compareNowWith:(NSDate*) personDate {
     if (personDate == [personDate earlierDate:[NSDate date]]) {
-        NSDate* minLimitDate = [self calculateMinLimitDate:personDate];
+        NSDate* minLimitDate = [self calculateMinLimitDate];
         if (personDate == [personDate earlierDate:minLimitDate]) {
             return false;
         }
@@ -42,7 +42,7 @@
     return true;
 }
 
-+ (NSDate*) calculateMinLimitDate: (NSDate*) personDate {
++ (NSDate*) calculateMinLimitDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:-365];
     return [[self getCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];

@@ -15,5 +15,5 @@
 + (float) getDaysBetween:(NSDate*) firstDate and:(NSDate*) secondDate;
 + (NSString*) convertDateToString:(NSDate*) date;
 + (BOOL) compareNowWith:(NSDate*) personDate;
-
++ (NSDate*) calculateMinLimitDate;
 @end
