@@ -21,16 +21,27 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     _person = [self.model.people objectAtIndex:self.index];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.nameLabel.text = _person.name;
     self.dateLabel.text = [DateUtils convertDateToString:_person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[_person calculateDemobilizationDate]];
+    
+    if (_person.date == [_person.date laterDate:[NSDate date]]) {
+        [self.progressBar removeFromSuperview];
+        int daysLeft = (int)[DateUtils getDaysBetween: [NSDate date] and:_person.date];
+        self.daysLeft.text = [NSString stringWithFormat:@"Осталось до службы: %d дней", daysLeft];
+    } else [self.daysLeft removeFromSuperview];
+
 }
 
 -(void) viewDidAppear:(BOOL)animated {
-    [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
-    self.progressBar.maxValue = 365;
+    if (_person.date != [_person.date laterDate:[NSDate date]]) {
+        [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+        self.progressBar.maxValue = 365;
+    }
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

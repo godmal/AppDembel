@@ -30,7 +30,6 @@
     [self.dateInput setInputView:datePicker];
     self.nameInput.text = _person.name;
     self.dateInput.text = [DateUtils convertDateToString:_person.date];
-    [[UIApplication sharedApplication] cancelAllLocalNotifications];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
