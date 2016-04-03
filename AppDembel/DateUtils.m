@@ -33,18 +33,19 @@
 
 + (BOOL) compareNowWith:(NSDate*) personDate {
     if (personDate == [personDate earlierDate:[NSDate date]]) {
-        NSLog(@"lalalalala");
-        NSDateComponents *components = [[NSDateComponents alloc] init];
-        [components setDay:-365];
-        NSDate* minDate = [[self getCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];
-    
-        if (personDate == [personDate earlierDate:minDate]) {
-            NSLog(@"IDI NAHUI");
+        NSDate* minLimitDate = [self calculateMinLimitDate:personDate];
+        if (personDate == [personDate earlierDate:minLimitDate]) {
             return false;
         }
         return true;
     }
     return true;
+}
+
++ (NSDate*) calculateMinLimitDate: (NSDate*) personDate {
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:-365];
+    return [[self getCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];
 }
 
 @end
