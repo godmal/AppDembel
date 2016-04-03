@@ -63,6 +63,19 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void) hide:(UIView*) view {
+    view.alpha = 0;
+}
+
+- (void) show:(UIView*) view {
+    view.alpha = 1;
+}
+
+- (void) show:(UIView*) showingView andHide:(UIView*) hidingView {
+    [self show: showingView];
+    [self hide: hidingView];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

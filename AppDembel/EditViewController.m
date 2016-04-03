@@ -25,6 +25,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:_person.date];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    datePicker.minimumDate = [DateUtils calculateMinLimitDate];
     datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
@@ -54,7 +55,6 @@
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         [self createAlert];
     } else {
-        
         Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date];
         [self.model updatePersonBy:self.index with:updatedPerson];
         [self dismissViewControllerAnimated:YES completion:nil];

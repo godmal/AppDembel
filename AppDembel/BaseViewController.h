@@ -18,5 +18,8 @@
 @property (strong, nonatomic) Person* person;
 
 -(void) createAlert;
+-(void) show:(UIView*) view;
+-(void) hide:(UIView*) view;
+-(void) show:(UIView*) showingView andHide:(UIView*) hidingView;
 
 @end

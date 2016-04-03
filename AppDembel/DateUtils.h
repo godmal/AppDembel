@@ -16,4 +16,7 @@
 + (NSString*) convertDateToString:(NSDate*) date;
 + (BOOL) compareNowWith:(NSDate*) personDate;
 + (NSDate*) calculateMinLimitDate;
++ (BOOL) isAfterNow: (NSDate*) date;
++ (NSDate*) now;
+
 @end

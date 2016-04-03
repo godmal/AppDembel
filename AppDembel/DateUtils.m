@@ -32,7 +32,7 @@
 }
 
 + (BOOL) compareNowWith:(NSDate*) personDate {
-    if (personDate == [personDate earlierDate:[NSDate date]]) {
+    if ([self isBeforeNow:personDate]) {
         NSDate* minLimitDate = [self calculateMinLimitDate];
         if (personDate == [personDate earlierDate:minLimitDate]) {
             return false;
@@ -45,7 +45,19 @@
 + (NSDate*) calculateMinLimitDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:-365];
-    return [[self getCalendar] dateByAddingComponents:components toDate:[NSDate date] options:0];
+    return [[self getCalendar] dateByAddingComponents:components toDate:self.now options:0];
+}
+
++ (BOOL) isAfterNow: (NSDate*) date {
+    return date == [date laterDate: self.now];
+}
+
++ (BOOL) isBeforeNow: (NSDate*) date {
+    return date == [date earlierDate:self.now];
+}
+
++ (NSDate*) now {
+    return [NSDate date];
 }
 
 @end
