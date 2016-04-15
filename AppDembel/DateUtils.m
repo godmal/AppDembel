@@ -34,7 +34,7 @@
 + (BOOL) compareNowWith:(NSDate*) personDate {
     if ([self isBeforeNow:personDate]) {
         NSDate* minLimitDate = [self calculateMinLimitDate];
-        if (personDate == [personDate earlierDate:minLimitDate]) {
+        if (personDate == [personDate earlierDate:minLimitDate] && ![[self convertDateToString:personDate] isEqualToString:[self convertDateToString:minLimitDate]]) {
             return false;
         }
         return true;

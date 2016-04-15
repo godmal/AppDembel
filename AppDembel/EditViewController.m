@@ -26,7 +26,6 @@
     [datePicker setDate:_person.date];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.minimumDate = [DateUtils calculateMinLimitDate];
-    datePicker.backgroundColor = [UIColor colorWithRed:90/255.0 green:187/255.0 blue:181/255.0 alpha:1];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
     self.nameInput.text = _person.name;
