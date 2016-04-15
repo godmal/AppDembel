@@ -26,7 +26,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _datePicker = [[UIDatePicker alloc]init];
-    _datePicker.minimumDate = [DateUtils calculateMinLimitDate];
+    _datePicker.minimumDate = [DateUtils minLimitDate];
     [_datePicker setDate:[NSDate date]];
     _datePicker.datePickerMode = UIDatePickerModeDate;
     [_datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];

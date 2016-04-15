@@ -31,30 +31,30 @@
                                                                options:NSCalendarWrapComponents] day];
 }
 
-+ (BOOL) compareNowWith:(NSDate*) personDate {
-    if ([self isBeforeNow:personDate]) {
-        NSDate* minLimitDate = [self calculateMinLimitDate];
-        return !([self is:personDate Before:minLimitDate] && ![[self convertDateToString:personDate] isEqualToString:[self convertDateToString:minLimitDate]]);
-    }
-    return true;
-}
-
-+ (NSDate*) calculateMinLimitDate {
-    NSDateComponents *components = [[NSDateComponents alloc] init];
-    [components setDay:-365];
-    return [[self getCalendar] dateByAddingComponents:components toDate:self.now options:0];
++ (BOOL) isValid:(NSDate*) personDate {
+    return [self is:personDate AfterOrEquals:self.minLimitDate];
 }
 
 + (BOOL) isAfterNow: (NSDate*) date {
-    return date == [date laterDate: self.now];
+    return [self is:date After:self.now];
 }
 
-+ (BOOL) isBeforeNow: (NSDate*) date {
-    return [self is:date Before:self.now];
++ (BOOL) is: (NSDate*) firstDate AfterOrEquals: (NSDate*) secondDate {
+    return [self is:firstDate After:secondDate] || [self is:firstDate Equals:secondDate];
 }
 
-+ (BOOL) is: (NSDate*) firstDate Before: (NSDate*) secondDate {
-    return firstDate == [firstDate earlierDate:secondDate];
++ (BOOL) is: (NSDate*) firstDate After: (NSDate*) secondDate {
+    return firstDate == [firstDate laterDate: secondDate];
+}
+
++ (BOOL) is: (NSDate*) firstDate Equals: (NSDate*) secondDate {
+    return [[self convertDateToString:firstDate] isEqualToString:[self convertDateToString:secondDate]];
+}
+
++ (NSDate*) minLimitDate {
+    NSDateComponents *components = [[NSDateComponents alloc] init];
+    [components setDay:-365];
+    return [[self getCalendar] dateByAddingComponents:components toDate:self.now options:0];
 }
 
 + (NSDate*) now {

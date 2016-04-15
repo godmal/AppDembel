@@ -26,9 +26,9 @@
     }
     return self;
 }
-//TODO: VALIDATE INPUT
+
 -(void) add:(Person*) person {
-    if ([DateUtils compareNowWith:person.date]) {
+    if ([DateUtils isValid:person.date]) {
         [self.people addObject:person];
         [self saveAndNotify];
     }
@@ -45,7 +45,7 @@
 }
 
 -(void) updatePersonBy:(NSUInteger) personID with:(Person*) updatedPerson {
-    if ([DateUtils compareNowWith:updatedPerson.date]) {
+    if ([DateUtils isValid:updatedPerson.date]) {
         [self.people replaceObjectAtIndex:personID withObject:updatedPerson];
         [self saveAndNotify];
     }

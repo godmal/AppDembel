@@ -25,7 +25,7 @@
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     [datePicker setDate:_person.date];
     datePicker.datePickerMode = UIDatePickerModeDate;
-    datePicker.minimumDate = [DateUtils calculateMinLimitDate];
+    datePicker.minimumDate = [DateUtils minLimitDate];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
     self.nameInput.text = _person.name;
