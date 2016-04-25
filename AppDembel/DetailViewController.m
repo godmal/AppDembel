@@ -22,7 +22,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    
     _person = [self.model.people objectAtIndex:self.index];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.nameLabel.text = _person.name;
@@ -36,6 +35,7 @@
     } else {
         [self show: self.progressBar andHide:self.daysLeft];
     }
+    self.progressBarPercent.hidden = YES;
 }
 
 -(void) viewDidAppear:(BOOL)animated {
@@ -56,5 +56,18 @@
     [super didReceiveMemoryWarning];
 }
 
+
+- (IBAction)showPercent:(id)sender {
+    [self.progressBar setValue:0 animateWithDuration:2];
+    [self.progressBarPercent setValue:0 animateWithDuration:2];
+    
+    if (self.progressBarPercent.hidden) {
+        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:2];
+        self.progressBarPercent.hidden = NO;
+    } else {
+        [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+        self.progressBarPercent.hidden = YES;
+    }
+}
 
 @end

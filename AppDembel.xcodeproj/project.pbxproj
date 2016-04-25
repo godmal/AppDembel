@@ -55,7 +55,7 @@
 		5AB8E5D51C4F6E1C0062688E /* PeopleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeopleStore.m; sourceTree = "<group>"; };
 		5AB8E5D91C4FDA970062688E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		5AB8E5DA1C4FDA970062688E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
-		5ACA1E211CBF929000BDDE79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = AppDembel/README.md; sourceTree = "<group>"; };
+		5ACA1E211CBF929000BDDE79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		933468EBB91DA0761A1CFB8E /* Pods-AppDembel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDembel.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppDembel/Pods-AppDembel.release.xcconfig"; sourceTree = "<group>"; };
 		E40E96CFA89EE238C735E9C1 /* Pods-AppDembel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDembel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppDembel/Pods-AppDembel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */

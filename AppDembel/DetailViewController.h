@@ -20,5 +20,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *daysLeft;
+@property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBarPercent;
+- (IBAction)showPercent:(id)sender;
 
 @end
