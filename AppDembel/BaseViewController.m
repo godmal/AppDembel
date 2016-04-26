@@ -64,11 +64,11 @@
 }
 
 - (void) hide:(UIView*) view {
-    view.alpha = 0;
+    view.hidden = YES;
 }
 
 - (void) show:(UIView*) view {
-    view.alpha = 1;
+    view.hidden = NO;
 }
 
 - (void) show:(UIView*) showingView andHide:(UIView*) hidingView {

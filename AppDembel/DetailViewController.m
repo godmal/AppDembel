@@ -58,15 +58,27 @@
 
 
 - (IBAction)showPercent:(id)sender {
-    [self.progressBar setValue:0 animateWithDuration:2];
-    [self.progressBarPercent setValue:0 animateWithDuration:2];
     
     if (self.progressBarPercent.hidden) {
-        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:2];
         self.progressBarPercent.hidden = NO;
+        self.progressBarPercent.alpha = 0;
+        [UIView animateWithDuration:2 animations:^{
+            self.progressBar.alpha = 0;
+            self.progressBarPercent.alpha = 1;
+        } completion:^(BOOL finished) {
+            [self.progressBar setValue:0 animateWithDuration:0];
+            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:2];
+        }];
     } else {
-        [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
-        self.progressBarPercent.hidden = YES;
+        [UIView animateWithDuration:2 animations:^{
+            self.progressBarPercent.alpha = 0;
+            self.progressBar.alpha = 1;
+        } completion:^(BOOL finished) {
+            [self.progressBarPercent setValue:0 animateWithDuration:0];
+            [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+            self.progressBarPercent.hidden = YES;
+
+        }];
     }
 }
 
