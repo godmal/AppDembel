@@ -133,6 +133,9 @@
                                         <real key="value" value="100"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="string" keyPath="unitString" value=" days"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="365"/>
+                                    </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Ab-yO-Ked" customClass="MBCircularProgressBarView">
@@ -147,11 +150,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bzg-rm-QRx">
-                                <rect key="frame" x="33" y="466" width="260" height="30"/>
-                                <state key="normal" title="Button"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AK4-hy-zx7">
+                                <rect key="frame" x="40" y="219" width="240" height="230"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <action selector="showPercent:" destination="Yvm-cI-V8T" eventType="touchUpInside" id="Sh0-9E-xWb"/>
+                                    <action selector="changeView:" destination="Yvm-cI-V8T" eventType="touchUpInside" id="Lc4-JN-Hkx"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -165,6 +170,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="changeViewButton" destination="AK4-hy-zx7" id="UEy-RT-ewd"/>
                         <outlet property="dateLabel" destination="DXp-64-DMh" id="9zt-RW-xhL"/>
                         <outlet property="daysLeft" destination="ugh-nl-Oub" id="N3l-fT-dJr"/>
                         <outlet property="demobilizationDateLabel" destination="0vx-Cl-vsD" id="Hh8-gY-AcX"/>

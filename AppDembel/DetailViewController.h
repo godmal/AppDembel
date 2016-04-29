@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBar;
 @property (weak, nonatomic) IBOutlet UILabel *daysLeft;
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBarPercent;
-- (IBAction)showPercent:(id)sender;
+- (IBAction)changeView:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *changeViewButton;
 
 @end

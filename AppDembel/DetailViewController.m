@@ -21,14 +21,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    //NSDate* demoDate =
     _person = [self.model.people objectAtIndex:self.index];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
     self.nameLabel.text = _person.name;
     self.dateLabel.text = [DateUtils convertDateToString:_person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString:[_person calculateDemobilizationDate]];
+    
     if ([DateUtils isAfterNow:_person.date]) {
-        
+        self.changeViewButton.enabled= NO;
         [self show: self.daysLeft andHide:self.progressBar];
         int daysLeft = (int)[DateUtils getDaysBetween: [NSDate date] and:_person.date];
         self.daysLeft.text = [NSString stringWithFormat:@"Осталось до службы: %d дней", daysLeft];
@@ -41,7 +42,6 @@
 -(void) viewDidAppear:(BOOL)animated {
     if (![DateUtils isAfterNow:_person.date]) {
         [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
-        self.progressBar.maxValue = 365;
     }
 }
 
@@ -56,30 +56,42 @@
     [super didReceiveMemoryWarning];
 }
 
-
-- (IBAction)showPercent:(id)sender {
+- (IBAction)changeView:(id)sender {
     
     if (self.progressBarPercent.hidden) {
         self.progressBarPercent.hidden = NO;
         self.progressBarPercent.alpha = 0;
+        
         [UIView animateWithDuration:2 animations:^{
             self.progressBar.alpha = 0;
             self.progressBarPercent.alpha = 1;
         } completion:^(BOOL finished) {
-            [self.progressBar setValue:0 animateWithDuration:0];
-            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:2];
+            [self configureProgressBarPercent];
         }];
     } else {
+        
         [UIView animateWithDuration:2 animations:^{
             self.progressBarPercent.alpha = 0;
             self.progressBar.alpha = 1;
         } completion:^(BOOL finished) {
-            [self.progressBarPercent setValue:0 animateWithDuration:0];
-            [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+            [self configureProgressBar];
             self.progressBarPercent.hidden = YES;
-
         }];
     }
+}
+
+- (void) configureProgressBarPercent {
+    [self resetValue:self.progressBar];
+    [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:2];
+}
+
+- (void) configureProgressBar {
+    [self resetValue:self.progressBarPercent];
+    [self.progressBar setValue:[_person calculateLeftDays] animateWithDuration:2];
+}
+
+- (void) resetValue: (MBCircularProgressBarView*) progressBar {
+    [progressBar setValue:0 animateWithDuration:2];
 }
 
 @end
