@@ -21,10 +21,10 @@
     UIDatePicker *_datePicker;
 }
 
-
-//TODO: VALIDATION DATAPICKERVALUES
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
+    
     _datePicker = [[UIDatePicker alloc]init];
     _datePicker.minimumDate = [DateUtils minLimitDate];
     [_datePicker setDate:[NSDate date]];
@@ -60,7 +60,7 @@
 }
 
 -(void) savePerson {
-    [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date]];
+    [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date andEndDate:nil]];
 }
 
 - (void)didReceiveMemoryWarning {

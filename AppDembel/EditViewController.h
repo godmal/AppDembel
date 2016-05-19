@@ -9,12 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface EditViewController : BaseViewController
-
-@property (assign, nonatomic) NSUInteger index;
+@interface EditViewController : BaseViewController 
 
 - (IBAction)saveButton:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;
+@property (weak, nonatomic) IBOutlet UITextField *editEndDateInput;
+@property (weak, nonatomic) IBOutlet UIButton *saveButton;
+@property (assign, nonatomic) NSUInteger index;
+
 
 @end

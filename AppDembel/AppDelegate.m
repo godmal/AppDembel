@@ -10,6 +10,7 @@
 #import "PeopleStore.h"
 #import "People.h"
 #import "Person.h"
+//#import <Appodeal/Appodeal.h>
 
 @interface AppDelegate ()
 
@@ -22,9 +23,10 @@
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-    
-//    PeopleStore * store = [[PeopleStore alloc] init];
-//    People* model = [[People alloc] initWithStore:store];
+    //[Appodeal initializeWithApiKey:@"99cc38faf6c3b46498ec7716089d1c6abdb01064dff2902a" types: (AppodealAdType)(AppodealAdTypeInterstitial | AppodealAdTypeBanner)];
+
+//PeopleStore * store = [[PeopleStore alloc] init];
+//People* model = [[People alloc] initWithStore:store];
 //    [model removeAll];
     return YES;
 }

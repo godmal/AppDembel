@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
-#import "Person.h"
 #import "MBCircularProgressBarView.h"
+#import "HMSideMenu.h"
 
 
 @interface DetailViewController : BaseViewController
@@ -23,5 +23,7 @@
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBarPercent;
 - (IBAction)changeView:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *changeViewButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
+@property (nonatomic, strong) HMSideMenu *sideMenu;
 
 @end

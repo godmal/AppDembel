@@ -1,12 +1,17 @@
 # Uncomment this line to define a global platform for your project
-# platform :ios, '8.0'
+platform :ios, ‘7.1’
 # Uncomment this line if you're using Swift
 use_frameworks!
 
-link_with 'AppDembel' 
+source 'https://github.com/appodeal/CocoaPods.git'
+source 'https://github.com/CocoaPods/Specs.git'
+
+#link_with 'AppDembel' 
 target 'AppDembel' do
     pod ‘MBCircularProgressBar’
     pod 'MGSwipeTableCell’
     pod ‘Underscore.m’
+    pod ‘HMSideMenu’
+    #    pod 'Appodeal’, '~> 0.5'
 end
 

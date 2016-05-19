@@ -29,11 +29,20 @@
     [super viewDidLoad];
 }
 
+- (void) viewWillAppear:(BOOL)animated {
+    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+}
+
 -(void) observeState {
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(setViewState)
                                                  name: @"appStateChanged"
                                                object: nil];
+}
+
+-(void) createDatePicker {
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    datePicker.datePickerMode = UIDatePickerModeDate;
 }
 
 -(void) setViewState {
@@ -44,7 +53,7 @@
 -(void) configureModel {
     PeopleStore* store = [[PeopleStore alloc] init];
     self.model = [[People alloc] initWithStore:store];
-
+    
 }
 
 -(void) createAlert {
@@ -63,6 +72,18 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+-(void) createEditAlert {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"alallalalaal" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   [alert dismissViewControllerAnimated:YES completion:nil];
+                                               }];
+
+    [alert addAction:ok];
+
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void) hide:(UIView*) view {
     view.hidden = YES;
 }
@@ -75,6 +96,19 @@
     [self show: showingView];
     [self hide: hidingView];
 }
+
+- (void)roundMyView:(UIView*)view borderRadius:(CGFloat)radius borderWidth:(CGFloat)border color:(UIColor*)color {
+    CALayer *layer = [view layer];
+    layer.masksToBounds = YES;
+    layer.cornerRadius = radius;
+    layer.borderColor = color.CGColor;
+}
+
+//- (id)getCurrentPerson {
+//    return self.index <= (self.model.people.count - 1) ?
+//        [self.model.people objectAtIndex:self.index] :
+//        nil;
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

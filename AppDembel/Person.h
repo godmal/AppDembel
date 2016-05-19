@@ -12,13 +12,15 @@
 
 @property (strong, nonatomic) NSString* name;
 @property (strong, nonatomic) NSDate* date;
+@property (strong, nonatomic) NSDate* endDate;
 
--(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date;
+
+-(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date andEndDate: (NSDate*) endDate;
 -(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
 -(NSDate*)calculateDemobilizationDate;
 -(float) calculatePercentProgress;
--(float) calculateDaysProgress;
+//-(float) calculateDaysProgress;
 -(float) calculateLeftDays;
 
 @end
