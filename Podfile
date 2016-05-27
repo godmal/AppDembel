@@ -12,6 +12,7 @@ target 'AppDembel' do
     pod 'MGSwipeTableCell’
     pod ‘Underscore.m’
     pod ‘HMSideMenu’
+    pod "VK-ios-sdk" 
     #    pod 'Appodeal’, '~> 0.5'
 end
 

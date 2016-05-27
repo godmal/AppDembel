@@ -13,13 +13,11 @@
 		5A3F00581C6BD70900054BDD /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F00571C6BD70900054BDD /* DateUtils.m */; };
 		5A3F005A1C74958A00054BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3F00591C74958A00054BDD /* QuartzCore.framework */; };
 		5A4B9B6A1C5AA511000A7537 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4B9B691C5AA511000A7537 /* People.m */; };
-		5A55E40C1CEB7D4C003940BC /* email.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E4061CEB7D4C003940BC /* email.png */; };
-		5A55E40D1CEB7D4C003940BC /* email@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E4071CEB7D4C003940BC /* email@2x.png */; };
-		5A55E40E1CEB7D4C003940BC /* facebook.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E4081CEB7D4C003940BC /* facebook.png */; };
-		5A55E40F1CEB7D4C003940BC /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E4091CEB7D4C003940BC /* facebook@2x.png */; };
-		5A55E4101CEB7D4C003940BC /* twitter.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E40A1CEB7D4C003940BC /* twitter.png */; };
-		5A55E4111CEB7D4C003940BC /* twitter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A55E40B1CEB7D4C003940BC /* twitter@2x.png */; };
 		5A64BBEF1C90730100EC6090 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64BBEE1C90730100EC6090 /* EditViewController.m */; };
+		5A9138F01CF73F4700DDED0B /* vk.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138EE1CF73F4700DDED0B /* vk.png */; };
+		5A9138F11CF73F4700DDED0B /* vk@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138EF1CF73F4700DDED0B /* vk@2.png */; };
+		5A9138F41CF7410B00DDED0B /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138F21CF7410B00DDED0B /* instagram.png */; };
+		5A9138F51CF7410B00DDED0B /* instagram@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138F31CF7410B00DDED0B /* instagram@2.png */; };
 		5A9B9DCD1C961AF10056AE6F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */; };
 		5AB8E5BF1C4F6A330062688E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5BE1C4F6A330062688E /* main.m */; };
 		5AB8E5C21C4F6A330062688E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C11C4F6A330062688E /* AppDelegate.m */; };
@@ -45,14 +43,14 @@
 		5A3F00591C74958A00054BDD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		5A4B9B681C5AA511000A7537 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
 		5A4B9B691C5AA511000A7537 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
-		5A55E4061CEB7D4C003940BC /* email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = email.png; sourceTree = "<group>"; };
-		5A55E4071CEB7D4C003940BC /* email@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "email@2x.png"; sourceTree = "<group>"; };
-		5A55E4081CEB7D4C003940BC /* facebook.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = facebook.png; sourceTree = "<group>"; };
-		5A55E4091CEB7D4C003940BC /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook@2x.png"; sourceTree = "<group>"; };
-		5A55E40A1CEB7D4C003940BC /* twitter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = twitter.png; sourceTree = "<group>"; };
-		5A55E40B1CEB7D4C003940BC /* twitter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter@2x.png"; sourceTree = "<group>"; };
 		5A64BBED1C90730100EC6090 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		5A64BBEE1C90730100EC6090 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
+		5A9138EE1CF73F4700DDED0B /* vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vk.png; sourceTree = "<group>"; };
+		5A9138EF1CF73F4700DDED0B /* vk@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk@2.png"; sourceTree = "<group>"; };
+		5A9138F21CF7410B00DDED0B /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
+		5A9138F31CF7410B00DDED0B /* instagram@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram@2.png"; sourceTree = "<group>"; };
+		5A9138F61CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		5A9138F71CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A9B9DCB1C961AF10056AE6F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
 		5AB8E5BA1C4F6A330062688E /* AppDembel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDembel.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -179,12 +177,10 @@
 		5AB8E5BD1C4F6A330062688E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A55E4061CEB7D4C003940BC /* email.png */,
-				5A55E4071CEB7D4C003940BC /* email@2x.png */,
-				5A55E4081CEB7D4C003940BC /* facebook.png */,
-				5A55E4091CEB7D4C003940BC /* facebook@2x.png */,
-				5A55E40A1CEB7D4C003940BC /* twitter.png */,
-				5A55E40B1CEB7D4C003940BC /* twitter@2x.png */,
+				5A9138EE1CF73F4700DDED0B /* vk.png */,
+				5A9138EF1CF73F4700DDED0B /* vk@2.png */,
+				5A9138F21CF7410B00DDED0B /* instagram.png */,
+				5A9138F31CF7410B00DDED0B /* instagram@2.png */,
 				5A3F00591C74958A00054BDD /* QuartzCore.framework */,
 				5AB8E5C91C4F6A330062688E /* Assets.xcassets */,
 				5AB8E5CB1C4F6A330062688E /* LaunchScreen.storyboard */,
@@ -246,7 +242,6 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 			);
 			mainGroup = 5AB8E5B11C4F6A330062688E;
@@ -264,17 +259,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9138F01CF73F4700DDED0B /* vk.png in Resources */,
+				5A9138F51CF7410B00DDED0B /* instagram@2.png in Resources */,
 				5AB8E5CD1C4F6A330062688E /* LaunchScreen.storyboard in Resources */,
-				5A55E40E1CEB7D4C003940BC /* facebook.png in Resources */,
-				5A55E40D1CEB7D4C003940BC /* email@2x.png in Resources */,
-				5A55E4111CEB7D4C003940BC /* twitter@2x.png in Resources */,
 				5AB8E5CA1C4F6A330062688E /* Assets.xcassets in Resources */,
-				5A55E40F1CEB7D4C003940BC /* facebook@2x.png in Resources */,
-				5A55E40C1CEB7D4C003940BC /* email.png in Resources */,
 				5ACA1E221CBF929000BDDE79 /* README.md in Resources */,
-				5A55E4101CEB7D4C003940BC /* twitter.png in Resources */,
 				5A084E6A1CE9A60A0025906F /* Default-568h@2x.png in Resources */,
 				5AB8E5C81C4F6A330062688E /* Main.storyboard in Resources */,
+				5A9138F41CF7410B00DDED0B /* instagram.png in Resources */,
+				5A9138F11CF73F4700DDED0B /* vk@2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -354,6 +347,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5AB8E5C71C4F6A330062688E /* Base */,
+				5A9138F61CF74ED900DDED0B /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -362,6 +356,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				5AB8E5CC1C4F6A330062688E /* Base */,
+				5A9138F71CF74ED900DDED0B /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -405,7 +400,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -442,7 +437,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -458,7 +453,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDembel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -476,7 +471,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDembel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -12,86 +12,108 @@
 #import "EditViewController.h"
 #import "Person.h"
 #import "HMSideMenu.h"
+#import <AVFoundation/AVFoundation.h>
 
-@interface DetailViewController ()
+static NSArray *SCOPE = nil;
+
+@interface DetailViewController () <VKSdkUIDelegate>
 
 @end
 
 @implementation DetailViewController {
     Person* _person;
+    NSDate* _allDate;
 }
-
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    UIBarButtonItem *negativeSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:     UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    [negativeSpacer setWidth:10];
-    self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:negativeSpacer, self.editButton, nil];
+    [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [self.navigationController setNavigationBarHidden:NO animated:NO];    
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+    self.progressBar.hidden = YES;
     
+    SCOPE = @[VK_PER_FRIENDS, VK_PER_WALL, VK_PER_AUDIO, VK_PER_PHOTOS, VK_PER_NOHTTPS, VK_PER_EMAIL, VK_PER_MESSAGES];
+    [[VKSdk initializeWithAppId:@"5477600"] registerDelegate:self];
+    [[VKSdk instance] setUiDelegate:self];
+    [VKSdk wakeUpSession:SCOPE completeBlock:^(VKAuthorizationState state, NSError *error) {
+        if (state == VKAuthorizationAuthorized) {
+            NSLog(@"LOGIN");
+            _qwerty = YES;
+        } else if (error) {
+            NSLog(@"DON'T LOGIN");
+            _qwerty = NO;
+        }
+    }];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resetViewParameters)
                                                  name:@"EditViewControllerCancelled"
                                                object:nil];
     
-    HMSideMenuItem *twitterItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(40, 40) action:^{
-        UIView* myView = [[UIView alloc] initWithFrame:self.view.window.bounds];;
-        UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
-        myView.alpha = 1;
-        [UIView animateWithDuration:1.5f animations:^{
-            myView.backgroundColor = [UIColor whiteColor];
-            myView.alpha = 0;
-            [currentWindow addSubview:myView];
-        } completion:^(BOOL finished) {
-            [myView removeFromSuperview];
-            CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
-            CGFloat scale = [UIScreen mainScreen].scale;
-            UIGraphicsBeginImageContextWithOptions(layer.frame.size, NO, scale);
+    HMSideMenuItem *instaItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(40, 40) action:^{
+        if ([self isInstagramInstalled]) {
             
-            [layer renderInContext:UIGraphicsGetCurrentContext()];
-            UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
-            
-//            CGRect rect = [[UIScreen mainScreen] bounds];
-//            UIGraphicsBeginImageContext(rect.size);
-//            [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
-//            UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-            UIGraphicsEndImageContext();
-            UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
-        }];
-        
-        NSLog(@"tapped twitter item");
-    }];
-    UIImageView *twitterIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
-    [twitterIcon setImage:[UIImage imageNamed:@"twitter"]];
-    [twitterItem addSubview:twitterIcon];
-    
-    HMSideMenuItem *emailItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(40, 40) action:^{
-        NSLog(@"tapped email item");
-    }];
-    UIImageView *emailIcon = [[UIImageView alloc] initWithFrame:CGRectMake(5, 5, 30 , 30)];
-    [emailIcon setImage:[UIImage imageNamed:@"email"]];
-    [emailItem addSubview:emailIcon];
-    
-    HMSideMenuItem *facebookItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(40, 40) action:^{
-        NSLog(@"tapped facebook item");
-    }];
-    UIImageView *facebookIcon = [[UIImageView alloc] initWithFrame:CGRectMake(2, 2, 35, 35)];
-    [facebookIcon setImage:[UIImage imageNamed:@"facebook"]];
-    [facebookItem addSubview:facebookIcon];
+            AudioServicesPlaySystemSound(1108);
+            UIView* screenshotView = [[UIView alloc] initWithFrame:self.view.window.bounds];
+            UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
+            screenshotView.alpha = 1;
+            [UIView animateWithDuration:1.5f animations:^{
+                screenshotView.backgroundColor = [UIColor whiteColor];
+                screenshotView.alpha = 0;
+                [currentWindow addSubview:screenshotView];
+            } completion:^(BOOL finished) {
+                [screenshotView removeFromSuperview];
+                [self makeScreenshot];
+                NSURL *instagramURL = [NSURL URLWithString:@"instagram://camera"];
+                if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+                    [[UIApplication sharedApplication] openURL:instagramURL];
+                }
+            }];
 
+        } else {
+            [[[UIAlertView alloc] initWithTitle:nil message:@"Instagram не установлен!" delegate:self cancelButtonTitle:@"Хорошо" otherButtonTitles:nil] show];
+        }
+    }];
     
-    self.sideMenu = [[HMSideMenu alloc] initWithItems:@[twitterItem, emailItem, facebookItem]];
+    UIImageView *instaIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [instaIcon setImage:[UIImage imageNamed:@"instagram"]];
+    [instaItem addSubview:instaIcon];
+    
+    HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(40, 40) action:^{
+        if (_qwerty) {
+            VKShareDialogController *shareDialog = [VKShareDialogController new];
+            shareDialog.text = @"This post created created created created and made and post and delivered using #vksdk #ios";
+            shareDialog.uploadImages = @[ [VKUploadImage uploadImageWithImage:[UIImage imageNamed:@"apple"] andParams:[VKImageParameters jpegImageWithQuality:1.0] ] ];
+            [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }];
+            [self presentViewController:shareDialog animated:YES completion:nil];
+        } else
+            [VKSdk authorize:SCOPE];
+        }];
+    
+    UIImageView *vkIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 40, 40)];
+    [vkIcon setImage:[UIImage imageNamed:@"vk"]];
+    [vkItem addSubview:vkIcon];
+    
+    self.sideMenu = [[HMSideMenu alloc] initWithItems:@[instaItem, vkItem]];
     [self.sideMenu setItemSpacing:10.0f];
     [self.view addSubview:self.sideMenu];
 
 }
 
 -(void) viewWillAppear:(BOOL)animated {
-        _person = [self.model.people objectAtIndex:self.index];
+    
+    _person = [self.model.people objectAtIndex:self.index];
+    NSDateFormatter *dateFormat = [DateUtils getFormatter];
+    self.progressBar.maxValue = [DateUtils getDaysBetween:_person.date and:_person.endDate];
+    
+    NSString* dateString = [dateFormat stringFromDate:_person.date];
+    NSDateFormatter *dateFormatTime = [DateUtils getFormatterWithTime];
+    NSString* timeString = @" 00:00:00";
+    NSString* all = [dateString stringByAppendingString:timeString];
+    _allDate = [dateFormatTime dateFromString:all];
+    
     self.nameLabel.text = _person.name;
     self.dateLabel.text = [DateUtils convertDateToString:_person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString: _person.endDate];
@@ -103,11 +125,21 @@
     } else {
         [self show: self.progressBarPercent andHide:self.daysLeft];
     }
-    self.progressBar.hidden = YES;
-
 }
 
-- (void) openPLS {
+- (void) viewDidAppear:(BOOL)animated {
+    [self performSelector:@selector(showSideMenu) withObject:nil afterDelay:2];
+    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
+        self.progressBar.transform = CGAffineTransformMakeScale(0.9, 0.9);
+        self.progressBarPercent.transform = CGAffineTransformMakeScale(0.9, 0.9);
+    } completion:^(BOOL finished) {
+    }];
+    if (![DateUtils isAfterNow:_person.date]) {
+        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+    }
+}
+
+- (void) showSideMenu {
     [self.sideMenu open];
 }
 
@@ -120,20 +152,9 @@
     }];
     self.progressBarPercent.alpha = 1;
 }
-- (void) viewDidAppear:(BOOL)animated {
-    [self performSelector:@selector(openPLS) withObject:nil afterDelay:3];
-    [UIView animateWithDuration:1 delay:0 options:UIViewAnimationOptionRepeat | UIViewAnimationOptionAutoreverse animations:^{
-        self.progressBar.transform = CGAffineTransformMakeScale(0.9, 0.9);
-        self.progressBarPercent.transform = CGAffineTransformMakeScale(0.9, 0.9);
-    } completion:^(BOOL finished) {
-    }];
-    if (![DateUtils isAfterNow:_person.date]) {
-        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
-    }
-}
 
 - (void)updateCounter:(NSTimer *)tmr {
-    NSTimeInterval timer = [_person.date timeIntervalSinceNow];
+    NSTimeInterval timer = [_allDate timeIntervalSinceNow];
     int days = timer / (60 * 60 * 24);
     timer -= days * (60 * 60 * 24);
     int hours = timer / (60 * 60);
@@ -142,10 +163,13 @@
     timer -= minutes * 60;
     int seconds = timer;
     self.daysLeft.text = [NSString stringWithFormat:@"%02d days \n %02d hours \n %02d minutes \n%02d seconds", days, hours, minutes, seconds];
+    if (days + hours + minutes + seconds <= 0) {
+        [tmr invalidate];
+    }
 }
 
 - (IBAction)changeView:(id)sender {
-
+    
     if (self.progressBar.hidden) {
         [self.progressBar setValue:0 animateWithDuration:0];
         self.progressBar.hidden = NO;
@@ -156,6 +180,7 @@
         } completion:^(BOOL finished) {
             [self configureProgressBar];
         }];
+        
     } else {
         
         [UIView animateWithDuration:1.5 animations:^{
@@ -187,10 +212,41 @@
     [segueName isEqualToString:@"editSegue"];
     EditViewController* editView = (EditViewController*) [segue destinationViewController];
     editView.index = self.index;
-
 }
 
+- (void) setVkItem {
+    
+}
+
+- (void) makeScreenshot {
+    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIGraphicsBeginImageContextWithOptions(layer.frame.size, NO, scale);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
+}
+- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
+    VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+    [vc presentIn:self.navigationController.topViewController];
+}
+- (void)vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result {
+    if (result.token) {
+    } else if (result.error) {
+        [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Access denied\n%@", result.error] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    }
+}
+- (void)vkSdkUserAuthorizationFailed {
+    [[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+- (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
+    [self.navigationController.topViewController presentViewController:controller animated:YES completion:nil];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
 @end

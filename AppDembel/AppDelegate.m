@@ -10,6 +10,8 @@
 #import "PeopleStore.h"
 #import "People.h"
 #import "Person.h"
+#import "VKSdk.h"
+#import "DetailViewController.h"
 //#import <Appodeal/Appodeal.h>
 
 @interface AppDelegate ()
@@ -23,11 +25,26 @@
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
+
+    
     //[Appodeal initializeWithApiKey:@"99cc38faf6c3b46498ec7716089d1c6abdb01064dff2902a" types: (AppodealAdType)(AppodealAdTypeInterstitial | AppodealAdTypeBanner)];
 
 //PeopleStore * store = [[PeopleStore alloc] init];
 //People* model = [[People alloc] initWithStore:store];
 //    [model removeAll];
+    return YES;
+}
+
+//iOS 9 workflow
+- (BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options {
+    [VKSdk processOpenURL:url fromApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]];
+    return YES;
+}
+
+//iOS 8 and lower
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation
+{
+    [VKSdk processOpenURL:url fromApplication:sourceApplication];
     return YES;
 }
 
@@ -39,6 +56,7 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -47,7 +65,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    application.applicationIconBadgeNumber = 0;
+    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+    [navController popToRootViewControllerAnimated:NO];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

@@ -1,8 +1,7 @@
 TODO:
- - VALIDATE EDGE DATE VALUES;
- - CREATE METHOD TO CHANGE END DATE (just in case);
+ - string length
  - создать шаблон 
  - design make ples god save us
  - email
- - share (fb vk inst)
+ - share fb tw ???
  - circle menu

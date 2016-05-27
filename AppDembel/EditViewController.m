@@ -27,15 +27,18 @@
     _person = [self.model.people objectAtIndex:self.index];
 
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    datePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
     [datePicker setDate:_person.date];
     datePicker.datePickerMode = UIDatePickerModeDate;
     datePicker.minimumDate = [DateUtils minLimitDate];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+
     
     UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
+    endDatePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
     [endDatePicker setDate:_person.endDate];
     endDatePicker.datePickerMode = UIDatePickerModeDate;
-    //endDatePicker.minimumDate = [_person calculateDemobilizationDate];
+    endDatePicker.minimumDate = [DateUtils now];
     [endDatePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     
     [self.dateInput setInputView:datePicker];
@@ -56,12 +59,14 @@
     NSDateFormatter *dateFormat = [DateUtils getFormatter];
     _person.date = picker.date;
     _person.endDate = editPicker.date;
+    
     if ([DateUtils getDaysBetween:_person.date and:_person.endDate] < 365) {
-        NSDateComponents *components = [[NSDateComponents alloc] init];
-        [components setYear:1];
-        _person.endDate = [[DateUtils getCalendar] dateByAddingComponents:components toDate:_person.date options:0];
-        NSString* endDateString = [dateFormat stringFromDate:_person.endDate];
-        self.editEndDateInput.text = [NSString stringWithFormat:@"%@",endDateString];
+            NSDateComponents *components = [[NSDateComponents alloc] init];
+            [components setYear:1];
+            _person.endDate = [[DateUtils getCalendar] dateByAddingComponents:components toDate:_person.date options:0];
+            NSString* endDateString = [dateFormat stringFromDate:_person.endDate];
+            self.editEndDateInput.text = [NSString stringWithFormat:@"%@",endDateString];
+            [editPicker setDate:_person.endDate];
     }
     NSString* dateString = [dateFormat stringFromDate:_person.date];
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];

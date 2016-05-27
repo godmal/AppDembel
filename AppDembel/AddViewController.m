@@ -26,6 +26,7 @@
     [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
     
     _datePicker = [[UIDatePicker alloc]init];
+    _datePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
     _datePicker.minimumDate = [DateUtils minLimitDate];
     [_datePicker setDate:[NSDate date]];
     _datePicker.datePickerMode = UIDatePickerModeDate;

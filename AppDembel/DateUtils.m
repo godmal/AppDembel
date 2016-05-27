@@ -16,6 +16,14 @@
     return dateFormatter;
 }
 
++ (NSDateFormatter*) getFormatterWithTime {
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+    NSTimeZone *timeZone = [NSTimeZone defaultTimeZone];
+    [dateFormatter setTimeZone:timeZone];
+    [dateFormatter setDateFormat:@"dd.MM.yyyy HH:mm:ss"];
+    return dateFormatter;
+}
+
 + (NSString*) convertDateToString:(NSDate*) date {
     return [[self getFormatter] stringFromDate:date];
 }

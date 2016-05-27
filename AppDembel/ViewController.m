@@ -28,7 +28,6 @@
     [self roundMyView:_addButton borderRadius:5.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init] ;
-
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -52,7 +51,11 @@
 
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
     {
+        [tableView beginUpdates];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationLeft];
+        
         [self.model removePerson:indexPath.row];
+        [tableView endUpdates];
         [self.tableView reloadData];
         return YES;
     }], ];
@@ -61,13 +64,13 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView beginUpdates];
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
-//    }
-//    [tableView endUpdates];
-//}
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView beginUpdates];
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
+    }
+    [tableView endUpdates];
+}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segue"]) {

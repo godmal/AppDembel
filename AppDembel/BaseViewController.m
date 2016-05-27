@@ -84,6 +84,11 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (BOOL) isInstagramInstalled {
+    NSURL *appURL = [NSURL URLWithString:@"instagram://app"];
+    return [[UIApplication sharedApplication] canOpenURL:appURL];
+}
+
 - (void) hide:(UIView*) view {
     view.hidden = YES;
 }
@@ -104,15 +109,8 @@
     layer.borderColor = color.CGColor;
 }
 
-//- (id)getCurrentPerson {
-//    return self.index <= (self.model.people.count - 1) ?
-//        [self.model.people objectAtIndex:self.index] :
-//        nil;
-//}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

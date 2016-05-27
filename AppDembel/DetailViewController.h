@@ -12,7 +12,7 @@
 #import "HMSideMenu.h"
 
 
-@interface DetailViewController : BaseViewController
+@interface DetailViewController : BaseViewController <VKSdkDelegate>
 
 @property (assign, nonatomic) NSUInteger index;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
@@ -25,5 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *changeViewButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *editButton;
 @property (nonatomic, strong) HMSideMenu *sideMenu;
+@property (assign, nonatomic) BOOL qwerty;
+
+-(void) resetViewParameters;
 
 @end
