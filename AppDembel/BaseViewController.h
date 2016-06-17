@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-//#import <Appodeal/Appodeal.h>
+#import <Appodeal/Appodeal.h>
 #import "VKSdk.h"
 
 @class People;
@@ -20,7 +20,8 @@
 
 -(BOOL) isInstagramInstalled;
 -(void) createAlert;
--(void) createEditAlert;
+-(UIColor*) setColor;
+-(void) setColorForDatePicker: (UIDatePicker*) datePicker;
 -(void) show:(UIView*) view;
 -(void) hide:(UIView*) view;
 -(void) show:(UIView*) showingView andHide:(UIView*) hidingView;

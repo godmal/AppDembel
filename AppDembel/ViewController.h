@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 
-
+- (IBAction)sendEmail:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *emailButton;
 
 @end

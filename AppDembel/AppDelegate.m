@@ -12,7 +12,7 @@
 #import "Person.h"
 #import "VKSdk.h"
 #import "DetailViewController.h"
-//#import <Appodeal/Appodeal.h>
+#import <Appodeal/Appodeal.h>
 
 @interface AppDelegate ()
 
@@ -25,9 +25,8 @@
                                       forBarPosition:UIBarPositionAny
                                           barMetrics:UIBarMetricsDefault];
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-
     
-    //[Appodeal initializeWithApiKey:@"99cc38faf6c3b46498ec7716089d1c6abdb01064dff2902a" types: (AppodealAdType)(AppodealAdTypeInterstitial | AppodealAdTypeBanner)];
+    [Appodeal initializeWithApiKey:@"4ecdc022b89d36051c3e0e884e14fcee9b19d04cf44ab192" types: (AppodealAdType)(AppodealAdTypeBanner)];
 
 //PeopleStore * store = [[PeopleStore alloc] init];
 //People* model = [[People alloc] initWithStore:store];
@@ -65,8 +64,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
-    [navController popToRootViewControllerAnimated:NO];
+//    UINavigationController *navController = (UINavigationController *)self.window.rootViewController;
+//    [navController popToRootViewControllerAnimated:YES];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {

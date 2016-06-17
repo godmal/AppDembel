@@ -9,12 +9,12 @@
 #import "ViewController.h"
 #import "People.h"
 #import "Person.h"
-#import "PeopleStore.h"
 #import "DetailViewController.h"
 #import "DateUtils.h"
 #import "MGSwipeTableCell.h"
+#import <MessageUI/MessageUI.h>
 
-@interface ViewController ()
+@interface ViewController () <MFMailComposeViewControllerDelegate>
 
 @end
 
@@ -24,17 +24,30 @@
 }
 
 - (void)viewDidLoad {
+
     [super viewDidLoad];
-    [self roundMyView:_addButton borderRadius:5.0f borderWidth:0.0f color:nil];
+    [self roundMyView:_addButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
-    self.tableView.tableFooterView = [[UIView alloc] init] ;
+    self.tableView.tableFooterView = [[UIView alloc] init];
+    
+    //[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shakeAnimation) userInfo:nil repeats:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
+- (void) shakeAnimation {
+    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
+    [shake setDuration:0.09];
+    [shake setAutoreverses:YES];
+    [shake setFromValue:[NSValue valueWithCGPoint:
+                         CGPointMake(self.emailButton.center.x - 3,self.emailButton.center.y)]];
+    [shake setToValue:[NSValue valueWithCGPoint:
+                       CGPointMake(self.emailButton.center.x + 3, self.emailButton.center.y)]];
+    [self.emailButton.layer addAnimation:shake forKey:@"position"];
+}
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.model.people count];
@@ -78,6 +91,39 @@
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.index = indexPath.row;
     }
+}
+
+- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    switch (result) {
+        case MFMailComposeResultCancelled:
+            NSLog(@"Mail cancelled");
+            break;
+        case MFMailComposeResultSaved:
+            NSLog(@"Mail saved");
+            break;
+        case MFMailComposeResultSent:
+            NSLog(@"Mail sent");
+            break;
+        case MFMailComposeResultFailed:
+            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+            break;
+        default:
+            break;
+    }
+    [self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)sendEmail:(id)sender {
+    NSString *emailTitle = @"Отзыв/ошибка/пожелание";
+    NSString *messageBody = @"";
+    NSArray *toRecipents = [NSArray arrayWithObject:@"developer.gorbachev@gmail.com"];
+    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+    mc.mailComposeDelegate = self;
+    [mc setSubject:emailTitle];
+    [mc setMessageBody:messageBody isHTML:NO];
+    [mc setToRecipients:toRecipents];
+    [self presentViewController:mc animated:YES completion:NULL];
+
 }
 
 - (void)didReceiveMemoryWarning {

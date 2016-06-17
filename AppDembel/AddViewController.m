@@ -9,7 +9,6 @@
 #import "AddViewController.h"
 #import "People.h"
 #import "Person.h"
-#import "PeopleStore.h"
 #import "DateUtils.h"
 
 @interface AddViewController ()
@@ -18,20 +17,26 @@
 
 @implementation AddViewController{
     NSDate* _date;
-    UIDatePicker *_datePicker;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
     
-    _datePicker = [[UIDatePicker alloc]init];
-    _datePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
-    _datePicker.minimumDate = [DateUtils minLimitDate];
-    [_datePicker setDate:[NSDate date]];
-    _datePicker.datePickerMode = UIDatePickerModeDate;
-    [_datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
-    [self.dateInput setInputView:_datePicker];
+    [self roundMyView:_saveButton borderRadius:15.0f borderWidth:0.0f color:nil];
+
+    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
+    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
+    datePicker.backgroundColor = [self setColor];
+    datePicker.minimumDate = [DateUtils minLimitDate];
+    [datePicker setDate:[DateUtils now]];
+    datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
+    [self.dateInput setInputView:datePicker];
+    
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

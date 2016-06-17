@@ -9,6 +9,8 @@
 #import "BaseViewController.h"
 #import "PeopleStore.h"
 #import "People.h"
+#import <QuartzCore/QuartzCore.h>
+#import <Appodeal/Appodeal.h>
 
 @interface BaseViewController ()
 
@@ -29,9 +31,6 @@
     [super viewDidLoad];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
-}
 
 -(void) observeState {
     [[NSNotificationCenter defaultCenter] addObserver: self
@@ -40,9 +39,12 @@
                                                object: nil];
 }
 
--(void) createDatePicker {
-    UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    datePicker.datePickerMode = UIDatePickerModeDate;
+-(UIColor*) setColor {
+    return [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
+}
+
+-(void) setColorForDatePicker: (UIDatePicker*) datePicker {
+    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
 }
 
 -(void) setViewState {
@@ -72,23 +74,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
--(void) createEditAlert {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"alallalalaal" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                                   [alert dismissViewControllerAnimated:YES completion:nil];
-                                               }];
-
-    [alert addAction:ok];
-
-    [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (BOOL) isInstagramInstalled {
-    NSURL *appURL = [NSURL URLWithString:@"instagram://app"];
-    return [[UIApplication sharedApplication] canOpenURL:appURL];
-}
-
 - (void) hide:(UIView*) view {
     view.hidden = YES;
 }
@@ -107,6 +92,11 @@
     layer.masksToBounds = YES;
     layer.cornerRadius = radius;
     layer.borderColor = color.CGColor;
+}
+
+- (BOOL) isInstagramInstalled {
+    NSURL *appURL = [NSURL URLWithString:@"instagram://app"];
+    return [[UIApplication sharedApplication] canOpenURL:appURL];
 }
 
 - (void)didReceiveMemoryWarning {

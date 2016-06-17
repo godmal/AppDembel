@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5A084E6A1CE9A60A0025906F /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A084E691CE9A60A0025906F /* Default-568h@2x.png */; };
 		5A20BA691C615B0100F127DB /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A20BA681C615B0100F127DB /* AddViewController.m */; };
 		5A3F00551C6B255A00054BDD /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F00541C6B255A00054BDD /* DetailViewController.m */; };
 		5A3F00581C6BD70900054BDD /* DateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F00571C6BD70900054BDD /* DateUtils.m */; };
 		5A3F005A1C74958A00054BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3F00591C74958A00054BDD /* QuartzCore.framework */; };
+		5A4B85881D017BB0008594BE /* _vk.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B85861D017BB0008594BE /* _vk.png */; };
+		5A4B85891D017BB0008594BE /* _vk@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B85871D017BB0008594BE /* _vk@2.png */; };
+		5A4B858C1D017CE9008594BE /* _insta.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B858A1D017CE9008594BE /* _insta.png */; };
+		5A4B858D1D017CE9008594BE /* _insta@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B858B1D017CE9008594BE /* _insta@2.png */; };
+		5A4B85901D01A360008594BE /* _email.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B858E1D01A360008594BE /* _email.png */; };
+		5A4B85911D01A360008594BE /* _email@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A4B858F1D01A360008594BE /* _email@2.png */; };
 		5A4B9B6A1C5AA511000A7537 /* People.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A4B9B691C5AA511000A7537 /* People.m */; };
 		5A64BBEF1C90730100EC6090 /* EditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A64BBEE1C90730100EC6090 /* EditViewController.m */; };
-		5A9138F01CF73F4700DDED0B /* vk.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138EE1CF73F4700DDED0B /* vk.png */; };
-		5A9138F11CF73F4700DDED0B /* vk@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138EF1CF73F4700DDED0B /* vk@2.png */; };
-		5A9138F41CF7410B00DDED0B /* instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138F21CF7410B00DDED0B /* instagram.png */; };
-		5A9138F51CF7410B00DDED0B /* instagram@2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9138F31CF7410B00DDED0B /* instagram@2.png */; };
 		5A9B9DCD1C961AF10056AE6F /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A9B9DCC1C961AF10056AE6F /* BaseViewController.m */; };
 		5AB8E5BF1C4F6A330062688E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5BE1C4F6A330062688E /* main.m */; };
 		5AB8E5C21C4F6A330062688E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C11C4F6A330062688E /* AppDelegate.m */; };
@@ -28,12 +29,12 @@
 		5AB8E5D61C4F6E1C0062688E /* PeopleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5D51C4F6E1C0062688E /* PeopleStore.m */; };
 		5AB8E5DB1C4FDA970062688E /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5DA1C4FDA970062688E /* Person.m */; };
 		5ACA1E221CBF929000BDDE79 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5ACA1E211CBF929000BDDE79 /* README.md */; };
+		5AE317D51D12F1E000CA7304 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AE317D41D12F1E000CA7304 /* Launch Screen.storyboard */; };
 		A8C47AFC8E273F393872E97B /* Pods_AppDembel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B565447FBB713AE59A61D4A5 /* Pods_AppDembel.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0914AF96017EE59B84F1E9D0 /* Pods-AppDembel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDembel.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppDembel/Pods-AppDembel.release.xcconfig"; sourceTree = "<group>"; };
-		5A084E691CE9A60A0025906F /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		5A20BA671C615B0100F127DB /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		5A20BA681C615B0100F127DB /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		5A3F00531C6B255A00054BDD /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -41,14 +42,16 @@
 		5A3F00561C6BD70900054BDD /* DateUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DateUtils.h; sourceTree = "<group>"; };
 		5A3F00571C6BD70900054BDD /* DateUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DateUtils.m; sourceTree = "<group>"; };
 		5A3F00591C74958A00054BDD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A4B85861D017BB0008594BE /* _vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _vk.png; sourceTree = "<group>"; };
+		5A4B85871D017BB0008594BE /* _vk@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_vk@2.png"; sourceTree = "<group>"; };
+		5A4B858A1D017CE9008594BE /* _insta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _insta.png; sourceTree = "<group>"; };
+		5A4B858B1D017CE9008594BE /* _insta@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_insta@2.png"; sourceTree = "<group>"; };
+		5A4B858E1D01A360008594BE /* _email.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = _email.png; sourceTree = "<group>"; };
+		5A4B858F1D01A360008594BE /* _email@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "_email@2.png"; sourceTree = "<group>"; };
 		5A4B9B681C5AA511000A7537 /* People.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = People.h; sourceTree = "<group>"; };
 		5A4B9B691C5AA511000A7537 /* People.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = People.m; sourceTree = "<group>"; };
 		5A64BBED1C90730100EC6090 /* EditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditViewController.h; sourceTree = "<group>"; };
 		5A64BBEE1C90730100EC6090 /* EditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditViewController.m; sourceTree = "<group>"; };
-		5A9138EE1CF73F4700DDED0B /* vk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vk.png; sourceTree = "<group>"; };
-		5A9138EF1CF73F4700DDED0B /* vk@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vk@2.png"; sourceTree = "<group>"; };
-		5A9138F21CF7410B00DDED0B /* instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = instagram.png; sourceTree = "<group>"; };
-		5A9138F31CF7410B00DDED0B /* instagram@2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram@2.png"; sourceTree = "<group>"; };
 		5A9138F61CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		5A9138F71CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A9B9DCB1C961AF10056AE6F /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -68,6 +71,7 @@
 		5AB8E5D91C4FDA970062688E /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		5AB8E5DA1C4FDA970062688E /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		5ACA1E211CBF929000BDDE79 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		5AE317D41D12F1E000CA7304 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		B565447FBB713AE59A61D4A5 /* Pods_AppDembel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppDembel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEEAF3AABCFCDC1A8F93D4B6 /* Pods-AppDembel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppDembel.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppDembel/Pods-AppDembel.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -97,6 +101,7 @@
 			isa = PBXGroup;
 			children = (
 				5AB8E5C61C4F6A330062688E /* Main.storyboard */,
+				5AE317D41D12F1E000CA7304 /* Launch Screen.storyboard */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -143,7 +148,6 @@
 		5AB8E5B11C4F6A330062688E = {
 			isa = PBXGroup;
 			children = (
-				5A084E691CE9A60A0025906F /* Default-568h@2x.png */,
 				5ACA1E211CBF929000BDDE79 /* README.md */,
 				5AB8E5BC1C4F6A330062688E /* AppDembel */,
 				5AB8E5BB1C4F6A330062688E /* Products */,
@@ -177,10 +181,12 @@
 		5AB8E5BD1C4F6A330062688E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				5A9138EE1CF73F4700DDED0B /* vk.png */,
-				5A9138EF1CF73F4700DDED0B /* vk@2.png */,
-				5A9138F21CF7410B00DDED0B /* instagram.png */,
-				5A9138F31CF7410B00DDED0B /* instagram@2.png */,
+				5A4B858A1D017CE9008594BE /* _insta.png */,
+				5A4B858B1D017CE9008594BE /* _insta@2.png */,
+				5A4B85861D017BB0008594BE /* _vk.png */,
+				5A4B85871D017BB0008594BE /* _vk@2.png */,
+				5A4B858E1D01A360008594BE /* _email.png */,
+				5A4B858F1D01A360008594BE /* _email@2.png */,
 				5A3F00591C74958A00054BDD /* QuartzCore.framework */,
 				5AB8E5C91C4F6A330062688E /* Assets.xcassets */,
 				5AB8E5CB1C4F6A330062688E /* LaunchScreen.storyboard */,
@@ -233,7 +239,7 @@
 				TargetAttributes = {
 					5AB8E5B91C4F6A330062688E = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = AD78M25ZGE;
+						DevelopmentTeam = 887LSKBT5E;
 					};
 				};
 			};
@@ -259,15 +265,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5A9138F01CF73F4700DDED0B /* vk.png in Resources */,
-				5A9138F51CF7410B00DDED0B /* instagram@2.png in Resources */,
+				5A4B85881D017BB0008594BE /* _vk.png in Resources */,
 				5AB8E5CD1C4F6A330062688E /* LaunchScreen.storyboard in Resources */,
 				5AB8E5CA1C4F6A330062688E /* Assets.xcassets in Resources */,
 				5ACA1E221CBF929000BDDE79 /* README.md in Resources */,
-				5A084E6A1CE9A60A0025906F /* Default-568h@2x.png in Resources */,
+				5A4B85891D017BB0008594BE /* _vk@2.png in Resources */,
+				5A4B858C1D017CE9008594BE /* _insta.png in Resources */,
+				5AE317D51D12F1E000CA7304 /* Launch Screen.storyboard in Resources */,
+				5A4B85911D01A360008594BE /* _email@2.png in Resources */,
 				5AB8E5C81C4F6A330062688E /* Main.storyboard in Resources */,
-				5A9138F41CF7410B00DDED0B /* instagram.png in Resources */,
-				5A9138F11CF73F4700DDED0B /* vk@2.png in Resources */,
+				5A4B858D1D017CE9008594BE /* _insta@2.png in Resources */,
+				5A4B85901D01A360008594BE /* _email.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +461,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDembel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -471,7 +480,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = AppDembel/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = YellowKing.AppDembel;
 				PRODUCT_NAME = "$(TARGET_NAME)";

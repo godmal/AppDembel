@@ -22,22 +22,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self roundMyView:_saveButton borderRadius:5.0f borderWidth:0.0f color:nil];
-    
-    _person = [self.model.people objectAtIndex:self.index];
+    [self roundMyView:_saveButton borderRadius:15.0f borderWidth:0.0f color:nil];
 
+    _person = [self.model.people objectAtIndex:self.index];
+    
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    datePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
-    [datePicker setDate:_person.date];
+    datePicker.backgroundColor = [self setColor];
+    [self setColorForDatePicker:datePicker];
     datePicker.datePickerMode = UIDatePickerModeDate;
+    [datePicker setDate:_person.date];
     datePicker.minimumDate = [DateUtils minLimitDate];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
-
     
     UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
-    endDatePicker.backgroundColor = [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
-    [endDatePicker setDate:_person.endDate];
+    endDatePicker.backgroundColor = [self setColor];
+    [self setColorForDatePicker:endDatePicker];
     endDatePicker.datePickerMode = UIDatePickerModeDate;
+    [endDatePicker setDate:_person.endDate];
     endDatePicker.minimumDate = [DateUtils now];
     [endDatePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     
@@ -47,6 +48,10 @@
     self.nameInput.text = _person.name;
     self.dateInput.text = [DateUtils convertDateToString:_person.date];
     self.editEndDateInput.text = [DateUtils convertDateToString:_person.endDate];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -68,6 +73,7 @@
             self.editEndDateInput.text = [NSString stringWithFormat:@"%@",endDateString];
             [editPicker setDate:_person.endDate];
     }
+    
     NSString* dateString = [dateFormat stringFromDate:_person.date];
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
     NSString* endDateString = [dateFormat stringFromDate:_person.endDate];
@@ -84,15 +90,10 @@
     
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0) {
         [self createAlert];
-    } else {  if ([DateUtils getDaysBetween:_person.date and:_person.endDate] < 365) {
-        [self createEditAlert];
     } else {
         Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date andEndDate:_person.endDate];
         [self.model updatePersonBy:self.index with:updatedPerson];
-        [self dismissViewControllerAnimated:YES completion:^{
-        
-        }];
-    }
+        [self dismissViewControllerAnimated:YES completion:nil];
     }
 }
 
