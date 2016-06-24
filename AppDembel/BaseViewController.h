@@ -20,8 +20,10 @@
 
 -(BOOL) isInstagramInstalled;
 -(void) createAlert;
+-(void) createInstagramAlert;
 -(UIColor*) setColor;
 -(void) setColorForDatePicker: (UIDatePicker*) datePicker;
+-(UIImage*) makeScreenshot;
 -(void) show:(UIView*) view;
 -(void) hide:(UIView*) view;
 -(void) show:(UIView*) showingView andHide:(UIView*) hidingView;

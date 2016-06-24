@@ -18,7 +18,7 @@
     if (self) {
         self.name = name;
         self.date = date;
-        self.endDate = endDate ? endDate : [self calculateDemobilizationDate];
+        self.endDate = endDate ? endDate : [self calculateEndDate];
     }
     return self;
 }
@@ -38,7 +38,7 @@
     return self;
 }
 
--(NSDate*)calculateDemobilizationDate {
+-(NSDate*)calculateEndDate {
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setDay:365];
     return [[DateUtils getCalendar] dateByAddingComponents:components toDate:self.date options:0];
@@ -49,10 +49,6 @@
     float allDays = [DateUtils getDaysBetween:self.date and:_endDate];
     return servedDays / allDays * 100;
 }
-
-//-(float) calculateDaysProgress {
-//    return [DateUtils getDaysBetween:self.date and:[NSDate date]];
-//}
 
 -(float) calculateLeftDays {
     return [DateUtils getDaysBetween:[NSDate date] and:_endDate];

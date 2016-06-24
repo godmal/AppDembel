@@ -18,9 +18,8 @@
 -(instancetype)initWithName:(NSString*) name andDate:(NSDate*) date andEndDate: (NSDate*) endDate;
 -(instancetype)initWithCoder:(NSCoder *)aDecoder;
 -(void)encodeWithCoder:(NSCoder *)aCoder;
--(NSDate*)calculateDemobilizationDate;
+-(NSDate*)calculateEndDate;
 -(float) calculatePercentProgress;
-//-(float) calculateDaysProgress;
 -(float) calculateLeftDays;
 
 @end

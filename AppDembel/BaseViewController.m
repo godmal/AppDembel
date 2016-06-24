@@ -73,7 +73,27 @@
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
 }
+-(void) createInstagramAlert {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                                                   message:@"Instagram не установлен"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction * action) {}];
+    
+    [alert addAction:defaultAction];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
+-(UIImage*) makeScreenshot {
+    CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
+    CGFloat scale = [UIScreen mainScreen].scale;
+    UIGraphicsBeginImageContextWithOptions(layer.frame.size, NO, scale);
+    [layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
+    return screenshot;
+}
 - (void) hide:(UIView*) view {
     view.hidden = YES;
 }

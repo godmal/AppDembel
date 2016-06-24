@@ -14,10 +14,12 @@
 + (NSDateFormatter*) getFormatterWithTime;
 + (NSCalendar*) getCalendar;
 + (float) getDaysBetween:(NSDate*) firstDate and:(NSDate*) secondDate;
++ (NSDictionary*) getUnitsBetween: (NSDate*) firstDate and:(NSDate*) secondDate;
 + (NSString*) convertDateToString:(NSDate*) date;
 + (BOOL) isValid:(NSDate*) personDate;
 + (NSDate*) minLimitDate;
 + (BOOL) isAfterNow: (NSDate*) date;
 + (NSDate*) now;
++ (NSDate*) configureCountDownWithDate: (NSDate*) personDate;
 
 @end

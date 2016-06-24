@@ -10,7 +10,6 @@
 #import "People.h"
 #import "Person.h"
 #import "DetailViewController.h"
-#import "DateUtils.h"
 #import "MGSwipeTableCell.h"
 #import <MessageUI/MessageUI.h>
 
@@ -24,18 +23,15 @@
 }
 
 - (void)viewDidLoad {
-
     [super viewDidLoad];
     [self roundMyView:_addButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    
-    //[NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(shakeAnimation) userInfo:nil repeats:YES];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void) shakeAnimation {
@@ -62,11 +58,10 @@
     cell.textLabel.text = [[self.model getAllNames] objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [[self.model getAllDatesStrings] objectAtIndex:indexPath.row];
 
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Delete" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Удалить" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
     {
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationLeft];
-        
         [self.model removePerson:indexPath.row];
         [tableView endUpdates];
         [self.tableView reloadData];

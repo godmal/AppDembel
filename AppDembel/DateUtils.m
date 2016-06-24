@@ -39,6 +39,23 @@
                                                                options:NSCalendarWrapComponents] day];
 }
 
++ (NSDictionary*) getUnitsBetween: (NSDate*) firstDate and:(NSDate*) secondDate {
+    NSDateComponents *components = [[DateUtils getCalendar] components:NSCalendarUnitMonth | NSCalendarUnitWeekOfMonth | NSCalendarUnitDay fromDate:firstDate toDate:secondDate options:0];
+    return @{@"months" : @([components month]),
+             @"weeks"  : @([components weekOfMonth]),
+             @"days"   : @([components day])
+            };
+}
+
++ (NSDate*) configureCountDownWithDate: (NSDate*) personDate{
+    NSDateFormatter *dateFormat = [DateUtils getFormatter];
+    NSString* dateString = [dateFormat stringFromDate:personDate];
+    NSDateFormatter *dateFormatTime = [DateUtils getFormatterWithTime];
+    NSString* timeString = @" 00:00:00";
+    NSString* all = [dateString stringByAppendingString:timeString];
+    return [dateFormatTime dateFromString:all];
+}
+
 + (BOOL) isValid:(NSDate*) personDate {
     return [self is:personDate AfterOrEquals:self.minLimitDate];
 }
