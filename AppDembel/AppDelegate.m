@@ -27,7 +27,7 @@
     [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
     
     [Appodeal initializeWithApiKey:@"4ecdc022b89d36051c3e0e884e14fcee9b19d04cf44ab192" types: (AppodealAdType)(AppodealAdTypeBanner)];
-
+    
 //PeopleStore * store = [[PeopleStore alloc] init];
 //People* model = [[People alloc] initWithStore:store];
 //    [model removeAll];

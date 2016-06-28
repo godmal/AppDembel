@@ -56,7 +56,7 @@ static NSArray *SCOPE = nil;
 
 - (void) viewWillAppear:(BOOL)animated {
     _person = [self.model.people objectAtIndex:self.index];
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
     [DateUtils configureCountDownWithDate:_person.date];
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
     _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];

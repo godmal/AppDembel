@@ -51,7 +51,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -87,7 +87,6 @@
 
 - (IBAction)saveButton:(id)sender {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
-    
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0) {
         [self createAlert];
     } else {

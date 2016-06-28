@@ -36,7 +36,7 @@
 }
 
 - (void) viewWillAppear:(BOOL)animated {
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

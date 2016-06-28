@@ -31,7 +31,7 @@
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
-    //[Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
 - (void) shakeAnimation {
