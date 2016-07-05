@@ -15,7 +15,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
-#import <QuartzCore/QuartzCore.h>
 
 static NSArray *SCOPE = nil;
 
@@ -47,6 +46,7 @@ static NSArray *SCOPE = nil;
             _qwerty = NO;
         }
     }];
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(resetViewParameters)
                                                  name:@"EditViewControllerCancelled"

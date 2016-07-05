@@ -29,6 +29,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"back.jpg"]];
+    bgImageView.frame = self.view.bounds;
+    [self.view addSubview:bgImageView];
+    [self.view sendSubviewToBack:bgImageView];
 }
 
 

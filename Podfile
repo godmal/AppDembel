@@ -1,5 +1,5 @@
 # Uncomment this line to define a global platform for your project
-platform :ios, ‘7.1’
+platform :ios, ‘8.0’
 # Uncomment this line if you're using Swift
 use_frameworks!
 
@@ -16,5 +16,6 @@ target 'AppDembel' do
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
     pod 'Appodeal’
+    pod 'HSDatePickerViewController', '~> 1.0'
 end
 

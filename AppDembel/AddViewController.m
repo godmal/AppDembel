@@ -10,6 +10,7 @@
 #import "People.h"
 #import "Person.h"
 #import "DateUtils.h"
+#import "HSDatePickerViewController.h"
 
 @interface AddViewController ()
 
@@ -21,18 +22,15 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self roundMyView:_saveButton borderRadius:15.0f borderWidth:0.0f color:nil];
 
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
-    datePicker.backgroundColor = [self setColor];
     datePicker.minimumDate = [DateUtils minLimitDate];
+    datePicker.backgroundColor = [UIColor whiteColor];
     [datePicker setDate:[DateUtils now]];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
-    
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -46,8 +44,7 @@
 -(void) dateTextField:(id)sender {
     UIDatePicker *picker = (UIDatePicker*)self.dateInput.inputView;
     _date = picker.date;
-    NSDateFormatter *dateFormat = [DateUtils getFormatter];
-    NSString* dateString = [dateFormat stringFromDate:_date];
+    NSString* dateString = [[DateUtils getFormatter] stringFromDate:_date];
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
