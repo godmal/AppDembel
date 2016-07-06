@@ -35,7 +35,8 @@ static NSArray *SCOPE = nil;
     [self setInitialPosition];
     self.sideMenu = [[HMSideMenu alloc] initWithItems:@[[self setInstaItem], [self setVkItem]]];
     [self.sideMenu setItemSpacing:10.0f];
-    
+    self.imageView.image = [self loadImage];
+
     SCOPE = @[VK_PER_WALL, VK_PER_PHOTOS, VK_PER_NOHTTPS];
     [[VKSdk initializeWithAppId:@"5477600"] registerDelegate:self];
     [[VKSdk instance] setUiDelegate:self];

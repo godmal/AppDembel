@@ -16,6 +16,6 @@ target 'AppDembel' do
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
     pod 'Appodeal’
-    pod 'HSDatePickerViewController', '~> 1.0'
+    pod 'THLabel', '~> 1.4'
 end
 

@@ -21,8 +21,6 @@
 -(BOOL) isInstagramInstalled;
 -(void) createAlert;
 -(void) createInstagramAlert;
--(UIColor*) setColor;
--(void) setColorForDatePicker: (UIDatePicker*) datePicker;
 -(UIImage*) makeScreenshot;
 -(void) show:(UIView*) view;
 -(void) hide:(UIView*) view;
@@ -31,4 +29,8 @@
        borderRadius:(CGFloat)radius
         borderWidth:(CGFloat)border
               color:(UIColor*)color;
+
+- (void)saveImage: (UIImage*)image;
+- (UIImage*)loadImage;
+
 @end

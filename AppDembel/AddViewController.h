@@ -14,8 +14,9 @@
 
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;
-- (IBAction)saveButtonClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-- (void) savePerson;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+
+- (IBAction)saveButtonClick:(id)sender;
 
 @end

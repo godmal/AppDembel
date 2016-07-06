@@ -20,6 +20,7 @@
 @implementation ViewController {
     NSMutableArray* nameArray;
     NSMutableArray* dateArray;
+    UIImagePickerController* imagePicker;
 }
 
 - (void)viewDidLoad {
@@ -27,6 +28,7 @@
     [self roundMyView:_addButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init];
+    self.imageView.image = [self loadImage];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -34,16 +36,16 @@
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
-- (void) shakeAnimation {
-    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
-    [shake setDuration:0.09];
-    [shake setAutoreverses:YES];
-    [shake setFromValue:[NSValue valueWithCGPoint:
-                         CGPointMake(self.emailButton.center.x - 3,self.emailButton.center.y)]];
-    [shake setToValue:[NSValue valueWithCGPoint:
-                       CGPointMake(self.emailButton.center.x + 3, self.emailButton.center.y)]];
-    [self.emailButton.layer addAnimation:shake forKey:@"position"];
-}
+//- (void) shakeAnimation {
+//    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
+//    [shake setDuration:0.09];
+//    [shake setAutoreverses:YES];
+//    [shake setFromValue:[NSValue valueWithCGPoint:
+//                         CGPointMake(self.emailButton.center.x - 3,self.emailButton.center.y)]];
+//    [shake setToValue:[NSValue valueWithCGPoint:
+//                       CGPointMake(self.emailButton.center.x + 3, self.emailButton.center.y)]];
+//    [self.emailButton.layer addAnimation:shake forKey:@"position"];
+//}
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.model.people count];
@@ -118,11 +120,31 @@
     [mc setMessageBody:messageBody isHTML:NO];
     [mc setToRecipients:toRecipents];
     [self presentViewController:mc animated:YES completion:NULL];
-
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)changeBack:(id)sender {
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSData *dataImage = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
+    UIImage *img = [[UIImage alloc] initWithData:dataImage];
+    [self saveImage:img];
+    [self.imageView setImage:img];
+    [imagePicker dismissViewControllerAnimated:YES completion:nil];
+    
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths objectAtIndex:0];
+//    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
+//    UIImage *image = imageView.image; // imageView is my image from camera
+//    NSData *imageData = UIImagePNGRepresentation(image);
+//    [imageData writeToFile:savedImagePath atomically:NO];
+}
 @end

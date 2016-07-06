@@ -23,6 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self roundMyView:_saveButton borderRadius:15.0f borderWidth:0.0f color:nil];
+    self.imageView.image = [self loadImage];
 
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
     datePicker.minimumDate = [DateUtils minLimitDate];

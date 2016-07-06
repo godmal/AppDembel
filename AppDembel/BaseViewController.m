@@ -10,7 +10,6 @@
 #import "PeopleStore.h"
 #import "People.h"
 #import <QuartzCore/QuartzCore.h>
-#import <Appodeal/Appodeal.h>
 
 @interface BaseViewController ()
 
@@ -35,7 +34,6 @@
     [self.view sendSubviewToBack:bgImageView];
 }
 
-
 -(void) observeState {
     [[NSNotificationCenter defaultCenter] addObserver: self
                                              selector: @selector(setViewState)
@@ -43,13 +41,13 @@
                                                object: nil];
 }
 
--(UIColor*) setColor {
-    return [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
-}
-
--(void) setColorForDatePicker: (UIDatePicker*) datePicker {
-    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
-}
+//-(UIColor*) setColor {
+//    return [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
+//}
+//
+//-(void) setColorForDatePicker: (UIDatePicker*) datePicker {
+//    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
+//}
 
 -(void) setViewState {
     [self configureModel];
@@ -125,6 +123,24 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+- (void)saveImage: (UIImage*)image {
+    if (image != nil) {
+        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+        NSString *documentsDirectory = [paths objectAtIndex:0];
+        NSString* path = [documentsDirectory stringByAppendingPathComponent: @"test.png" ];
+        NSData* data = UIImagePNGRepresentation(image);
+        [data writeToFile:path atomically:YES];
+    }
+}
+
+- (UIImage*)loadImage {
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent: @"test.png" ];
+    UIImage* image = [UIImage imageWithContentsOfFile:path];
+    return image;
 }
 
 @end
