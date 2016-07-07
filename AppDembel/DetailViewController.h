@@ -10,7 +10,7 @@
 #import "BaseViewController.h"
 #import "MBCircularProgressBarView.h"
 #import "HMSideMenu.h"
-
+#import "THLabel.h"
 
 @interface DetailViewController : BaseViewController <VKSdkDelegate>
 
@@ -27,5 +27,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet THLabel *leftTextLabel;
 
 @end

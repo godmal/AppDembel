@@ -15,6 +15,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
+#import "THLabel.h"
 
 static NSArray *SCOPE = nil;
 
@@ -32,11 +33,12 @@ static NSArray *SCOPE = nil;
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    [self setInitialPosition];
     self.sideMenu = [[HMSideMenu alloc] initWithItems:@[[self setInstaItem], [self setVkItem]]];
     [self.sideMenu setItemSpacing:10.0f];
+    [self setInitialPosition];
     self.imageView.image = [self loadImage];
 
+    
     SCOPE = @[VK_PER_WALL, VK_PER_PHOTOS, VK_PER_NOHTTPS];
     [[VKSdk initializeWithAppId:@"5477600"] registerDelegate:self];
     [[VKSdk instance] setUiDelegate:self];
@@ -62,6 +64,7 @@ static NSArray *SCOPE = nil;
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
     _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
     [self setLabelsText];
+    
     if ([DateUtils isAfterNow:_person.date]) {
         self.infoLabel.text = @"Осталось до службы:";
         [self show: self.daysLeft andHide:self.progressBarPercent];
@@ -96,14 +99,19 @@ static NSArray *SCOPE = nil;
 #pragma mark configuration
 
 - (void) setLabelsText {
+//    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.leftTextLabel, self.rightTextLabel, self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft];
+//    for (THLabel* label in array) {
+//        label.strokeSize = 1.0f;
+//        label.strokeColor = [UIColor blackColor];
+//    }
     self.nameLabel.text = _person.name;
     self.dateLabel.text = [DateUtils convertDateToString:_person.date];
     self.demobilizationDateLabel.text = [DateUtils convertDateToString: _person.endDate];
-    self.rightLabel.text = [NSString stringWithFormat:@"месяцы - %@  недели - %@ дни - %@",
+    self.rightLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
                             [_rightLabelData objectForKey:@"months"],
                             [_rightLabelData objectForKey:@"weeks"],
                             [_rightLabelData objectForKey:@"days"]];
-    self.leftLabel.text = [NSString stringWithFormat:@"месяцы - %@  недели - %@ дни - %@",
+    self.leftLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
                            [_leftLabelData objectForKey:@"months"],
                            [_leftLabelData objectForKey:@"weeks"],
                            [_leftLabelData objectForKey:@"days"]];
@@ -151,6 +159,9 @@ static NSArray *SCOPE = nil;
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
+    self.nameLabel.hidden = YES;
+    self.dateLabel.hidden = YES;
+    self.demobilizationDateLabel.hidden = YES;
     self.nameLabel.frame = CGRectMake(-300, self.nameLabel.frame.origin.y +10, self.nameLabel.frame.size.width, self.nameLabel.frame.size.height);
     self.dateLabel.frame = CGRectMake(-300, self.dateLabel.frame.origin.y +10, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
     self.demobilizationDateLabel.frame = CGRectMake(-300, self.demobilizationDateLabel.frame.origin.y +10, self.demobilizationDateLabel.frame.size.width, self.demobilizationDateLabel.frame.size.height);
@@ -160,6 +171,9 @@ static NSArray *SCOPE = nil;
                        duration:1.5
                  timingFunction:kMTEaseOutBounce
                      animations:^{
+                         self.nameLabel.hidden = NO;
+                         self.dateLabel.hidden = NO;
+                         self.demobilizationDateLabel.hidden = NO;
                          self.nameLabel.center = CGPointMake(self.view.frame.size.width  / 2,
                                                              self.nameLabel.frame.origin.y);
                          self.dateLabel.center = CGPointMake(self.view.frame.size.width  / 2,
@@ -173,6 +187,9 @@ static NSArray *SCOPE = nil;
                        duration:1.5
                  timingFunction:kMTEaseOutBounce
                      animations:^{
+                         self.nameLabel.hidden = NO;
+                         self.dateLabel.hidden = NO;
+                         self.demobilizationDateLabel.hidden = NO;
                          self.nameLabel.center = CGPointMake(self.view.frame.size.width  / 4.4,
                                                              self.nameLabel.frame.origin.y);
                          self.dateLabel.center = CGPointMake(self.view.frame.size.width  / 4.4,
@@ -249,5 +266,8 @@ static NSArray *SCOPE = nil;
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 @end
