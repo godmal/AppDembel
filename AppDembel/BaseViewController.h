@@ -7,8 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <Appodeal/Appodeal.h>
 #import "VKSdk.h"
+#import <Appodeal/Appodeal.h>
 
 @class People;
 @class Person;
@@ -18,7 +18,6 @@
 @property (strong, nonatomic) People* model;
 @property (strong, nonatomic) Person* person;
 
--(BOOL) isInstagramInstalled;
 -(void) createAlert;
 -(void) createInstagramAlert;
 -(UIImage*) makeScreenshot;

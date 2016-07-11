@@ -108,11 +108,6 @@
     layer.borderColor = color.CGColor;
 }
 
-- (BOOL) isInstagramInstalled {
-    NSURL *appURL = [NSURL URLWithString:@"instagram://app"];
-    return [[UIApplication sharedApplication] canOpenURL:appURL];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

@@ -11,8 +11,9 @@
 #import "MBCircularProgressBarView.h"
 #import "HMSideMenu.h"
 #import "THLabel.h"
+#import <MGInstagram/MGInstagram.h>
 
-@interface DetailViewController : BaseViewController <VKSdkDelegate>
+@interface DetailViewController : BaseViewController <VKSdkDelegate, UIDocumentInteractionControllerDelegate>
 
 @property (assign, nonatomic) NSUInteger index;
 @property (assign, nonatomic) BOOL qwerty;
@@ -27,6 +28,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet THLabel *leftTextLabel;
-
+@property (nonatomic, strong) MGInstagram *instagram;
+//@property(nonatomic, strong) UIDocumentInteractionController* docController;
 @end

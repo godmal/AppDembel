@@ -49,17 +49,14 @@ static NSArray *SCOPE = nil;
             _qwerty = NO;
         }
     }];
+    [self observeEditViewStatus];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(resetViewParameters)
-                                                 name:@"EditViewControllerCancelled"
-                                               object:nil];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
  }
 
 - (void) viewWillAppear:(BOOL)animated {
     _person = [self.model.people objectAtIndex:self.index];
-    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+   [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
     [DateUtils configureCountDownWithDate:_person.date];
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
     _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
@@ -76,6 +73,7 @@ static NSArray *SCOPE = nil;
         self.detailsView.hidden = NO;
     }
 }
+
 - (void) viewDidAppear:(BOOL)animated {
     [self createPermission];
     if ([DateUtils isAfterNow:_person.date]) {
@@ -116,7 +114,12 @@ static NSArray *SCOPE = nil;
                            [_leftLabelData objectForKey:@"weeks"],
                            [_leftLabelData objectForKey:@"days"]];
 }
-
+- (void) observeEditViewStatus {
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(resetViewParameters)
+                                                 name:@"EditViewControllerCancelled"
+                                               object:nil];
+}
 - (void) resetViewParameters {
     [self.progressBarPercent setValue:0 animateWithDuration:0];
 }
@@ -198,9 +201,10 @@ static NSArray *SCOPE = nil;
                                                                            self.demobilizationDateLabel.frame.origin.y);
                      }];
 }
+
 - (HMSideMenuItem*) setInstaItem {
     HMSideMenuItem *instaItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50, 50) action:^{
-        if ([self isInstagramInstalled]) {
+        if ([MGInstagram isAppInstalled]) {
             AudioServicesPlaySystemSound(1108);
             UIView* screenshotView = [[UIView alloc] initWithFrame:self.view.window.bounds];
             UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
@@ -211,11 +215,8 @@ static NSArray *SCOPE = nil;
                 [currentWindow addSubview:screenshotView];
             } completion:^(BOOL finished) {
                 [screenshotView removeFromSuperview];
-                [self makeScreenshot];
-                NSURL *instagramURL = [NSURL URLWithString:@"instagram://camera"];
-                if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
-                    [[UIApplication sharedApplication] openURL:instagramURL];
-                }
+                self.instagram = [[MGInstagram alloc] init];
+                [self.instagram postImage:[self makeScreenshot] inView:self.view];
             }];
         } else {
             [self createInstagramAlert];
@@ -226,13 +227,14 @@ static NSArray *SCOPE = nil;
     [instaItem addSubview:instaIcon];
     return instaItem;
 }
+
 - (HMSideMenuItem*) setVkItem {
     HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
         if (_qwerty) {
             UIImage* screenshot = [self makeScreenshot];
             VKShareDialogController *shareDialog = [VKShareDialogController new];
             shareDialog.text = @"Отдаю долг Родине с приложением ПораДомой";
-            shareDialog.uploadImages = @[ [VKUploadImage uploadImageWithImage:screenshot andParams:[VKImageParameters jpegImageWithQuality:1.0]]];
+            shareDialog.uploadImages = @[[VKUploadImage uploadImageWithImage:screenshot andParams:[VKImageParameters jpegImageWithQuality:1.0]]];
             [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
                 [self dismissViewControllerAnimated:YES completion:nil];
             }];
