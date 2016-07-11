@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "People.h"
-#import "Person.h"
 #import "DetailViewController.h"
 #import "MGSwipeTableCell.h"
 #import <MessageUI/MessageUI.h>
@@ -25,7 +24,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self roundMyView:_addButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self roundMyView: _tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.imageView.image = [self loadImage];
@@ -35,17 +33,6 @@
     [self.tableView reloadData];
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
-
-//- (void) shakeAnimation {
-//    CABasicAnimation *shake = [CABasicAnimation animationWithKeyPath:@"position"];
-//    [shake setDuration:0.09];
-//    [shake setAutoreverses:YES];
-//    [shake setFromValue:[NSValue valueWithCGPoint:
-//                         CGPointMake(self.emailButton.center.x - 3,self.emailButton.center.y)]];
-//    [shake setToValue:[NSValue valueWithCGPoint:
-//                       CGPointMake(self.emailButton.center.x + 3, self.emailButton.center.y)]];
-//    [self.emailButton.layer addAnimation:shake forKey:@"position"];
-//}
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.model.people count];
@@ -59,9 +46,7 @@
     }
     cell.textLabel.text = [[self.model getAllNames] objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [[self.model getAllDatesStrings] objectAtIndex:indexPath.row];
-
-    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Удалить" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender)
-    {
+    cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Удалить" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
         [tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationLeft];
         [self.model removePerson:indexPath.row];
@@ -69,7 +54,6 @@
         [self.tableView reloadData];
         return YES;
     }], ];
-
     cell.rightSwipeSettings.transition = MGSwipeTransitionStatic;
     return cell;
 }
@@ -121,11 +105,6 @@
     [mc setToRecipients:toRecipents];
     [self presentViewController:mc animated:YES completion:NULL];
 }
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (IBAction)changeBack:(id)sender {
     imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
@@ -139,12 +118,10 @@
     [self saveImage:img];
     [self.imageView setImage:img];
     [imagePicker dismissViewControllerAnimated:YES completion:nil];
-    
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *savedImagePath = [documentsDirectory stringByAppendingPathComponent:@"savedImage.png"];
-//    UIImage *image = imageView.image; // imageView is my image from camera
-//    NSData *imageData = UIImagePNGRepresentation(image);
-//    [imageData writeToFile:savedImagePath atomically:NO];
 }
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+}
+
 @end

@@ -23,21 +23,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _person = [self.model.people objectAtIndex:self.index];
-
+    self.imageView.image = [self loadImage];
     [self roundMyView:_saveButton borderRadius:15.0f borderWidth:0.0f color:nil];
 
-    
     UIDatePicker *datePicker = [[UIDatePicker alloc]init];
-//    datePicker.backgroundColor = [self setColor];
-//    [self setColorForDatePicker:datePicker];
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker setDate:_person.date];
     datePicker.minimumDate = [DateUtils minLimitDate];
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     
     UIDatePicker *endDatePicker = [[UIDatePicker alloc]init];
-//    endDatePicker.backgroundColor = [self setColor];
-//    [self setColorForDatePicker:endDatePicker];
     endDatePicker.datePickerMode = UIDatePickerModeDate;
     [endDatePicker setDate:_person.endDate];
     endDatePicker.minimumDate = [DateUtils now];

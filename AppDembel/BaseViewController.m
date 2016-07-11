@@ -41,14 +41,6 @@
                                                object: nil];
 }
 
-//-(UIColor*) setColor {
-//    return [UIColor colorWithRed:45.0f/255.0f green:122.0f/255.0f blue:126.0f/255.0f alpha:1];
-//}
-//
-//-(void) setColorForDatePicker: (UIDatePicker*) datePicker {
-//    [datePicker setValue:[UIColor whiteColor] forKey:@"textColor"];
-//}
-
 -(void) setViewState {
     [self configureModel];
     [self viewDidLoad];
