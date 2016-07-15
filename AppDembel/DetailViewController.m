@@ -11,7 +11,6 @@
 #import "People.h"
 #import "EditViewController.h"
 #import "Person.h"
-#import "HMSideMenu.h"
 #import <AVFoundation/AVFoundation.h>
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
@@ -204,30 +203,26 @@ static NSArray *SCOPE = nil;
 
 - (HMSideMenuItem*) setInstaItem {
     HMSideMenuItem *instaItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50, 50) action:^{
-        if ([MGInstagram isAppInstalled]) {
-            AudioServicesPlaySystemSound(1108);
-            UIView* screenshotView = [[UIView alloc] initWithFrame:self.view.window.bounds];
-            UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
-            screenshotView.alpha = 1;
-            [UIView animateWithDuration:1.5f animations:^{
-                screenshotView.backgroundColor = [UIColor whiteColor];
-                screenshotView.alpha = 0;
-                [currentWindow addSubview:screenshotView];
-            } completion:^(BOOL finished) {
-                [screenshotView removeFromSuperview];
-                self.instagram = [[MGInstagram alloc] init];
-                [self.instagram postImage:[self makeScreenshot] inView:self.view];
-            }];
-        } else {
-            [self createInstagramAlert];
-        }
+        [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
     }];
-    UIImageView *instaIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [instaIcon setImage:[UIImage imageNamed:@"_insta"]];
-    [instaItem addSubview:instaIcon];
+    [self setIcon:[UIImage imageNamed:@"_insta"] for:instaItem];
     return instaItem;
 }
-
+- (void) manageInstagramShare {
+    AudioServicesPlaySystemSound(1108);
+    UIView* screenshotView = [[UIView alloc] initWithFrame:self.view.window.bounds];
+    UIWindow* currentWindow = [UIApplication sharedApplication].keyWindow;
+    screenshotView.alpha = 1;
+    [UIView animateWithDuration:1.5f animations:^{
+        screenshotView.backgroundColor = [UIColor whiteColor];
+        screenshotView.alpha = 0;
+        [currentWindow addSubview:screenshotView];
+    } completion:^(BOOL finished) {
+        [screenshotView removeFromSuperview];
+        self.instagram = [[MGInstagram alloc] init];
+        [self.instagram postImage:[self makeScreenshot] inView:self.view];
+         }];
+}
 - (HMSideMenuItem*) setVkItem {
     HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
         if (_qwerty) {
@@ -242,12 +237,13 @@ static NSArray *SCOPE = nil;
         } else
             [VKSdk authorize:SCOPE];
     }];
-    UIImageView *vkIcon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [vkIcon setImage:[UIImage imageNamed:@"_vk"]];
-    [vkItem addSubview:vkIcon];
+    [self setIcon:[UIImage imageNamed:@"_vk"] for:vkItem];
     return vkItem;
 }
+
+
 #pragma mark vkSdk methods
+
 - (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
     VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
     [vc presentIn:self.navigationController.topViewController];

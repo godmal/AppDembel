@@ -75,25 +75,25 @@
     }
 }
 
-- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-    switch (result) {
-        case MFMailComposeResultCancelled:
-            NSLog(@"Mail cancelled");
-            break;
-        case MFMailComposeResultSaved:
-            NSLog(@"Mail saved");
-            break;
-        case MFMailComposeResultSent:
-            NSLog(@"Mail sent");
-            break;
-        case MFMailComposeResultFailed:
-            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
-            break;
-        default:
-            break;
-    }
-    [self dismissViewControllerAnimated:YES completion:NULL];
-}
+//- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+//    switch (result) {
+//        case MFMailComposeResultCancelled:
+//            NSLog(@"Mail cancelled");
+//            break;
+//        case MFMailComposeResultSaved:
+//            NSLog(@"Mail saved");
+//            break;
+//        case MFMailComposeResultSent:
+//            NSLog(@"Mail sent");
+//            break;
+//        case MFMailComposeResultFailed:
+//            NSLog(@"Mail sent failure: %@", [error localizedDescription]);
+//            break;
+//        default:
+//            break;
+//    }
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//}
 
 - (IBAction)sendEmail:(id)sender {
     NSString *emailTitle = @"Отзыв/ошибка/пожелание";

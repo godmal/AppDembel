@@ -77,9 +77,6 @@
                                         <state key="normal" image="mail.png">
                                             <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <connections>
-                                            <action selector="sendEmail:" destination="XDu-oY-leg" eventType="touchUpInside" id="O6G-o3-xow"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="cK5-W7-Y1L">
                                         <rect key="frame" x="159" y="5" width="45" height="60"/>
@@ -101,7 +98,6 @@
                     <connections>
                         <outlet property="addButton" destination="cK5-W7-Y1L" id="WBw-b7-eBU"/>
                         <outlet property="buttonView" destination="m3e-1R-QUK" id="UZO-Vv-4xh"/>
-                        <outlet property="emailButton" destination="WCf-Hf-ODv" id="2uN-tP-zCA"/>
                         <outlet property="imageView" destination="vcE-m1-WnH" id="9WZ-BB-caj"/>
                         <outlet property="tableView" destination="s50-mi-Nnf" id="8Jk-ly-Mxh"/>
                     </connections>

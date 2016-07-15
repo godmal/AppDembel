@@ -29,5 +29,4 @@
 @property (weak, nonatomic) IBOutlet UILabel *rightLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (nonatomic, strong) MGInstagram *instagram;
-//@property(nonatomic, strong) UIDocumentInteractionController* docController;
 @end

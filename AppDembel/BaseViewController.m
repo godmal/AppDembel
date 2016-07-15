@@ -77,7 +77,11 @@
     [alert addAction:defaultAction];
     [self presentViewController:alert animated:YES completion:nil];
 }
-
+- (void) setIcon:(UIImage*) image for:(HMSideMenuItem*) item {
+    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    [icon setImage:image];
+    [item addSubview:icon];
+}
 -(UIImage*) makeScreenshot {
     CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -108,26 +112,24 @@
     layer.borderColor = color.CGColor;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
 - (void)saveImage: (UIImage*)image {
     if (image != nil) {
-        NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-        NSString *documentsDirectory = [paths objectAtIndex:0];
-        NSString* path = [documentsDirectory stringByAppendingPathComponent: @"test.png" ];
         NSData* data = UIImagePNGRepresentation(image);
-        [data writeToFile:path atomically:YES];
+        [data writeToFile:[self getPathWithImage] atomically:YES];
     }
 }
 
 - (UIImage*)loadImage {
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent: @"test.png" ];
-    UIImage* image = [UIImage imageWithContentsOfFile:path];
-    return image;
+    return [UIImage imageWithContentsOfFile:[self getPathWithImage]];
+}
+
+- (NSString*) getPathWithImage {
+    NSString *docDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    return [docDirectory stringByAppendingPathComponent: @"test.png"];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 @end
