@@ -29,7 +29,6 @@
        borderRadius:(CGFloat)radius
         borderWidth:(CGFloat)border
               color:(UIColor*)color;
-
 - (void)saveImage: (UIImage*)image;
 - (UIImage*)loadImage;
 - (void) setIcon:(UIImage*) image for:(HMSideMenuItem*) item;

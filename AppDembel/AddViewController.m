@@ -29,15 +29,15 @@
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
-    [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(showAd) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showFullScreenAd) userInfo:nil repeats:NO];
 }
-- (void) showAd {
-    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
-}
+
 - (void) viewWillAppear:(BOOL)animated {
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
-
+- (void) showFullScreenAd {
+    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
@@ -55,7 +55,6 @@
 }
 
 - (IBAction)saveButtonClick:(id)sender {
-
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         [self createAlert];
     } else {

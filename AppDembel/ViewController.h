@@ -13,11 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
-@property (weak, nonatomic) IBOutlet UIButton *emailButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-@property (weak, nonatomic) IBOutlet UIView *buttonView;
-
-- (IBAction)sendEmail:(id)sender;
-- (IBAction)changeBack:(id)sender;
+//- (IBAction)changeBack:(id)sender;
 
 @end

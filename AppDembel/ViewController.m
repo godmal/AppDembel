@@ -12,7 +12,7 @@
 #import "MGSwipeTableCell.h"
 #import <MessageUI/MessageUI.h>
 
-@interface ViewController () <MFMailComposeViewControllerDelegate>
+@interface ViewController ()
 
 @end
 
@@ -48,9 +48,8 @@
     cell.detailTextLabel.text = [[self.model getAllDatesStrings] objectAtIndex:indexPath.row];
     cell.rightButtons = @[[MGSwipeButton buttonWithTitle:@"Удалить" backgroundColor:[UIColor redColor] callback:^BOOL(MGSwipeTableCell *sender) {
         [tableView beginUpdates];
-       
         [self.model removePerson:indexPath.row];
-         [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationLeft];
+        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationLeft];
         [tableView endUpdates];
         [self.tableView reloadData];
         return YES;
@@ -59,14 +58,6 @@
     return cell;
 }
 
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-//    [tableView beginUpdates];
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationTop];
-//    }
-//    [tableView endUpdates];
-//}
-
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segue"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
@@ -74,7 +65,6 @@
         destViewController.index = indexPath.row;
     }
 }
-
 //- (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
 //    switch (result) {
 //        case MFMailComposeResultCancelled:
@@ -95,31 +85,31 @@
 //    [self dismissViewControllerAnimated:YES completion:NULL];
 //}
 
-- (IBAction)sendEmail:(id)sender {
-    NSString *emailTitle = @"Отзыв/ошибка/пожелание";
-    NSString *messageBody = @"";
-    NSArray *toRecipents = [NSArray arrayWithObject:@"developer.gorbachev@gmail.com"];
-    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    mc.mailComposeDelegate = self;
-    [mc setSubject:emailTitle];
-    [mc setMessageBody:messageBody isHTML:NO];
-    [mc setToRecipients:toRecipents];
-    [self presentViewController:mc animated:YES completion:NULL];
-}
-- (IBAction)changeBack:(id)sender {
-    imagePicker = [[UIImagePickerController alloc] init];
-    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagePicker.delegate = self;
-    [self presentViewController:imagePicker animated:YES completion:nil];
-}
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    NSData *dataImage = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
-    UIImage *img = [[UIImage alloc] initWithData:dataImage];
-    [self saveImage:img];
-    [self.imageView setImage:img];
-    [imagePicker dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)sendEmail:(id)sender {
+//    NSString *emailTitle = @"Отзыв/ошибка/пожелание";
+//    NSString *messageBody = @"";
+//    NSArray *toRecipents = [NSArray arrayWithObject:@"developer.gorbachev@gmail.com"];
+//    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
+//    mc.mailComposeDelegate = self;
+//    [mc setSubject:emailTitle];
+//    [mc setMessageBody:messageBody isHTML:NO];
+//    [mc setToRecipients:toRecipents];
+//    [self presentViewController:mc animated:YES completion:NULL];
+//}
+//- (IBAction)changeBack:(id)sender {
+//    imagePicker = [[UIImagePickerController alloc] init];
+//    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//    imagePicker.delegate = self;
+//    [self presentViewController:imagePicker animated:YES completion:nil];
+//}
+//
+//- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+//    NSData *dataImage = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
+//    UIImage *img = [[UIImage alloc] initWithData:dataImage];
+//    [self saveImage:img];
+//    [self.imageView setImage:img];
+//    [imagePicker dismissViewControllerAnimated:YES completion:nil];
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

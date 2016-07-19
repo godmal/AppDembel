@@ -18,7 +18,7 @@
 
 static NSArray *SCOPE = nil;
 
-@interface DetailViewController () <VKSdkUIDelegate>
+@interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
 
 @end
 
@@ -31,56 +31,45 @@ static NSArray *SCOPE = nil;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [Appodeal setInterstitialDelegate:self];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.sideMenu = [[HMSideMenu alloc] initWithItems:@[[self setInstaItem], [self setVkItem]]];
     [self.sideMenu setItemSpacing:10.0f];
-    [self setInitialPosition];
     self.imageView.image = [self loadImage];
-
-    
-    SCOPE = @[VK_PER_WALL, VK_PER_PHOTOS, VK_PER_NOHTTPS];
-    [[VKSdk initializeWithAppId:@"5477600"] registerDelegate:self];
-    [[VKSdk instance] setUiDelegate:self];
-    [VKSdk wakeUpSession:SCOPE completeBlock:^(VKAuthorizationState state, NSError *error) {
-        if (state == VKAuthorizationAuthorized) {
-            _qwerty = YES;
-        } else if (error) {
-            _qwerty = NO;
-        }
-    }];
+    [self setInitialPosition];
     [self observeEditViewStatus];
-    
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
- }
+    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(showFullScreenAd) userInfo:nil repeats:NO];
+}
 
 - (void) viewWillAppear:(BOOL)animated {
     _person = [self.model.people objectAtIndex:self.index];
-   [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
-    [DateUtils configureCountDownWithDate:_person.date];
-    _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
-    _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
-    [self setLabelsText];
-    
+    [self setPersonDataText];
     if ([DateUtils isAfterNow:_person.date]) {
         self.infoLabel.text = @"Осталось до службы:";
-        [self show: self.daysLeft andHide:self.progressBarPercent];
-        self.detailsView.hidden = YES;
-        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+        [self show: self.daysLeft andHide: self.progressBarPercent];
+        [self hide: self.detailsView];
     } else {
         self.infoLabel.text = @"Детали службы";
-        [self show: self.progressBarPercent andHide:self.daysLeft];
-        self.detailsView.hidden = NO;
+        [self show: self.progressBarPercent andHide: self.daysLeft];
+        [self show: self.detailsView];
+        [self configureDetailsView];
     }
 }
 
-- (void) viewDidAppear:(BOOL)animated {
-    [self createPermission];
+- (void) interstitialDidDismiss {
+    NSLog(@"interstitial has been closed or dismissed");
     if ([DateUtils isAfterNow:_person.date]) {
         [self setAnimationForCountDown];
     } else {
         [self setAnimationForProgressBar];
         [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+        [self createPermission];
     }
+}
+
+- (void) showFullScreenAd {
+    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
 }
 - (void) showSideMenu {
     [self.sideMenu open];
@@ -96,14 +85,11 @@ static NSArray *SCOPE = nil;
 #pragma mark configuration
 
 - (void) setLabelsText {
-//    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.leftTextLabel, self.rightTextLabel, self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft];
-//    for (THLabel* label in array) {
-//        label.strokeSize = 1.0f;
-//        label.strokeColor = [UIColor blackColor];
-//    }
-    self.nameLabel.text = _person.name;
-    self.dateLabel.text = [DateUtils convertDateToString:_person.date];
-    self.demobilizationDateLabel.text = [DateUtils convertDateToString: _person.endDate];
+    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel,  self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft];
+    for (THLabel* label in array) {
+        label.strokeSize = 1.0f;
+        label.strokeColor = [UIColor blackColor];
+    }
     self.rightLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
                             [_rightLabelData objectForKey:@"months"],
                             [_rightLabelData objectForKey:@"weeks"],
@@ -122,7 +108,16 @@ static NSArray *SCOPE = nil;
 - (void) resetViewParameters {
     [self.progressBarPercent setValue:0 animateWithDuration:0];
 }
-
+- (void) setPersonDataText {
+    self.nameLabel.text = _person.name;
+    self.dateLabel.text = [DateUtils convertDateToString:_person.date];
+    self.demobilizationDateLabel.text = [DateUtils convertDateToString: _person.endDate];
+}
+- (void) configureDetailsView {
+    _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
+    _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
+    [self setLabelsText];
+}
 - (void)updateCounter:(NSTimer *)tmr {
     NSTimeInterval timer = [[DateUtils configureCountDownWithDate:_person.date] timeIntervalSinceNow];
     int days = timer / (60 * 60 * 24);
@@ -161,43 +156,28 @@ static NSArray *SCOPE = nil;
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
-    self.nameLabel.hidden = YES;
-    self.dateLabel.hidden = YES;
-    self.demobilizationDateLabel.hidden = YES;
-    self.nameLabel.frame = CGRectMake(-300, self.nameLabel.frame.origin.y +10, self.nameLabel.frame.size.width, self.nameLabel.frame.size.height);
-    self.dateLabel.frame = CGRectMake(-300, self.dateLabel.frame.origin.y +10, self.dateLabel.frame.size.width, self.dateLabel.frame.size.height);
-    self.demobilizationDateLabel.frame = CGRectMake(-300, self.demobilizationDateLabel.frame.origin.y +10, self.demobilizationDateLabel.frame.size.width, self.demobilizationDateLabel.frame.size.height);
+    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    for (UIView* view in array) {
+        [self hide:view];
+        view.frame = CGRectMake(-300, view.frame.origin.y +10, view.frame.size.width, view.frame.size.height);
+    }
 }
 - (void) setAnimationForCountDown {
-    [UIView mt_animateWithViews:@[self.nameLabel, self.dateLabel, self.demobilizationDateLabel]
-                       duration:1.5
-                 timingFunction:kMTEaseOutBounce
-                     animations:^{
-                         self.nameLabel.hidden = NO;
-                         self.dateLabel.hidden = NO;
-                         self.demobilizationDateLabel.hidden = NO;
-                         self.nameLabel.center = CGPointMake(self.view.frame.size.width  / 2,
-                                                             self.nameLabel.frame.origin.y);
-                         self.dateLabel.center = CGPointMake(self.view.frame.size.width  / 2,
-                                                             self.dateLabel.frame.origin.y);
-                         self.demobilizationDateLabel.center = CGPointMake(self.view.frame.size.width  / 2,
-                                                                           self.demobilizationDateLabel.frame.origin.y);
+    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
+                         for (UIView* view in array) {
+                             [self show:view];
+                             view.center = CGPointMake(self.view.frame.size.width / 2, view.frame.origin.y);
+                         }
                      }];
 }
 - (void) setAnimationForProgressBar {
-    [UIView mt_animateWithViews:@[self.nameLabel, self.dateLabel, self.demobilizationDateLabel]
-                       duration:1.5
-                 timingFunction:kMTEaseOutBounce
-                     animations:^{
-                         self.nameLabel.hidden = NO;
-                         self.dateLabel.hidden = NO;
-                         self.demobilizationDateLabel.hidden = NO;
-                         self.nameLabel.center = CGPointMake(self.view.frame.size.width  / 4.4,
-                                                             self.nameLabel.frame.origin.y);
-                         self.dateLabel.center = CGPointMake(self.view.frame.size.width  / 4.4,
-                                                             self.dateLabel.frame.origin.y);
-                         self.demobilizationDateLabel.center = CGPointMake(self.view.frame.size.width  / 4.4,
-                                                                           self.demobilizationDateLabel.frame.origin.y);
+    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
+                         for (UIView* view in array) {
+                             [self hide:view];
+                             view.center = CGPointMake(self.view.frame.size.width / 4.4, view.frame.origin.y);
+                            }
                      }];
 }
 
@@ -223,6 +203,7 @@ static NSArray *SCOPE = nil;
         [self.instagram postImage:[self makeScreenshot] inView:self.view];
          }];
 }
+
 - (HMSideMenuItem*) setVkItem {
     HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
         if (_qwerty) {
@@ -240,7 +221,6 @@ static NSArray *SCOPE = nil;
     [self setIcon:[UIImage imageNamed:@"_vk"] for:vkItem];
     return vkItem;
 }
-
 
 #pragma mark vkSdk methods
 

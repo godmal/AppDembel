@@ -49,39 +49,37 @@
 -(void) configureModel {
     PeopleStore* store = [[PeopleStore alloc] init];
     self.model = [[People alloc] initWithStore:store];
-    
 }
+
+
 
 -(void) createAlert {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                                   [alert dismissViewControllerAnimated:YES completion:nil];
-                                               }];
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault handler:nil];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Дезертирую!" style:UIAlertActionStyleDefault
                                                    handler:^(UIAlertAction * action) {
-                                                       [alert dismissViewControllerAnimated:YES completion:nil];
                                                        [self dismissViewControllerAnimated:YES completion:nil];
                                                    }];
     [alert addAction:ok];
     [alert addAction:cancel];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
 -(void) createInstagramAlert {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
                                                                    message:@"Instagram не установлен"
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* defaultAction = [UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault
-                                                          handler:^(UIAlertAction * action) {}];
-    
-    [alert addAction:defaultAction];
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"Понял" style:UIAlertActionStyleDefault handler:nil];
+    [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
 }
+
 - (void) setIcon:(UIImage*) image for:(HMSideMenuItem*) item {
     UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
     [icon setImage:image];
     [item addSubview:icon];
 }
+
 -(UIImage*) makeScreenshot {
     CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;
     CGFloat scale = [UIScreen mainScreen].scale;
@@ -92,6 +90,7 @@
     UIImageWriteToSavedPhotosAlbum(screenshot, nil, nil, nil);
     return screenshot;
 }
+
 - (void) hide:(UIView*) view {
     view.hidden = YES;
 }

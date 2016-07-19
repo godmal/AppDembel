@@ -44,12 +44,15 @@
     self.nameInput.text = _person.name;
     self.dateInput.text = [DateUtils convertDateToString:_person.date];
     self.endDateInput.text = [DateUtils convertDateToString:_person.endDate];
+    //[NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showFullScreenAd) userInfo:nil repeats:NO];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
-
+- (void) showFullScreenAd {
+    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+}
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
 }
