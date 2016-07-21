@@ -13,11 +13,11 @@
 
 - (IBAction)saveButton:(id)sender;
 
+@property (assign, nonatomic) NSUInteger index;
 @property (weak, nonatomic) IBOutlet UITextField *nameInput;
 @property (weak, nonatomic) IBOutlet UITextField *dateInput;
 @property (weak, nonatomic) IBOutlet UITextField *endDateInput;
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
-@property (assign, nonatomic) NSUInteger index;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
 

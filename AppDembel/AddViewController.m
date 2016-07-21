@@ -37,19 +37,17 @@
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.view endEditing:YES];
-}
-- (void) checkNetworkReachability {
-    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
-    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-    if (networkStatus == NotReachable) {
-        NSLog(@"There IS NO internet connection");
-        [self createInternetConnectionAlert];
+- (IBAction)saveButtonClick:(id)sender {
+    if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
+        [self createAlert];
     } else {
-         NSLog(@"There IS internet connection");
-        [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+        [self savePerson];
+        [self checkNetworkReachability];
     }
+}
+
+-(void) savePerson {
+    [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date andEndDate:nil]];
 }
 
 -(void) dateTextField:(id)sender {
@@ -59,22 +57,28 @@
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
+}
+
 -(BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.nameInput resignFirstResponder];
     return YES;
 }
-
-- (IBAction)saveButtonClick:(id)sender {
-    if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
-        [self createAlert];
-    } else {
-        [self savePerson];
-        [self checkNetworkReachability];
-    }
-}
 - (void)interstitialDidDismiss {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void) checkNetworkReachability {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    (networkStatus == NotReachable) ? [self createInternetConnectionAlert] : [self showFullscreenAd];
+}
+
+- (void) showFullscreenAd {
+    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+}
+
 - (void) createInternetConnectionAlert {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
                                                                    message:@"Нет интернета"
@@ -85,9 +89,7 @@
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
 }
--(void) savePerson {
-    [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date andEndDate:nil]];
-}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

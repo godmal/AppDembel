@@ -59,7 +59,6 @@
     UIDatePicker *editPicker = (UIDatePicker*)self.endDateInput.inputView;
     _person.date = picker.date;
     _person.endDate = editPicker.date;
-    
     if ([DateUtils getDaysBetween:_person.date and:_person.endDate] < 365) {
             NSDateComponents *components = [[NSDateComponents alloc] init];
             [components setYear:1];
@@ -68,7 +67,6 @@
             self.endDateInput.text = [NSString stringWithFormat:@"%@",endDateString];
             [editPicker setDate:_person.endDate];
     }
-    
     NSString* dateString = [[DateUtils getFormatter] stringFromDate:_person.date];
     self.dateInput.text = [NSString stringWithFormat:@"%@",dateString];
     NSString* endDateString = [[DateUtils getFormatter] stringFromDate:_person.endDate];
@@ -81,13 +79,13 @@
 }
 
 - (IBAction)saveButton:(id)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0) {
         [self createAlert];
     } else {
         Person* updatedPerson = [[Person alloc] initWithName:self.nameInput.text andDate:_person.date andEndDate:_person.endDate];
         [self.model updatePersonBy:self.index with:updatedPerson];
         [self dismissViewControllerAnimated:YES completion:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
     }
 }
 

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 #import "MBCircularProgressBarView.h"
-#import "HMSideMenu.h"
 #import "THLabel.h"
 #import <MGInstagram/MGInstagram.h>
 
@@ -17,7 +16,6 @@
 
 @property (assign, nonatomic) NSUInteger index;
 @property (assign, nonatomic) BOOL qwerty;
-@property (nonatomic, strong) HMSideMenu *sideMenu;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
@@ -31,4 +29,7 @@
 @property (weak, nonatomic) IBOutlet THLabel *leftDaysLabel;
 @property (weak, nonatomic) IBOutlet THLabel *servedDaysLabel;
 @property (nonatomic, strong) MGInstagram *instagram;
+
+- (IBAction)instaShare:(id)sender;
+
 @end

@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "VKSdk.h"
 #import <Appodeal/Appodeal.h>
-#import "HMSideMenu.h"
 
 @class People;
 @class Person;
@@ -31,6 +30,5 @@
               color:(UIColor*)color;
 - (void)saveImage: (UIImage*)image;
 - (UIImage*)loadImage;
-- (void) setIcon:(UIImage*) image for:(HMSideMenuItem*) item;
 
 @end

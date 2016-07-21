@@ -15,9 +15,6 @@
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
 #import "THLabel.h"
-#import "Reachability.h"
-
-static NSArray *SCOPE = nil;
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
 
@@ -28,64 +25,26 @@ static NSArray *SCOPE = nil;
     NSDictionary* _rightLabelData;
     NSDictionary* _leftLabelData;
 }
-#pragma mark lifecycle methods
+#pragma mark main methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Appodeal setInterstitialDelegate:self];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    self.sideMenu = [[HMSideMenu alloc] initWithItems:@[[self setInstaItem], [self setVkItem]]];
-    [self.sideMenu setItemSpacing:10.0f];
     self.imageView.image = [self loadImage];
-    [self observeEditViewStatus];
     [self setInitialPosition];
+    [self observeEditViewStatus];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
     _person = [self.model.people objectAtIndex:self.index];
-    if (![DateUtils isAfterNow:_person.date]) {
-        self.infoLabel.text = @"Детали службы";
-        [self show: self.progressBarPercent andHide: self.daysLeft];
-        [self show: self.detailsView];
-        [self configureDetailsView];
-    } else {
-        self.infoLabel.text = @"Осталось до службы:";
-        [self show: self.daysLeft andHide: self.progressBarPercent];
-        [self hide: self.detailsView];
-    }
+    (![DateUtils isAfterNow:_person.date]) ? [self setInArmyMode] : [self setBeforeArmyMode];
     [self setPersonDataText];
     [self setLabelsText];
 }
 
-//- (void) checkNetworkReachability {
-//    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
-//    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
-//    if (networkStatus == NotReachable) {
-//        NSLog(@"There IS NO internet connection");
-//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-//                                                                       message:@"Нет интернета"
-//                                                                preferredStyle:UIAlertControllerStyleAlert];
-//        UIAlertAction* action = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-//            [self interstitialDidDismiss];
-//        }];
-//        [alert addAction:action];
-//        [self presentViewController:alert animated:YES completion:nil];
-//    } else {
-//         NSLog(@"There IS internet connection");
-//        [self performSelector:@selector(showFullScreenAd) withObject: nil afterDelay: 1];
-//    }
-//}
-- (void)interstitialDidDismiss {
-    if ([DateUtils isAfterNow:_person.date]) {
-        [self setAnimationForCountDown];
-    } else {
-        [self setAnimationForProgressBar];
-        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
-        [self createPermission];
-    }
-}
 - (void) viewDidAppear:(BOOL)animated {
         if ([DateUtils isAfterNow:_person.date]) {
             [self setAnimationForCountDown];
@@ -95,22 +54,41 @@ static NSArray *SCOPE = nil;
             [self createPermission];
         }
 }
-- (void) showFullScreenAd {
-    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+
+- (void)interstitialDidDismiss {
+    if ([DateUtils isAfterNow:_person.date]) {
+        [self setAnimationForCountDown];
+    } else {
+        [self setAnimationForProgressBar];
+        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+        [self createPermission];
+    }
 }
-- (void) showSideMenu {
-    [self.sideMenu open];
-}
+
+
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     NSString* segueName = segue.identifier;
     [segueName isEqualToString:@"editSegue"];
     EditViewController* editView = (EditViewController*) [segue destinationViewController];
     editView.index = self.index;
-    [self.sideMenu removeFromSuperview];
 }
 
 #pragma mark configuration
 
+- (void) showFullScreenAd {
+    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+}
+- (void) setBeforeArmyMode {
+    self.infoLabel.text = @"Осталось до службы:";
+    [self show: self.daysLeft andHide: self.progressBarPercent];
+    [self hide: self.detailsView];
+}
+- (void) setInArmyMode {
+    self.infoLabel.text = @"Детали службы";
+    [self show: self.progressBarPercent andHide: self.daysLeft];
+    [self show: self.detailsView];
+    [self configureDetailsView];
+}
 - (void) setLabelsText {
     NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel,  self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft, self.leftDaysLabel, self.servedDaysLabel];
     for (THLabel* label in array) {
@@ -161,7 +139,6 @@ static NSArray *SCOPE = nil;
         }
     }
 }
-
 - (void) createPermission {
     ClusterPrePermissions *permissions = [ClusterPrePermissions sharedPermissions];
     [permissions showPhotoPermissionsWithTitle:@"Разрешить доступ к фото?"
@@ -172,10 +149,9 @@ static NSArray *SCOPE = nil;
                                                  ClusterDialogResult userDialogResult,
                                                  ClusterDialogResult systemDialogResult) {
                                  if (hasPermission) {
-                                     [self.view addSubview:self.sideMenu];
-                                     [self performSelector:@selector(showSideMenu) withObject:nil afterDelay:2];
+                                     
                                  } else {
-                                     [self.sideMenu removeFromSuperview];
+                                     
                                  }
                              }];
 }
@@ -206,14 +182,10 @@ static NSArray *SCOPE = nil;
                             }
                      }];
 }
-
-- (HMSideMenuItem*) setInstaItem {
-    HMSideMenuItem *instaItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50, 50) action:^{
-        [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
-    }];
-    [self setIcon:[UIImage imageNamed:@"_insta"] for:instaItem];
-    return instaItem;
+- (IBAction)instaShare:(id)sender {
+    [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
 }
+
 - (void) manageInstagramShare {
     AudioServicesPlaySystemSound(1108);
     UIView* screenshotView = [[UIView alloc] initWithFrame:self.view.window.bounds];
@@ -230,23 +202,23 @@ static NSArray *SCOPE = nil;
          }];
 }
 
-- (HMSideMenuItem*) setVkItem {
-    HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
-        if (_qwerty) {
-            UIImage* screenshot = [self makeScreenshot];
-            VKShareDialogController *shareDialog = [VKShareDialogController new];
-            shareDialog.text = @"Отдаю долг Родине с приложением ПораДомой";
-            shareDialog.uploadImages = @[[VKUploadImage uploadImageWithImage:screenshot andParams:[VKImageParameters jpegImageWithQuality:1.0]]];
-            [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
-                [self dismissViewControllerAnimated:YES completion:nil];
-            }];
-            [self presentViewController:shareDialog animated:YES completion:nil];
-        } else
-            [VKSdk authorize:SCOPE];
-    }];
-    [self setIcon:[UIImage imageNamed:@"_vk"] for:vkItem];
-    return vkItem;
-}
+//- (HMSideMenuItem*) setVkItem {
+//    HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
+//        if (_qwerty) {
+//            UIImage* screenshot = [self makeScreenshot];
+//            VKShareDialogController *shareDialog = [VKShareDialogController new];
+//            shareDialog.text = @"Отдаю долг Родине с приложением ПораДомой";
+//            shareDialog.uploadImages = @[[VKUploadImage uploadImageWithImage:screenshot andParams:[VKImageParameters jpegImageWithQuality:1.0]]];
+//            [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
+//                [self dismissViewControllerAnimated:YES completion:nil];
+//            }];
+//            [self presentViewController:shareDialog animated:YES completion:nil];
+//        } else
+//            [VKSdk authorize:SCOPE];
+//    }];
+//    [self setIcon:[UIImage imageNamed:@"_vk"] for:vkItem];
+//    return vkItem;
+//}
 
 #pragma mark vkSdk methods
 
@@ -274,4 +246,5 @@ static NSArray *SCOPE = nil;
 - (void) dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
+
 @end

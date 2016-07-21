@@ -11,7 +11,6 @@ target 'AppDembel' do
     pod ‘MBCircularProgressBar’
     pod 'MGSwipeTableCell’
     pod ‘Underscore.m’
-    pod ‘HMSideMenu’
     pod ‘VK-ios-sdk’ 
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'

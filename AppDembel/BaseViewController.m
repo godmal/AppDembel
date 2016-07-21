@@ -51,8 +51,6 @@
     self.model = [[People alloc] initWithStore:store];
 }
 
-
-
 -(void) createAlert {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Введи данные" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Так точно!" style:UIAlertActionStyleDefault handler:nil];
@@ -72,12 +70,6 @@
     UIAlertAction* action = [UIAlertAction actionWithTitle:@"Понял" style:UIAlertActionStyleDefault handler:nil];
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
-}
-
-- (void) setIcon:(UIImage*) image for:(HMSideMenuItem*) item {
-    UIImageView *icon = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    [icon setImage:image];
-    [item addSubview:icon];
 }
 
 -(UIImage*) makeScreenshot {
