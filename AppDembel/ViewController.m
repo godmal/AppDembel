@@ -60,6 +60,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segue"]) {
+        [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.index = indexPath.row;

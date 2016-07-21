@@ -15,6 +15,7 @@
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
 #import "THLabel.h"
+#import "Reachability.h"
 
 static NSArray *SCOPE = nil;
 
@@ -36,29 +37,47 @@ static NSArray *SCOPE = nil;
     self.sideMenu = [[HMSideMenu alloc] initWithItems:@[[self setInstaItem], [self setVkItem]]];
     [self.sideMenu setItemSpacing:10.0f];
     self.imageView.image = [self loadImage];
-    [self setInitialPosition];
     [self observeEditViewStatus];
+    [self setInitialPosition];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
-    [NSTimer scheduledTimerWithTimeInterval:0.5f target:self selector:@selector(showFullScreenAd) userInfo:nil repeats:NO];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
     _person = [self.model.people objectAtIndex:self.index];
-    [self setPersonDataText];
-    if ([DateUtils isAfterNow:_person.date]) {
-        self.infoLabel.text = @"Осталось до службы:";
-        [self show: self.daysLeft andHide: self.progressBarPercent];
-        [self hide: self.detailsView];
-    } else {
+    if (![DateUtils isAfterNow:_person.date]) {
         self.infoLabel.text = @"Детали службы";
         [self show: self.progressBarPercent andHide: self.daysLeft];
         [self show: self.detailsView];
         [self configureDetailsView];
+    } else {
+        self.infoLabel.text = @"Осталось до службы:";
+        [self show: self.daysLeft andHide: self.progressBarPercent];
+        [self hide: self.detailsView];
     }
+    [self setPersonDataText];
+    [self setLabelsText];
 }
 
-- (void) interstitialDidDismiss {
-    NSLog(@"interstitial has been closed or dismissed");
+//- (void) checkNetworkReachability {
+//    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+//    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+//    if (networkStatus == NotReachable) {
+//        NSLog(@"There IS NO internet connection");
+//        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+//                                                                       message:@"Нет интернета"
+//                                                                preferredStyle:UIAlertControllerStyleAlert];
+//        UIAlertAction* action = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+//            [self interstitialDidDismiss];
+//        }];
+//        [alert addAction:action];
+//        [self presentViewController:alert animated:YES completion:nil];
+//    } else {
+//         NSLog(@"There IS internet connection");
+//        [self performSelector:@selector(showFullScreenAd) withObject: nil afterDelay: 1];
+//    }
+//}
+- (void)interstitialDidDismiss {
     if ([DateUtils isAfterNow:_person.date]) {
         [self setAnimationForCountDown];
     } else {
@@ -67,7 +86,15 @@ static NSArray *SCOPE = nil;
         [self createPermission];
     }
 }
-
+- (void) viewDidAppear:(BOOL)animated {
+        if ([DateUtils isAfterNow:_person.date]) {
+            [self setAnimationForCountDown];
+        } else {
+            [self setAnimationForProgressBar];
+            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+            [self createPermission];
+        }
+}
 - (void) showFullScreenAd {
     [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
 }
@@ -85,7 +112,7 @@ static NSArray *SCOPE = nil;
 #pragma mark configuration
 
 - (void) setLabelsText {
-    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel,  self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft];
+    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel,  self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft, self.leftDaysLabel, self.servedDaysLabel];
     for (THLabel* label in array) {
         label.strokeSize = 1.0f;
         label.strokeColor = [UIColor blackColor];
@@ -116,7 +143,6 @@ static NSArray *SCOPE = nil;
 - (void) configureDetailsView {
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
     _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
-    [self setLabelsText];
 }
 - (void)updateCounter:(NSTimer *)tmr {
     NSTimeInterval timer = [[DateUtils configureCountDownWithDate:_person.date] timeIntervalSinceNow];
@@ -159,7 +185,7 @@ static NSArray *SCOPE = nil;
     NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
     for (UIView* view in array) {
         [self hide:view];
-        view.frame = CGRectMake(-300, view.frame.origin.y +10, view.frame.size.width, view.frame.size.height);
+        view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 - (void) setAnimationForCountDown {
@@ -167,7 +193,7 @@ static NSArray *SCOPE = nil;
     [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in array) {
                              [self show:view];
-                             view.center = CGPointMake(self.view.frame.size.width / 2, view.frame.origin.y);
+                             view.center = CGPointMake(self.view.frame.size.width / 2, view.center.y);
                          }
                      }];
 }
@@ -175,8 +201,8 @@ static NSArray *SCOPE = nil;
     NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
     [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in array) {
-                             [self hide:view];
-                             view.center = CGPointMake(self.view.frame.size.width / 4.4, view.frame.origin.y);
+                             [self show:view];
+                             view.center = CGPointMake(self.view.frame.size.width / 4.4, view.center.y);
                             }
                      }];
 }

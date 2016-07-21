@@ -10,8 +10,9 @@
 #import "People.h"
 #import "Person.h"
 #import "DateUtils.h"
+#import "Reachability.h"
 
-@interface AddViewController ()
+@interface AddViewController () <AppodealInterstitialDelegate>
 
 @end
 
@@ -29,17 +30,26 @@
     datePicker.datePickerMode = UIDatePickerModeDate;
     [datePicker addTarget:self action:@selector(dateTextField:) forControlEvents:UIControlEventValueChanged];
     [self.dateInput setInputView:datePicker];
-    [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(showFullScreenAd) userInfo:nil repeats:NO];
+    [Appodeal setInterstitialDelegate:self];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
-- (void) showFullScreenAd {
-    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
-}
+
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.view endEditing:YES];
+}
+- (void) checkNetworkReachability {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (networkStatus == NotReachable) {
+        NSLog(@"There IS NO internet connection");
+        [self createInternetConnectionAlert];
+    } else {
+         NSLog(@"There IS internet connection");
+        [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+    }
 }
 
 -(void) dateTextField:(id)sender {
@@ -59,14 +69,25 @@
         [self createAlert];
     } else {
         [self savePerson];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self checkNetworkReachability];
     }
 }
-
+- (void)interstitialDidDismiss {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (void) createInternetConnectionAlert {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
+                                                                   message:@"Нет интернета"
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self interstitialDidDismiss];
+    }];
+    [alert addAction:action];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 -(void) savePerson {
     [self.model add:[[Person alloc] initWithName:self.nameInput.text andDate:_date andEndDate:nil]];
 }
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
