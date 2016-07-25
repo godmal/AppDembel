@@ -10,7 +10,7 @@
 #import "People.h"
 #import "DetailViewController.h"
 #import "MGSwipeTableCell.h"
-#import <MessageUI/MessageUI.h>
+#import "Reachability.h"
 
 @interface ViewController ()
 
@@ -61,13 +61,19 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"segue"]) {
-        [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+        [self checkNetworkReachability];
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.index = indexPath.row;
     }
 }
-
+- (void) checkNetworkReachability {
+    Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
+    NetworkStatus networkStatus = [networkReachability currentReachabilityStatus];
+    if (!(networkStatus == NotReachable)) {
+        [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
+    }
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }

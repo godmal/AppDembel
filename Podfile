@@ -15,7 +15,6 @@ target 'AppDembel' do
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
     pod 'Appodeal’
-    pod 'THLabel', '~> 1.4'
     pod 'MGInstagram', ‘~> 0.1.0’
 end
 

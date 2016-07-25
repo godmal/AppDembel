@@ -14,7 +14,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
-#import "THLabel.h"
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
 
@@ -24,6 +23,7 @@
     Person* _person;
     NSDictionary* _rightLabelData;
     NSDictionary* _leftLabelData;
+    NSArray* _labelArray;
 }
 #pragma mark main methods
 
@@ -35,6 +35,7 @@
     [self setInitialPosition];
     [self observeEditViewStatus];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    [self performSelector:@selector(createPermission) withObject:nil afterDelay:5];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -51,7 +52,6 @@
         } else {
             [self setAnimationForProgressBar];
             [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
-            [self createPermission];
         }
 }
 
@@ -61,23 +61,18 @@
     } else {
         [self setAnimationForProgressBar];
         [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
-        [self createPermission];
     }
 }
 
-
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    NSString* segueName = segue.identifier;
-    [segueName isEqualToString:@"editSegue"];
-    EditViewController* editView = (EditViewController*) [segue destinationViewController];
-    editView.index = self.index;
+    if ([segue.identifier isEqualToString:@"editSegue"]) {
+        EditViewController* editView = (EditViewController*) [segue destinationViewController];
+        editView.index = self.index;
+    }
 }
 
 #pragma mark configuration
 
-- (void) showFullScreenAd {
-    [Appodeal showAd:AppodealShowStyleInterstitial rootViewController:self];
-}
 - (void) setBeforeArmyMode {
     self.infoLabel.text = @"Осталось до службы:";
     [self show: self.daysLeft andHide: self.progressBarPercent];
@@ -90,11 +85,6 @@
     [self configureDetailsView];
 }
 - (void) setLabelsText {
-    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel,  self.leftLabel, self.rightLabel, self.infoLabel, self.daysLeft, self.leftDaysLabel, self.servedDaysLabel];
-    for (THLabel* label in array) {
-        label.strokeSize = 1.0f;
-        label.strokeColor = [UIColor blackColor];
-    }
     self.rightLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
                             [_rightLabelData objectForKey:@"months"],
                             [_rightLabelData objectForKey:@"weeks"],
@@ -158,25 +148,25 @@
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
-    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
-    for (UIView* view in array) {
+   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    for (UIView* view in _labelArray) {
         [self hide:view];
         view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 - (void) setAnimationForCountDown {
-    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
-    [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
-                         for (UIView* view in array) {
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
+                         for (UIView* view in _labelArray) {
                              [self show:view];
                              view.center = CGPointMake(self.view.frame.size.width / 2, view.center.y);
                          }
                      }];
 }
 - (void) setAnimationForProgressBar {
-    NSArray* array = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
-    [UIView mt_animateWithViews:array duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
-                         for (UIView* view in array) {
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
+                         for (UIView* view in _labelArray) {
                              [self show:view];
                              view.center = CGPointMake(self.view.frame.size.width / 4.4, view.center.y);
                             }

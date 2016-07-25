@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
 
-@interface ViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
+@interface ViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-//- (IBAction)changeBack:(id)sender;
 
 @end

@@ -17,6 +17,5 @@
 @property (weak, nonatomic) IBOutlet UIButton *saveButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 
-- (IBAction)saveButtonClick:(id)sender;
 
 @end

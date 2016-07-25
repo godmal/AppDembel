@@ -37,7 +37,7 @@
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
-- (IBAction)saveButtonClick:(id)sender {
+- (IBAction)saveButton:(id)sender {
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
         [self createAlert];
     } else {
