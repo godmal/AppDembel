@@ -21,7 +21,7 @@
     [Appodeal setInterstitialDelegate:self];
     self.imageView.image = [self loadImage];
     [self roundMyView:_backButton borderRadius:15.0f borderWidth:0.0f color:nil];
-    self.aboutLabel.text = @"О приложении:\nПораДомой помогает легко следить за прогрессом службы, рассказать о нелёгких армейских буднях друзьям в социальных сетях и не позволит пропустить дембель своего друга, брата или молодого человека. В облегченной версии:\n - фон изменить нельзя;\n - назойливая реклама;\n - добавление одного бойца.";
+    self.aboutLabel.text = @"В облегченной версии:\n - фон изменить нельзя;\n - назойливая реклама;\n - добавление одного бойца.";
     NSArray *buttonsArray = @[self.firstButton, self.secondButton, self.thirdButton];
     for (UIButton* button in buttonsArray) {
         button.layer.borderColor = [UIColor whiteColor].CGColor;

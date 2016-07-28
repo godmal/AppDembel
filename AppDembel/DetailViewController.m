@@ -12,7 +12,6 @@
 #import "EditViewController.h"
 #import "Person.h"
 #import <AVFoundation/AVFoundation.h>
-#import <ClusterPrePermissions/ClusterPrePermissions.h>
 #import "UIView+MTAnimation.h"
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
@@ -35,7 +34,6 @@
     [self setInitialPosition];
     [self observeEditViewStatus];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
-    [self performSelector:@selector(createPermission) withObject:nil afterDelay:5];
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -71,6 +69,9 @@
     }
 }
 
+- (IBAction)instaShare:(id)sender {
+    [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
+}
 #pragma mark configuration
 
 - (void) setBeforeArmyMode {
@@ -129,22 +130,13 @@
         }
     }
 }
-- (void) createPermission {
-    ClusterPrePermissions *permissions = [ClusterPrePermissions sharedPermissions];
-    [permissions showPhotoPermissionsWithTitle:@"Разрешить доступ к фото?"
-                                       message:@"Без доступа не сможешь поделиться результатами с друзьями."
-                               denyButtonTitle:@"Не хочу делиться"
-                              grantButtonTitle:@"Разрешить!"
-                             completionHandler:^(BOOL hasPermission,
-                                                 ClusterDialogResult userDialogResult,
-                                                 ClusterDialogResult systemDialogResult) {
-                                 if (hasPermission) {
-                                     
-                                 } else {
-                                     
-                                 }
-                             }];
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
+- (void) dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
@@ -171,9 +163,6 @@
                              view.center = CGPointMake(self.view.frame.size.width / 4.4, view.center.y);
                             }
                      }];
-}
-- (IBAction)instaShare:(id)sender {
-    [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
 }
 
 - (void) manageInstagramShare {
@@ -229,12 +218,6 @@
 - (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
     [self.navigationController.topViewController presentViewController:controller animated:YES completion:nil];
-}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-- (void) dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 @end

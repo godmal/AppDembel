@@ -11,6 +11,7 @@
 #import "DetailViewController.h"
 #import "MGSwipeTableCell.h"
 #import "Reachability.h"
+#import <ClusterPrePermissions/ClusterPrePermissions.h>
 
 @interface ViewController ()
 
@@ -28,6 +29,7 @@
     [self roundMyView:_tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init];
     self.imageView.image = [self loadImage];
+    [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
@@ -66,6 +68,22 @@
         DetailViewController *destViewController = segue.destinationViewController;
         destViewController.index = indexPath.row;
     }
+}
+- (void) createPermission {
+    ClusterPrePermissions *permissions = [ClusterPrePermissions sharedPermissions];
+    [permissions showPhotoPermissionsWithTitle:@"Разрешить доступ к фото?"
+                                       message:@"Без доступа не сможешь поделиться результатами с друзьями."
+                               denyButtonTitle:@"Не хочу делиться"
+                              grantButtonTitle:@"Разрешить!"
+                             completionHandler:^(BOOL hasPermission,
+                                                 ClusterDialogResult userDialogResult,
+                                                 ClusterDialogResult systemDialogResult) {
+                                 if (hasPermission) {
+                                     
+                                 } else {
+                                     
+                                 }
+                             }];
 }
 - (void) checkNetworkReachability {
     Reachability *networkReachability = [Reachability reachabilityForInternetConnection];
