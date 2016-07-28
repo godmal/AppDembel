@@ -80,10 +80,10 @@
 }
 
 - (void) createInternetConnectionAlert {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка"
-                                                                   message:@"Нет интернета"
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Где твой интернет, боец?!"
+                                                                   message:nil
                                                             preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* action = [UIAlertAction actionWithTitle:@"Ясно" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    UIAlertAction* action = [UIAlertAction actionWithTitle:@"Сейчас будет!" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self interstitialDidDismiss];
     }];
     [alert addAction:action];
