@@ -28,12 +28,12 @@
     [self roundMyView:_addButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self roundMyView:_tableView borderRadius:15.0f borderWidth:0.0f color:nil];
     self.tableView.tableFooterView = [[UIView alloc] init];
-    self.imageView.image = [self loadImage];
     [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
 }
 
 -(void) viewWillAppear:(BOOL)animated {
     [self.tableView reloadData];
+    self.imageView.image = [self loadImage];
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
 
@@ -96,4 +96,9 @@
     [super didReceiveMemoryWarning];
 }
 
+- (IBAction)buttonClick:(id)sender {
+    if (self.model.people.count == 1) {
+        [self createAddAlert];
+    }
+}
 @end

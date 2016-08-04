@@ -14,14 +14,16 @@
 
 @end
 
-@implementation SettingsViewController
+@implementation SettingsViewController  {
+    UIImagePickerController* imagePicker;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [Appodeal setInterstitialDelegate:self];
     self.imageView.image = [self loadImage];
     [self roundMyView:_backButton borderRadius:15.0f borderWidth:0.0f color:nil];
-    self.aboutLabel.text = @"В облегченной версии:\n - фон изменить нельзя;\n - назойливая реклама;\n - добавление одного бойца.";
+    self.aboutLabel.text = @"В облегченной версии:\n - функция смены фона;\n - назойливая реклама;\n - добавление одного бойца.";
     NSArray *buttonsArray = @[self.firstButton, self.secondButton, self.thirdButton];
     for (UIButton* button in buttonsArray) {
         button.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -34,11 +36,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)interstitialDidDismiss {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ты не новобранец, а матёрый дед? Купи полную версию!" message:@"В полной версии нет рекламы и есть дополнительные функции" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ты не новобранец, а матёрый дед? Скачай полную версию!" message:@"В полной версии нет рекламы и есть дополнительные функции" preferredStyle:UIAlertControllerStyleAlert];
     UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Не хочу" style:UIAlertActionStyleDefault handler:nil];
     UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Обновить!" style:UIAlertActionStyleDefault
                                                handler:^(UIAlertAction * action) {
-                                                   NSLog(@"Идем в AppStore");
+                                                   NSString *iTunesLink = @"https://itunes.apple.com/ru/app/poradomoj-dla-materyh-dedov/id1137886216?mt=8";
+                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
                                                }];
     [alert addAction:cancel];
     [alert addAction:ok];
@@ -67,15 +70,18 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 - (IBAction)changeBack:(id)sender {
-        UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ошибка" message:@"Функция недоступна в этой версии. Обновить?" preferredStyle:UIAlertControllerStyleAlert];
-        UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Не хочу" style:UIAlertActionStyleDefault handler:nil];
-        UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Обновить!" style:UIAlertActionStyleDefault
-                                                       handler:^(UIAlertAction * action) {
-                                                           NSLog(@"Идем в AppStore");
-                                                       }];
-        [alert addAction:cancel];
-        [alert addAction:ok];
-        [self presentViewController:alert animated:YES completion:nil];
+    imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    NSData *dataImage = UIImageJPEGRepresentation([info objectForKey:@"UIImagePickerControllerOriginalImage"],1);
+    UIImage *img = [[UIImage alloc] initWithData:dataImage];
+    [self saveImage:img];
+    [self.imageView setImage:img];
+    [imagePicker dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sendEmail:(id)sender {
@@ -92,7 +98,6 @@
 
 - (IBAction)upgradeButton:(id)sender {
     [self checkNetworkReachability];
-    
 }
 
 - (void) mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {

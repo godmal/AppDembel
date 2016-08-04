@@ -111,6 +111,7 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="buttonClick:" destination="XDu-oY-leg" eventType="touchUpInside" id="oLI-3w-K7u"/>
                                     <action selector="saveButton:" destination="LaT-5X-UEi" eventType="touchUpInside" id="zuj-Pp-TA0"/>
                                     <segue destination="uGm-Rg-Wx4" kind="modal" id="NBX-8c-lVN"/>
                                 </connections>
@@ -387,7 +388,7 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="zo2-Ej-7Kr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CGM-qf-tjA" customClass="StrokeLabel">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="375"/>

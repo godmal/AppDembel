@@ -20,6 +20,7 @@
 
 -(void) createAlert;
 -(void) createInstagramAlert;
+- (void) createAddAlert;
 -(UIImage*) makeScreenshot;
 -(void) show:(UIView*) view;
 -(void) hide:(UIView*) view;

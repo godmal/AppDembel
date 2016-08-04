@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+- (IBAction)buttonClick:(id)sender;
 
 @end

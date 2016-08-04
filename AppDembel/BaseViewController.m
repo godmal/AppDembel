@@ -71,6 +71,18 @@
     [alert addAction:action];
     [self presentViewController:alert animated:YES completion:nil];
 }
+- (void) createAddAlert {
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ты не новобранец, а матёрый дед? Скачай полную версию!" message:@"В этой версии можно добавить только одного бойца." preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Не хочу" style:UIAlertActionStyleDefault handler:nil];
+    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Обновить!" style:UIAlertActionStyleDefault
+                                               handler:^(UIAlertAction * action) {
+                                                   NSString *iTunesLink = @"https://itunes.apple.com/ru/app/poradomoj-dla-materyh-dedov/id1137886216?mt=8";
+                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
+                                               }];
+    [alert addAction:cancel];
+    [alert addAction:ok];
+    [self presentViewController:alert animated:YES completion:nil];
+}
 
 -(UIImage*) makeScreenshot {
     CALayer *layer = [[UIApplication sharedApplication] keyWindow].layer;

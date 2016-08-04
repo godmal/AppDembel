@@ -8,7 +8,7 @@
 
 #import "BaseViewController.h"
 
-@interface SettingsViewController : BaseViewController 
+@interface SettingsViewController : BaseViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UILabel *aboutLabel;
