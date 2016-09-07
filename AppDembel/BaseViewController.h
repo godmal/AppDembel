@@ -13,7 +13,7 @@
 @class People;
 @class Person;
 
-@interface BaseViewController : UIViewController 
+@interface BaseViewController : UIViewController
 
 @property (strong, nonatomic) People* model;
 @property (strong, nonatomic) Person* person;
