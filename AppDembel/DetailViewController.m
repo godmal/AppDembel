@@ -69,6 +69,12 @@
     }
 }
 
+-(void) alalala {
+    NSLog(@"alalallala");
+    int a = 0;
+    NSLog(@"%i", a);
+}
+
 - (IBAction)instaShare:(id)sender {
     [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
 }

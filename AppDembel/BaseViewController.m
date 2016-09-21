@@ -122,9 +122,7 @@
     }
 }
 
-- (void) alalal {
-    NSLog(@"alalalla");
-}
+
 
 - (UIImage*)loadImage {
     return [UIImage imageWithContentsOfFile:[self getPathWithImage]];
