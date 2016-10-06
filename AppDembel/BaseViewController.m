@@ -10,6 +10,7 @@
 #import "PeopleStore.h"
 #import "People.h"
 #import <QuartzCore/QuartzCore.h>
+#import <ClusterPrePermissions/ClusterPrePermissions.h>
 
 @interface BaseViewController ()
 
@@ -40,6 +41,9 @@
                                                  name: @"appStateChanged"
                                                object: nil];
 }
+
+
+
 
 -(void) setViewState {
     [self configureModel];
@@ -122,7 +126,22 @@
     }
 }
 
-
+- (void) createPermission {
+    ClusterPrePermissions *permissions = [ClusterPrePermissions sharedPermissions];
+    [permissions showPhotoPermissionsWithTitle:@"Разрешить доступ к фото?"
+                                       message:@"Без доступа не сможешь поделиться результатами с друзьями."
+                               denyButtonTitle:@"Не хочу делиться"
+                              grantButtonTitle:@"Разрешить!"
+                             completionHandler:^(BOOL hasPermission,
+                                                 ClusterDialogResult userDialogResult,
+                                                 ClusterDialogResult systemDialogResult) {
+                                 if (hasPermission) {
+                                     
+                                 } else {
+                                     
+                                 }
+                             }];
+}
 
 - (UIImage*)loadImage {
     return [UIImage imageWithContentsOfFile:[self getPathWithImage]];

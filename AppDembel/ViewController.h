@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "BaseViewController.h"
+#import "RNGridMenu.h"
 
-@interface ViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ViewController : BaseViewController <UITableViewDelegate, UITableViewDataSource, RNGridMenuDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UIButton *addButton;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
-- (IBAction)buttonClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *menuButton;
+- (IBAction)showMenu:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UILabel *label;
+
+
 
 @end

@@ -29,7 +29,6 @@
         button.layer.borderColor = [UIColor whiteColor].CGColor;
         button.layer.borderWidth = 1.0;
     }
-
 }
 
 - (IBAction)backButton:(id)sender {

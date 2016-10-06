@@ -14,7 +14,9 @@ target 'AppDembel' do
     pod ‘VK-ios-sdk’ 
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
-    pod 'Appodeal’
     pod 'MGInstagram', ‘~> 0.1.0’
+    pod 'HMSideMenu’
+    pod 'Appodeal', '~> 1.2’
+    pod ‘RNGridMenu’
 end
 

@@ -18,6 +18,7 @@
 @property (strong, nonatomic) People* model;
 @property (strong, nonatomic) Person* person;
 
+- (void) createPermission;
 -(void) createAlert;
 -(void) createInstagramAlert;
 - (void) createAddAlert;

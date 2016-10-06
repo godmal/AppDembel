@@ -24,6 +24,7 @@
     NSDictionary* _leftLabelData;
     NSArray* _labelArray;
 }
+
 #pragma mark main methods
 
 - (void)viewDidLoad {
@@ -49,7 +50,7 @@
             [self setAnimationForCountDown];
         } else {
             [self setAnimationForProgressBar];
-            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1.3];
         }
 }
 
@@ -58,7 +59,7 @@
         [self setAnimationForCountDown];
     } else {
         [self setAnimationForProgressBar];
-        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1];
+        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1.3];
     }
 }
 
@@ -67,12 +68,6 @@
         EditViewController* editView = (EditViewController*) [segue destinationViewController];
         editView.index = self.index;
     }
-}
-
--(void) alalala {
-    NSLog(@"alalallala");
-    int a = 0;
-    NSLog(@"%i", a);
 }
 
 - (IBAction)instaShare:(id)sender {
@@ -186,24 +181,6 @@
         [self.instagram postImage:[self makeScreenshot] inView:self.view];
          }];
 }
-
-//- (HMSideMenuItem*) setVkItem {
-//    HMSideMenuItem *vkItem = [[HMSideMenuItem alloc] initWithSize:CGSizeMake(50 , 50) action:^{
-//        if (_qwerty) {
-//            UIImage* screenshot = [self makeScreenshot];
-//            VKShareDialogController *shareDialog = [VKShareDialogController new];
-//            shareDialog.text = @"Отдаю долг Родине с приложением ПораДомой";
-//            shareDialog.uploadImages = @[[VKUploadImage uploadImageWithImage:screenshot andParams:[VKImageParameters jpegImageWithQuality:1.0]]];
-//            [shareDialog setCompletionHandler:^(VKShareDialogController *dialog, VKShareDialogControllerResult result) {
-//                [self dismissViewControllerAnimated:YES completion:nil];
-//            }];
-//            [self presentViewController:shareDialog animated:YES completion:nil];
-//        } else
-//            [VKSdk authorize:SCOPE];
-//    }];
-//    [self setIcon:[UIImage imageNamed:@"_vk"] for:vkItem];
-//    return vkItem;
-//}
 
 #pragma mark vkSdk methods
 
