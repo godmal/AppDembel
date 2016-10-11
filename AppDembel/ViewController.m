@@ -29,16 +29,12 @@
     [super viewDidLoad];
     [self roundMyView:_menuButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
-    self.tableView.separatorColor = [UIColor clearColor];
-//    self.label.layer.borderColor = [UIColor whiteColor].CGColor;
-//    self.label.layer.borderWidth = 1.0;
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
 }
 
 - (void) showQuotation {
     NSUInteger randomIndex = arc4random() % [[Quotations getArray]  count];
     self.label.text = [[Quotations getArray] objectAtIndex:randomIndex];
-    NSLog(@"%lu", (unsigned long)[[Quotations getArray]  count]);
 }
 
 - (void)showGrid {
@@ -60,6 +56,7 @@
     self.imageView.image = [self loadImage];
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
     self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.contentSize.height);
+    [NSTimer scheduledTimerWithTimeInterval:4.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
 }
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

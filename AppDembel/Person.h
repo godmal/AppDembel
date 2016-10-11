@@ -21,5 +21,6 @@
 -(NSDate*)calculateEndDate;
 -(float) calculatePercentProgress;
 -(float) calculateLeftDays;
+-(float) calculateProgressDays;
 
 @end

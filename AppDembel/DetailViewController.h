@@ -25,8 +25,11 @@
 @property (weak, nonatomic) IBOutlet MBCircularProgressBarView *progressBarPercent;
 @property (weak, nonatomic) IBOutlet UIView *detailsView;
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIView *view1;
 @property (nonatomic, strong) MGInstagram *instagram;
 
 - (IBAction)instaShare:(id)sender;
+- (IBAction)infoButton:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *infoBTN;
 
 @end

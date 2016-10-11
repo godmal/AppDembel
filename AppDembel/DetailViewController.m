@@ -14,7 +14,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+MTAnimation.h"
 
+
+@import AMPopTip;
+
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
+@property (nonatomic, strong) AMPopTip *popTip;
 
 @end
 
@@ -35,6 +39,8 @@
     [self setInitialPosition];
     [self observeEditViewStatus];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+
+
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -72,29 +78,47 @@
 
 - (IBAction)instaShare:(id)sender {
     [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
+    
+}
+
+- (IBAction)infoButton:(UIButton *)sender {
+    self.popTip = [AMPopTip popTip];
+//    [self.popTip showText:[NSString stringWithFormat:@"Дата призыва: %@ \n Дата дембеля: %@ ", [DateUtils convertDateToString:_person.date], [DateUtils convertDateToString: _person.endDate]] direction:AMPopTipDirectionUp maxWidth:200 inView:self.view fromFrame:self.view1.frame];
+    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 3)];
+
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    label.numberOfLines = 0;
+    label.text = @"Showing a custom view!";
+    label.textAlignment = NSTextAlignmentCenter;
+    label.textColor = [UIColor whiteColor];
+    label.font = [UIFont systemFontOfSize:12];
+    [customView addSubview:label];
+    self.popTip.popoverColor = [UIColor colorWithRed:0.95 green:0.65 blue:0.21 alpha:1];
+    [self.popTip showCustomView:customView direction:AMPopTipDirectionRight inView:self.view fromFrame:sender.frame];
+
 }
 #pragma mark configuration
 
 - (void) setBeforeArmyMode {
     self.infoLabel.text = @"Осталось до службы:";
-    [self show: self.daysLeft andHide: self.progressBarPercent];
-    [self hide: self.detailsView];
+    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent];
+    for (UIView* view in array) {
+        view.hidden = YES;
+    }
+    self.daysLeft.hidden = NO;
 }
 - (void) setInArmyMode {
     self.infoLabel.text = @"Детали службы";
-    [self show: self.progressBarPercent andHide: self.daysLeft];
-    [self show: self.detailsView];
+    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent];
+    for (UIView* view in array) {
+        view.hidden = NO;
+    }
+    self.daysLeft.hidden = YES;
     [self configureDetailsView];
 }
 - (void) setLabelsText {
-    self.rightLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
-                            [_rightLabelData objectForKey:@"months"],
-                            [_rightLabelData objectForKey:@"weeks"],
-                            [_rightLabelData objectForKey:@"days"]];
-    self.leftLabel.text = [NSString stringWithFormat:@"месяцы - %@  \nнедели - %@ \nдни - %@",
-                           [_leftLabelData objectForKey:@"months"],
-                           [_leftLabelData objectForKey:@"weeks"],
-                           [_leftLabelData objectForKey:@"days"]];
+    self.rightLabel.text = [NSString stringWithFormat:@"Осталось: \n\n\n %i дней", (int)[_person calculateLeftDays]];
+    self.leftLabel.text = [NSString stringWithFormat:@"Отслужил: \n\n\n %i дней", (int)[_person calculateProgressDays]];
 }
 - (void) observeEditViewStatus {
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -141,14 +165,14 @@
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
-   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
     for (UIView* view in _labelArray) {
         [self hide:view];
         view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 - (void) setAnimationForCountDown {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];
@@ -157,7 +181,7 @@
                      }];
 }
 - (void) setAnimationForProgressBar {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel];
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];

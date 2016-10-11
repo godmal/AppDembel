@@ -51,7 +51,11 @@
 }
 
 -(float) calculateLeftDays {
-    return [DateUtils getDaysBetween:[NSDate date] and:_endDate];
+    return [DateUtils getDaysBetween:[DateUtils now] and:_endDate];
+}
+
+-(float) calculateProgressDays {
+    return [DateUtils getDaysBetween:_date and:[DateUtils now]];
 }
 
 
