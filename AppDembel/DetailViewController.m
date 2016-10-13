@@ -13,12 +13,10 @@
 #import "Person.h"
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+MTAnimation.h"
-
-
-@import AMPopTip;
+#import "UIView+DCAnimationKit.h"
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
-@property (nonatomic, strong) AMPopTip *popTip;
+@property (nonatomic, strong) UIView* view1;
 
 @end
 
@@ -39,8 +37,6 @@
     [self setInitialPosition];
     [self observeEditViewStatus];
     [NSTimer scheduledTimerWithTimeInterval:0.0f target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
-
-
 }
 
 - (void) viewWillAppear:(BOOL)animated {
@@ -82,20 +78,29 @@
 }
 
 - (IBAction)infoButton:(UIButton *)sender {
-    self.popTip = [AMPopTip popTip];
-//    [self.popTip showText:[NSString stringWithFormat:@"Дата призыва: %@ \n Дата дембеля: %@ ", [DateUtils convertDateToString:_person.date], [DateUtils convertDateToString: _person.endDate]] direction:AMPopTipDirectionUp maxWidth:200 inView:self.view fromFrame:self.view1.frame];
-    UIView *customView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width / 2, self.view.frame.size.height / 3)];
+    self.view1 = [[UIView alloc] initWithFrame:CGRectMake(40, 165, 200, 100)];
+    self.view1.backgroundColor = [UIColor orangeColor];
+    [self.view addSubview:self.view1];
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [button addTarget:self
+               action:@selector(closeInfo)
+     forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Show View" forState:UIControlStateNormal];
+    button.frame = CGRectMake(0, 0, 50, 20);
+    [self.view1 addSubview:button];
+    [self.view1 expandIntoView:self.view finished:NULL];
+}
 
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
-    label.numberOfLines = 0;
-    label.text = @"Showing a custom view!";
-    label.textAlignment = NSTextAlignmentCenter;
-    label.textColor = [UIColor whiteColor];
-    label.font = [UIFont systemFontOfSize:12];
-    [customView addSubview:label];
-    self.popTip.popoverColor = [UIColor colorWithRed:0.95 green:0.65 blue:0.21 alpha:1];
-    [self.popTip showCustomView:customView direction:AMPopTipDirectionRight inView:self.view fromFrame:sender.frame];
+- (void) closeInfo {
+    [self.view1 drop:NULL];
+}
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
+    NSLog(@"touches began");
+    UITouch *touch = [touches anyObject];
+    if(touch.view!=self.view1){
+        [self.view1 drop:NULL];
+    }
 }
 #pragma mark configuration
 
@@ -165,14 +170,14 @@
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
-   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
+   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
     for (UIView* view in _labelArray) {
         [self hide:view];
         view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 - (void) setAnimationForCountDown {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];
@@ -181,7 +186,7 @@
                      }];
 }
 - (void) setAnimationForProgressBar {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.view1];
+    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];

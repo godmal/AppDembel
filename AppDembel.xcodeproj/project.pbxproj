@@ -704,8 +704,6 @@
 			children = (
 				5ABC5C321D46AA3D00AF3F83 /* Data */,
 				5ABC5C2E1D46A96500AF3F83 /* View */,
-				5ABC5C231D46A93400AF3F83 /* AppDelegate.h */,
-				5ABC5C241D46A93400AF3F83 /* AppDelegate.m */,
 				5ABC5C191D46A90800AF3F83 /* Model */,
 				5ABC5C031D46A8A700AF3F83 /* Controller */,
 				5AB8E5BD1C4F6A330062688E /* Supporting Files */,
@@ -716,6 +714,8 @@
 		5AB8E5BD1C4F6A330062688E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5ABC5C231D46A93400AF3F83 /* AppDelegate.h */,
+				5ABC5C241D46A93400AF3F83 /* AppDelegate.m */,
 				5A0D8E0D1D94299600C33DE6 /* Images */,
 				5A0D8D311D94207F00C33DE6 /* Adapters */,
 				5ABC5C331D46AA5700AF3F83 /* Reachability.h */,

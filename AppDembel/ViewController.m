@@ -29,7 +29,7 @@
     [super viewDidLoad];
     [self roundMyView:_menuButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
-        [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
+        [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:NO];
 }
 
 - (void) showQuotation {

@@ -15,10 +15,8 @@ target 'AppDembel' do
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
     pod 'MGInstagram', ‘~> 0.1.0’
-   #pod 'HMSideMenu’
     pod 'Appodeal', '~> 1.2’
     pod ‘RNGridMenu’
-    pod 'AMPopTip'
-    pod 'FastAnimationWithPOP'
+    pod ‘DCAnimationKit’
 end
 
