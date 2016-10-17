@@ -30,6 +30,7 @@
     [self roundMyView:_menuButton borderRadius:15.0f borderWidth:0.0f color:nil];
     [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
         [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:NO];
+    [self checkFirstLaunch];
 }
 
 - (void) showQuotation {
@@ -61,6 +62,12 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.model.people count];
+}
+
+- (void) checkFirstLaunch {
+    if (self.model.people.count > 0) {
+        self.firstLaunchView.hidden = YES;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {

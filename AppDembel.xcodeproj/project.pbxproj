@@ -68,6 +68,9 @@
 		5A3F005A1C74958A00054BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3F00591C74958A00054BDD /* QuartzCore.framework */; };
 		5A7B10ED1DA5121E008314E2 /* Quotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B10EC1DA5121E008314E2 /* Quotations.m */; };
 		5A948B211D475005003DC65A /* StrokeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A948B201D475005003DC65A /* StrokeLabel.m */; };
+		5A9DF4B11DAFD84E00D761EF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9DF4B01DAFD84E00D761EF /* Accelerate.framework */; };
+		5A9DF4B31DB4F1A500D761EF /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9DF4B21DB4F1A500D761EF /* arrow.png */; };
+		5A9DF4B91DB5265800D761EF /* 250.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A9DF4B81DB5265800D761EF /* 250.png */; };
 		5AB8E5BF1C4F6A330062688E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AB8E5BE1C4F6A330062688E /* main.m */; };
 		5AB8E5CA1C4F6A330062688E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5AB8E5C91C4F6A330062688E /* Assets.xcassets */; };
 		5AB8E5CD1C4F6A330062688E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5AB8E5CB1C4F6A330062688E /* LaunchScreen.storyboard */; };
@@ -242,6 +245,10 @@
 		5A9138F71CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		5A948B1F1D475005003DC65A /* StrokeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrokeLabel.h; sourceTree = "<group>"; };
 		5A948B201D475005003DC65A /* StrokeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StrokeLabel.m; sourceTree = "<group>"; };
+		5A9DF4AB1DAFD4C000D761EF /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		5A9DF4B01DAFD84E00D761EF /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		5A9DF4B21DB4F1A500D761EF /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		5A9DF4B81DB5265800D761EF /* 250.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 250.png; sourceTree = "<group>"; };
 		5AB8E5BA1C4F6A330062688E /* AppDembel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppDembel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AB8E5BE1C4F6A330062688E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		5AB8E5C91C4F6A330062688E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -292,6 +299,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9DF4B11DAFD84E00D761EF /* Accelerate.framework in Frameworks */,
 				5A0D8DD51D9420B300C33DE6 /* libAPDAmazonAdsAdapter.a in Frameworks */,
 				5A0D8DD71D9420B300C33DE6 /* libAppLovinSdk.a in Frameworks */,
 				5A0D8DE31D9420B300C33DE6 /* libAPDStartAppAdapter.a in Frameworks */,
@@ -660,6 +668,8 @@
 		5A0D8E0D1D94299600C33DE6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5A9DF4B81DB5265800D761EF /* 250.png */,
+				5A9DF4B21DB4F1A500D761EF /* arrow.png */,
 				5AE181FB1D9E7A6F0056DA18 /* cogwheel.png */,
 				5AE181FC1D9E7A6F0056DA18 /* error.png */,
 				5AE181FD1D9E7A6F0056DA18 /* interface.png */,
@@ -675,6 +685,8 @@
 		5A219D702AC92D478A1DA567 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A9DF4B01DAFD84E00D761EF /* Accelerate.framework */,
+				5A9DF4AB1DAFD4C000D761EF /* CoreImage.framework */,
 				B565447FBB713AE59A61D4A5 /* Pods_AppDembel.framework */,
 			);
 			name = Frameworks;
@@ -853,6 +865,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A9DF4B91DB5265800D761EF /* 250.png in Resources */,
 				5A0D8DE71D9420B300C33DE6 /* TapjoyResources.bundle in Resources */,
 				5A0D8DF21D9420B300C33DE6 /* MPDAAIcon@3x.png in Resources */,
 				5A0D8DEE1D9420B300C33DE6 /* MPCloseButtonX@2x.png in Resources */,
@@ -863,6 +876,7 @@
 				5A0D8E011D9420B300C33DE6 /* __vungle.db in Resources */,
 				5A0D8DF61D9420B300C33DE6 /* MPPlayBtn.png in Resources */,
 				5AE182021D9E7A6F0056DA18 /* plus.png in Resources */,
+				5A9DF4B31DB4F1A500D761EF /* arrow.png in Resources */,
 				5AE181FF1D9E7A6F0056DA18 /* cogwheel.png in Resources */,
 				5ABC5C371D46AAAA00AF3F83 /* Main.storyboard in Resources */,
 				5AE182001D9E7A6F0056DA18 /* error.png in Resources */,

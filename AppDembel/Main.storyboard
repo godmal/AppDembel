@@ -154,12 +154,30 @@
                                     <action selector="showMenu:" destination="XDu-oY-leg" eventType="touchUpInside" id="8wW-F9-pRc"/>
                                 </connections>
                             </button>
+                            <view alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="FlO-6L-DTv">
+                                <frame key="frameInset" minX="51.32%" minY="56.17%" width="244" height="155"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Добавить бойцов можно в меню" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="dhS-MY-2dY">
+                                        <frame key="frameInset" minX="50.00%" minY="9.30%" width="228" height="69"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="arrow.png" id="23w-8f-4RD">
+                                        <frame key="frameInset" minX="50.00%" minY="91.21%" width="64" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <view alpha="0.80000000000000004" contentMode="scaleToFill" misplaced="YES" id="gvi-tm-IOS">
                                 <frame key="frameInset" minX="4.69%" minY="7.57%" width="90.63%" height="26.23%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g1Y-sY-BcA">
-                                        <frame key="frameInset" minX="1.72%" minY="0.0%" width="96.90%" height="100.00%"/>
+                                        <frame key="frameInset" minX="2.07%" minY="0.0%" width="96.21%" height="100.00%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <nil key="textColor"/>
@@ -174,6 +192,7 @@
                         <nil key="title"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="firstLaunchView" destination="FlO-6L-DTv" id="zYB-sR-i5Y"/>
                         <outlet property="imageView" destination="vcE-m1-WnH" id="9WZ-BB-caj"/>
                         <outlet property="label" destination="g1Y-sY-BcA" id="t2W-DN-Mwu"/>
                         <outlet property="menuButton" destination="Noc-aK-zhQ" id="mkr-S6-r6g"/>
@@ -192,28 +211,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WkR-Sh-CiK">
-                                <frame key="frameInset" minX="0.0%" minY="0.0%" width="100.00%" height="100.00%"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" id="WkR-Sh-CiK">
+                                <frame key="frameInset" minX="-0.94%" minY="-0.53%" width="100.94%" height="100.53%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDe-wK-E3y" customClass="StrokeLabel">
-                                <frame key="frameInset" minX="2.81%" minY="21.66%" width="40.00%" height="5.11%"/>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uDe-wK-E3y">
+                                <frame key="frameInset" minX="1.56%" minY="23.77%" width="44.06%" height="5.11%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0vx-Cl-vsD" customClass="StrokeLabel">
-                                <frame key="frameInset" minX="2.81%" minY="38.91%" width="40.00%" height="5.11%"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view autoresizesSubviews="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" id="8Ab-yO-Ked" customClass="MBCircularProgressBarView">
-                                <frame key="frameInset" minX="46.25%" minY="63" width="52.81%" height="37.82%"/>
+                                <frame key="frameInset" minX="46.25%" minY="62" width="52.81%" height="37.95%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                 <userDefinedRuntimeAttributes>
@@ -256,28 +267,20 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DXp-64-DMh" customClass="StrokeLabel">
-                                <frame key="frameInset" minX="2.81%" minY="32.39%" width="40.00%" height="5.28%"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" id="eAI-Cv-Fip">
                                 <frame key="frameInset" minX="13.75%" minY="47.01%" width="72.50%" height="29.23%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ugh-nl-Oub">
-                                        <rect key="frame" x="0.0" y="-9" width="232" height="175"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <frame key="frameInset" minX="0.0%" minY="0.0%" width="100.00%" height="104.82%"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="characterWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="oWB-Xi-Qh3">
-                                        <frame key="frameInset" minX="0.43%" minY="6.02%" width="99.57%" height="11.45%"/>
+                                        <frame key="frameInset" minX="0.43%" minY="3.61%" width="99.57%" height="14.46%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -285,7 +288,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nEh-o1-mbu">
-                                        <frame key="frameInset" minX="4.31%" minY="11.45%" width="45.69%" height="71.69%"/>
+                                        <frame key="frameInset" minX="4.74%" minY="10.24%" width="45.26%" height="72.89%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -293,7 +296,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kvu-cv-EeX">
-                                        <frame key="frameInset" minX="52.59%" minY="11.45%" width="45.26%" height="71.69%"/>
+                                        <frame key="frameInset" minX="52.59%" minY="10.24%" width="45.26%" height="72.89%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -301,7 +304,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" misplaced="YES" id="IYE-NQ-pz4">
-                                        <frame key="frameInset" minX="50.00%" minY="20.48%" width="2" height="70.48%"/>
+                                        <frame key="frameInset" minX="50.00%" minY="20.48%" width="2" height="72.89%"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -309,20 +312,21 @@
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="E8e-jC-61N">
-                                <frame key="frameInset" minX="40.94%" minY="79.22%" width="16.25%" height="9.16%"/>
+                                <frame key="frameInset" minX="42.81%" minY="79.22%" width="14.69%" height="9.16%"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <state key="normal" image="_insta.png"/>
                                 <connections>
                                     <action selector="instaShare:" destination="Yvm-cI-V8T" eventType="touchUpInside" id="2lN-Uo-50M"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" id="424-gr-xpm">
-                                <frame key="frameInset" minX="9" minY="156" width="128" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view alpha="0.69999999999999996" contentMode="scaleToFill" misplaced="YES" id="hwC-lL-fS3">
+                                <frame key="frameInset" minX="1.25%" minY="28.87%" width="44.38%" height="4.93%"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="h0c-sO-DhS">
-                                        <frame key="frameInset" minX="106" minY="5" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" id="h0c-sO-DhS">
+                                        <frame key="frameInset" minX="50.00%" minY="66.67%" width="22" height="22"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <action selector="infoButton:" destination="Yvm-cI-V8T" eventType="touchUpInside" id="juz-3Q-fke"/>
                                         </connections>
@@ -342,14 +346,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="dateLabel" destination="DXp-64-DMh" id="62N-8A-D1y"/>
                         <outlet property="daysLeft" destination="ugh-nl-Oub" id="Q6d-If-m7o"/>
-                        <outlet property="demobilizationDateLabel" destination="0vx-Cl-vsD" id="TeK-TU-BnD"/>
                         <outlet property="detailsView" destination="eAI-Cv-Fip" id="K8K-dD-YEA"/>
                         <outlet property="imageView" destination="WkR-Sh-CiK" id="bGH-9J-Dw2"/>
                         <outlet property="infoBTN" destination="h0c-sO-DhS" id="c2U-gR-W8j"/>
+                        <outlet property="infoBackView" destination="hwC-lL-fS3" id="F09-KG-9ah"/>
                         <outlet property="infoLabel" destination="oWB-Xi-Qh3" id="WF2-NL-bnd"/>
                         <outlet property="leftLabel" destination="nEh-o1-mbu" id="Lfk-lK-8ee"/>
+                        <outlet property="lineView" destination="IYE-NQ-pz4" id="xan-EQ-HXK"/>
                         <outlet property="nameLabel" destination="uDe-wK-E3y" id="Id0-vV-Uob"/>
                         <outlet property="progressBarPercent" destination="8Ab-yO-Ked" id="Txh-6a-Z9f"/>
                         <outlet property="rightLabel" destination="Kvu-cv-EeX" id="0Jb-5f-Z5g"/>
@@ -560,6 +564,7 @@
     </scenes>
     <resources>
         <image name="_insta.png" width="50" height="50"/>
+        <image name="arrow.png" width="28" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

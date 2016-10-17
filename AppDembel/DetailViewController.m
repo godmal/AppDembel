@@ -14,9 +14,11 @@
 #import <AVFoundation/AVFoundation.h>
 #import "UIView+MTAnimation.h"
 #import "UIView+DCAnimationKit.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
-@property (nonatomic, strong) UIView* view1;
+@property (nonatomic, strong) UIView* popView;
+
 
 @end
 
@@ -25,12 +27,14 @@
     NSDictionary* _rightLabelData;
     NSDictionary* _leftLabelData;
     NSArray* _labelArray;
+    UIVisualEffectView *blurEffectView;
 }
 
 #pragma mark main methods
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
     [Appodeal setInterstitialDelegate:self];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     self.imageView.image = [self loadImage];
@@ -78,35 +82,89 @@
 }
 
 - (IBAction)infoButton:(UIButton *)sender {
-    self.view1 = [[UIView alloc] initWithFrame:CGRectMake(40, 165, 200, 100)];
-    self.view1.backgroundColor = [UIColor orangeColor];
-    [self.view addSubview:self.view1];
+    [self.popView drop:NULL];
+    
+    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+        self.view.backgroundColor = [UIColor clearColor];
+        
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffectView.frame = self.view.bounds;
+        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
+        [UIView animateWithDuration:0.15 animations:^{
+            blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+        }];
+        [self.view addSubview:blurEffectView];
+    } else {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
+    
+    
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 250, 200)];
+    imageView.image = [UIImage imageNamed:@"250.png"];
+    
+    self.popView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 200)];
+    self.popView.center = CGPointMake(self.view.frame.size.width  / 2,
+                                     self.view.frame.size.height / 2);
+    self.popView.backgroundColor = [UIColor whiteColor];
+    
+    UILabel* startDate = [[UILabel alloc] initWithFrame:CGRectMake(13, 15, 110, 150)];
+    startDate.text = [NSString stringWithFormat:@"Начало службы \n\n %@", [DateUtils convertDateToString:_person.date]];
+    startDate.textAlignment = NSTextAlignmentCenter;
+    startDate.numberOfLines = 0;
+    startDate.textColor = [UIColor blackColor];
+    [self.popView addSubview:startDate];
+    startDate.layer.borderColor = [UIColor blackColor].CGColor;
+    startDate.layer.borderWidth = 2.0;
+    UILabel* endDate = [[UILabel alloc] initWithFrame:CGRectMake(127, 15, 110, 150)];
+    endDate.text = [NSString stringWithFormat:@"Конец службы \n\n %@", [DateUtils convertDateToString: _person.endDate]];
+    endDate.textAlignment = NSTextAlignmentCenter;
+    endDate.numberOfLines = 0;
+    endDate.textColor = [UIColor blackColor];
+    [self.popView addSubview:endDate];
+    endDate.layer.borderColor = [UIColor blackColor].CGColor;
+    endDate.layer.borderWidth = 2.0;
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    [button addTarget:self
-               action:@selector(closeInfo)
-     forControlEvents:UIControlEventTouchUpInside];
-    [button setTitle:@"Show View" forState:UIControlStateNormal];
-    button.frame = CGRectMake(0, 0, 50, 20);
-    [self.view1 addSubview:button];
-    [self.view1 expandIntoView:self.view finished:NULL];
+    [button addTarget:self action:@selector(closeInfo) forControlEvents:UIControlEventTouchUpInside];
+    [button setTitle:@"Закрыть" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor redColor]];
+    button.frame = CGRectMake(0, 0, self.popView.frame.size.width / 3, 35);
+    button.center = CGPointMake(self.popView.frame.size.width / 2,
+                                self.popView.frame.size.height - 20);
+    [self.popView addSubview:button];
+    [self.popView addSubview:imageView];
+    [self.popView expandIntoView:self.view finished:NULL];
+    [self.popView sendSubviewToBack:imageView];
 }
 
 - (void) closeInfo {
-    [self.view1 drop:NULL];
+    blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+    [UIView animateWithDuration:0.15 animations:^{
+        blurEffectView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    } completion:^(BOOL finished) {
+        [blurEffectView removeFromSuperview];
+    }];
+    [self.popView drop:nil];
+
+
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
     NSLog(@"touches began");
     UITouch *touch = [touches anyObject];
-    if(touch.view!=self.view1){
-        [self.view1 drop:NULL];
+    if(touch.view!=self.popView){
+        [self closeInfo];
     }
 }
 #pragma mark configuration
 
 - (void) setBeforeArmyMode {
     self.infoLabel.text = @"Осталось до службы:";
-    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent];
+    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent, self.lineView];
     for (UIView* view in array) {
         view.hidden = YES;
     }
@@ -114,7 +172,7 @@
 }
 - (void) setInArmyMode {
     self.infoLabel.text = @"Детали службы";
-    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent];
+    NSArray* array = @[self.rightLabel, self.leftLabel, self.progressBarPercent, self.lineView];
     for (UIView* view in array) {
         view.hidden = NO;
     }
@@ -170,14 +228,14 @@
 #pragma mark - position&animation
 
 - (void) setInitialPosition {
-   _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
+   _labelArray = @[self.nameLabel, self.infoBackView];
     for (UIView* view in _labelArray) {
         [self hide:view];
         view.frame = CGRectMake(-200, view.frame.origin.y, view.frame.size.width, view.frame.size.height);
     }
 }
 - (void) setAnimationForCountDown {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
+    _labelArray = @[self.nameLabel, self.infoBackView];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];
@@ -186,11 +244,11 @@
                      }];
 }
 - (void) setAnimationForProgressBar {
-    _labelArray = @[self.nameLabel, self.dateLabel, self.demobilizationDateLabel, self.infoBTN];
+    _labelArray = @[self.nameLabel, self.infoBackView];
     [UIView mt_animateWithViews:_labelArray duration:1.5 timingFunction:kMTEaseOutBounce animations:^{
                          for (UIView* view in _labelArray) {
                              [self show:view];
-                             view.center = CGPointMake(self.view.frame.size.width / 4.4, view.center.y);
+                             view.center = CGPointMake(self.view.frame.size.width / 4.3, view.center.y);
                             }
                      }];
 }

@@ -18,5 +18,6 @@
 - (IBAction)showMenu:(id)sender;
 
 @property (weak, nonatomic) IBOutlet UILabel *label;
+@property (weak, nonatomic) IBOutlet UIView *firstLaunchView;
 
 @end
