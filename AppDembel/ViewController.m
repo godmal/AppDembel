@@ -28,11 +28,24 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self roundMyView:_menuButton borderRadius:15.0f borderWidth:0.0f color:nil];
-    [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
-        [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:0.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:NO];
     [self checkFirstLaunch];
 }
 
+-(void) viewDidAppear:(BOOL)animated {
+    [self performSelector:@selector(createPermission) withObject:nil afterDelay:2];
+}
+-(void) viewWillAppear:(BOOL)animated {
+    [self.tableView reloadData];
+    self.imageView.image = [self loadImage];
+    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
+    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.contentSize.height);
+    [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
+}
+
+-(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return [self.model.people count];
+}
 - (void) showQuotation {
     NSUInteger randomIndex = arc4random() % [[Quotations getArray]  count];
     self.label.text = [[Quotations getArray] objectAtIndex:randomIndex];
@@ -51,19 +64,6 @@
     av.bounces = NO;
     [av showInViewController:self center:CGPointMake(self.view.bounds.size.width/2.f, self.view.bounds.size.height/2.f)];
 }
-
--(void) viewWillAppear:(BOOL)animated {
-    [self.tableView reloadData];
-    self.imageView.image = [self loadImage];
-    [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
-    self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, self.tableView.contentSize.height);
-    [NSTimer scheduledTimerWithTimeInterval:2.0 target:self selector:@selector(showQuotation) userInfo:nil repeats:YES];
-}
-
--(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [self.model.people count];
-}
-
 - (void) checkFirstLaunch {
     if (self.model.people.count > 0) {
         self.firstLaunchView.hidden = YES;

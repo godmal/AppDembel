@@ -181,7 +181,9 @@
         label.layer.borderWidth = 2.0;
     }
 }
-
+- (void)interstitialDidFailToLoadAd {
+    NSLog(@"interstitial failed to load");
+}
 - (void)updateCounter:(NSTimer *)tmr {
     NSTimeInterval timer = [[DateUtils configureCountDownWithDate:_person.date] timeIntervalSinceNow];
     int days = timer / (60 * 60 * 24);
@@ -216,7 +218,6 @@
     } else {
         self.view.backgroundColor = [UIColor blackColor];
     }
-    
 }
 
 - (void)didReceiveMemoryWarning {

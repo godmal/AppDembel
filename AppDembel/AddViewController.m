@@ -66,6 +66,7 @@
     [self.nameInput resignFirstResponder];
     return YES;
 }
+
 - (void)interstitialDidDismiss {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

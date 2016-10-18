@@ -32,7 +32,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>instagram</string>
@@ -47,8 +47,14 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>Advertising</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Advertising</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Advertising</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string></string>
+	<string>Делись прогрессом в Instagram</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
