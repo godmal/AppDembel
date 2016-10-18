@@ -82,26 +82,8 @@
 }
 
 - (IBAction)infoButton:(UIButton *)sender {
+    [self createBlurEffect];
     [self.popView drop:NULL];
-    
-    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        self.view.backgroundColor = [UIColor clearColor];
-        
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-        blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.frame = self.view.bounds;
-        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
-        [UIView animateWithDuration:0.15 animations:^{
-            blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        } completion:^(BOOL finished) {
-        }];
-        [self.view addSubview:blurEffectView];
-    } else {
-        self.view.backgroundColor = [UIColor blackColor];
-    }
-    
-    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 250, 200)];
     imageView.image = [UIImage imageNamed:@"250.png"];
     
@@ -110,31 +92,17 @@
                                      self.view.frame.size.height / 2);
     self.popView.backgroundColor = [UIColor whiteColor];
     
-    UILabel* startDate = [[UILabel alloc] initWithFrame:CGRectMake(13, 15, 110, 150)];
-    startDate.text = [NSString stringWithFormat:@"Начало службы \n\n %@", [DateUtils convertDateToString:_person.date]];
-    startDate.textAlignment = NSTextAlignmentCenter;
-    startDate.numberOfLines = 0;
-    startDate.textColor = [UIColor blackColor];
-    [self.popView addSubview:startDate];
-    startDate.layer.borderColor = [UIColor blackColor].CGColor;
-    startDate.layer.borderWidth = 2.0;
-    UILabel* endDate = [[UILabel alloc] initWithFrame:CGRectMake(127, 15, 110, 150)];
-    endDate.text = [NSString stringWithFormat:@"Конец службы \n\n %@", [DateUtils convertDateToString: _person.endDate]];
-    endDate.textAlignment = NSTextAlignmentCenter;
-    endDate.numberOfLines = 0;
-    endDate.textColor = [UIColor blackColor];
-    [self.popView addSubview:endDate];
-    endDate.layer.borderColor = [UIColor blackColor].CGColor;
-    endDate.layer.borderWidth = 2.0;
-    
+    [self configureUILabels];
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(closeInfo) forControlEvents:UIControlEventTouchUpInside];
     [button setTitle:@"Закрыть" forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    [button setBackgroundColor:[UIColor redColor]];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button setBackgroundColor:[UIColor clearColor]];
     button.frame = CGRectMake(0, 0, self.popView.frame.size.width / 3, 35);
     button.center = CGPointMake(self.popView.frame.size.width / 2,
                                 self.popView.frame.size.height - 20);
+    button.layer.borderColor = [UIColor whiteColor].CGColor;
+    button.layer.borderWidth = 1.0;
     [self.popView addSubview:button];
     [self.popView addSubview:imageView];
     [self.popView expandIntoView:self.view finished:NULL];
@@ -149,12 +117,9 @@
         [blurEffectView removeFromSuperview];
     }];
     [self.popView drop:nil];
-
-
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event  {
-    NSLog(@"touches began");
     UITouch *touch = [touches anyObject];
     if(touch.view!=self.popView){
         [self closeInfo];
@@ -201,6 +166,22 @@
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
     _leftLabelData = [DateUtils getUnitsBetween:_person.date and:[DateUtils now]];
 }
+-(void) configureUILabels {
+    UILabel* startDate = [[UILabel alloc] initWithFrame:CGRectMake(13, 8, 110, 150)];
+    startDate.text = [NSString stringWithFormat:@"Начало службы \n %@", [DateUtils convertDateToString:_person.date]];
+    UILabel* endDate = [[UILabel alloc] initWithFrame:CGRectMake(127, 8, 110, 150)];
+    endDate.text = [NSString stringWithFormat:@"Конец службы \n %@", [DateUtils convertDateToString: _person.endDate]];
+    NSArray* array = @[startDate, endDate];
+    for (UILabel *label in array) {
+        label.textAlignment = NSTextAlignmentCenter;
+        label.numberOfLines = 0;
+        label.textColor = [UIColor whiteColor];
+        [self.popView addSubview:label];
+        label.layer.borderColor = [UIColor whiteColor].CGColor;
+        label.layer.borderWidth = 2.0;
+    }
+}
+
 - (void)updateCounter:(NSTimer *)tmr {
     NSTimeInterval timer = [[DateUtils configureCountDownWithDate:_person.date] timeIntervalSinceNow];
     int days = timer / (60 * 60 * 24);
@@ -218,6 +199,26 @@
         }
     }
 }
+
+- (void) createBlurEffect {
+    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+        self.view.backgroundColor = [UIColor clearColor];
+        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+        blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+        blurEffectView.frame = self.view.bounds;
+        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+        blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
+        [UIView animateWithDuration:0.15 animations:^{
+            blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+        } completion:^(BOOL finished) {
+        }];
+        [self.view addSubview:blurEffectView];
+    } else {
+        self.view.backgroundColor = [UIColor blackColor];
+    }
+    
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
