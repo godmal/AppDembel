@@ -16,8 +16,6 @@
 @property (assign, nonatomic) NSUInteger index;
 @property (assign, nonatomic) BOOL qwerty;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
-@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *demobilizationDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *daysLeft;
 @property (weak, nonatomic) IBOutlet UILabel *infoLabel;
 @property (weak, nonatomic) IBOutlet UILabel *leftLabel;

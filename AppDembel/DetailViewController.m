@@ -15,11 +15,10 @@
 #import "UIView+MTAnimation.h"
 #import "UIView+DCAnimationKit.h"
 #import <QuartzCore/QuartzCore.h>
+#import "UIView+Blur.h"
 
 @interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
 @property (nonatomic, strong) UIView* popView;
-
-
 @end
 
 @implementation DetailViewController {
@@ -27,7 +26,7 @@
     NSDictionary* _rightLabelData;
     NSDictionary* _leftLabelData;
     NSArray* _labelArray;
-    UIVisualEffectView *blurEffectView;
+    UIView *blurEffectView;
 }
 
 #pragma mark main methods
@@ -82,6 +81,7 @@
 }
 
 - (IBAction)infoButton:(UIButton *)sender {
+    
     [self createBlurEffect];
     [self.popView drop:NULL];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 250, 200)];
@@ -111,8 +111,8 @@
 
 - (void) closeInfo {
     blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
-    [UIView animateWithDuration:0.15 animations:^{
-        blurEffectView.transform = CGAffineTransformMakeScale(0.1, 0.1);
+    [UIView animateWithDuration:0.5 animations:^{
+        blurEffectView.transform = CGAffineTransformMakeScale(0.01, 0.01);
     } completion:^(BOOL finished) {
         [blurEffectView removeFromSuperview];
     }];
@@ -159,8 +159,6 @@
 }
 - (void) setPersonDataText {
     self.nameLabel.text = _person.name;
-    self.dateLabel.text = [DateUtils convertDateToString:_person.date];
-    self.demobilizationDateLabel.text = [DateUtils convertDateToString: _person.endDate];
 }
 - (void) configureDetailsView {
     _rightLabelData = [DateUtils getUnitsBetween:[DateUtils now] and:_person.endDate];
@@ -178,7 +176,7 @@
         label.textColor = [UIColor whiteColor];
         [self.popView addSubview:label];
         label.layer.borderColor = [UIColor whiteColor].CGColor;
-        label.layer.borderWidth = 2.0;
+        label.layer.borderWidth = 1.0;
     }
 }
 - (void)interstitialDidFailToLoadAd {
@@ -203,21 +201,34 @@
 }
 
 - (void) createBlurEffect {
-    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
-        self.view.backgroundColor = [UIColor clearColor];
-        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
-        blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
-        blurEffectView.frame = self.view.bounds;
-        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-        blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
-        [UIView animateWithDuration:0.15 animations:^{
-            blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
-        } completion:^(BOOL finished) {
-        }];
-        [self.view addSubview:blurEffectView];
-    } else {
-        self.view.backgroundColor = [UIColor blackColor];
-    }
+//    if (!UIAccessibilityIsReduceTransparencyEnabled()) {
+//        self.view.backgroundColor = [UIColor clearColor];
+//        UIBlurEffect *blurEffect = [UIBlurEffect effectWithStyle:UIBlurEffectStyleExtraLight];
+//        blurEffectView = [[UIVisualEffectView alloc] initWithEffect:blurEffect];
+//        blurEffectView.frame = self.view.bounds;
+//        blurEffectView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+//        blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
+//        [UIView animateWithDuration:0.15 animations:^{
+//            blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+//        } completion:^(BOOL finished) {
+//        }];
+//        [self.view addSubview:blurEffectView];
+//    } else {
+//        self.view.backgroundColor = [UIColor blackColor];
+//    }
+    
+    blurEffectView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    [blurEffectView enableBlur:YES];
+    [blurEffectView setBlurTintColor:[UIColor clearColor]];
+    [blurEffectView setBlurTintColorIntensity:0.1f];
+    blurEffectView.blurStyle = UIViewBlurExtraLightStyle;
+    blurEffectView.transform = CGAffineTransformMakeScale(0, 0);
+    [UIView animateWithDuration:0.15 animations:^{
+                    blurEffectView.transform = CGAffineTransformMakeScale(1.0, 1.0);
+                } completion:^(BOOL finished) {
+                    
+                }];
+    [self.view addSubview:blurEffectView];
 }
 
 - (void)didReceiveMemoryWarning {

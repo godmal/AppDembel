@@ -66,6 +66,7 @@
 		5A0D8E0A1D9420B300C33DE6 /* libYandexMobileAds.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0D8DA91D9420B300C33DE6 /* libYandexMobileAds.a */; };
 		5A0D8E0B1D9420B300C33DE6 /* YandexMobileMetrica.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A0D8DD11D9420B300C33DE6 /* YandexMobileMetrica.framework */; };
 		5A3F005A1C74958A00054BDD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3F00591C74958A00054BDD /* QuartzCore.framework */; };
+		5A6773CF1DB79A7E00435817 /* UIView+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A6773CE1DB79A7E00435817 /* UIView+Blur.m */; };
 		5A7B10ED1DA5121E008314E2 /* Quotations.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A7B10EC1DA5121E008314E2 /* Quotations.m */; };
 		5A948B211D475005003DC65A /* StrokeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A948B201D475005003DC65A /* StrokeLabel.m */; };
 		5A9DF4B11DAFD84E00D761EF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A9DF4B01DAFD84E00D761EF /* Accelerate.framework */; };
@@ -240,6 +241,8 @@
 		5A0D8DD01D9420B300C33DE6 /* YMAYandexVASTAds.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YMAYandexVASTAds.h; sourceTree = "<group>"; };
 		5A0D8DD11D9420B300C33DE6 /* YandexMobileMetrica.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YandexMobileMetrica.framework; sourceTree = "<group>"; };
 		5A3F00591C74958A00054BDD /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		5A6773CD1DB79A7E00435817 /* UIView+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Blur.h"; sourceTree = "<group>"; };
+		5A6773CE1DB79A7E00435817 /* UIView+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Blur.m"; sourceTree = "<group>"; };
 		5A7B10EB1DA5121E008314E2 /* Quotations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quotations.h; sourceTree = "<group>"; };
 		5A7B10EC1DA5121E008314E2 /* Quotations.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Quotations.m; sourceTree = "<group>"; };
 		5A9138F71CF74ED900DDED0B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -726,6 +729,8 @@
 		5AB8E5BD1C4F6A330062688E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5A6773CD1DB79A7E00435817 /* UIView+Blur.h */,
+				5A6773CE1DB79A7E00435817 /* UIView+Blur.m */,
 				5ABC5C231D46A93400AF3F83 /* AppDelegate.h */,
 				5ABC5C241D46A93400AF3F83 /* AppDelegate.m */,
 				5A0D8E0D1D94299600C33DE6 /* Images */,
@@ -977,6 +982,7 @@
 				5AB8E5BF1C4F6A330062688E /* main.m in Sources */,
 				5ABC5C141D46A8FF00AF3F83 /* DetailViewController.m in Sources */,
 				5ABC5C251D46A93400AF3F83 /* AppDelegate.m in Sources */,
+				5A6773CF1DB79A7E00435817 /* UIView+Blur.m in Sources */,
 				5ABC5C351D46AA5700AF3F83 /* Reachability.m in Sources */,
 				5ABC5C151D46A8FF00AF3F83 /* EditViewController.m in Sources */,
 				5ABC5C201D46A92700AF3F83 /* DateUtils.m in Sources */,
