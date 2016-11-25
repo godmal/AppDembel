@@ -55,7 +55,9 @@
             [self setAnimationForCountDown];
         } else {
             [self setAnimationForProgressBar];
-            [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1.3];
+            [UIView animateWithDuration:1.3f animations:^{
+                self.progressBarPercent.value = [_person calculatePercentProgress];
+            }];
         }
 }
 
@@ -64,7 +66,9 @@
         [self setAnimationForCountDown];
     } else {
         [self setAnimationForProgressBar];
-        [self.progressBarPercent setValue:[_person calculatePercentProgress] animateWithDuration:1.3];
+        [UIView animateWithDuration:1.3f animations:^{
+            self.progressBarPercent.value = [_person calculatePercentProgress] ;
+        }];
     }
 }
 
@@ -155,7 +159,9 @@
                                                object:nil];
 }
 - (void) resetViewParameters {
-    [self.progressBarPercent setValue:0 animateWithDuration:0];
+    [UIView animateWithDuration:0 animations:^{
+        self.progressBarPercent.value = 0;
+    }];
 }
 - (void) setPersonDataText {
     self.nameLabel.text = _person.name;
