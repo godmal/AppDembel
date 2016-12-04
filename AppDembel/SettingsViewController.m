@@ -23,7 +23,7 @@
     [Appodeal setInterstitialDelegate:self];
     self.imageView.image = [self loadImage];
     [self roundMyView:_backButton borderRadius:15.0f borderWidth:0.0f color:nil];
-    self.aboutLabel.text = @"В облегченной версии:\n - функция смены фона;\n - назойливая реклама;\n - добавление одного бойца.";
+    self.aboutLabel.text = @"ПораДомой - приложение для тех, кто не хочет считать дни до возвращения на гражданку. Легкой службы, держитесь там, всего доброго! А еще можешь поменять фон и кликнуть на рекламу. На гражданке дошики не выдают бесплатно.";
     NSArray *buttonsArray = @[self.firstButton, self.secondButton, self.thirdButton];
     for (UIButton* button in buttonsArray) {
         button.layer.borderColor = [UIColor whiteColor].CGColor;
@@ -35,17 +35,8 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (void)interstitialDidDismiss {
-    UIAlertController* alert = [UIAlertController alertControllerWithTitle:@"Ты не новобранец, а матёрый дед? Скачай полную версию!" message:@"В полной версии нет рекламы и есть дополнительные функции" preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction* cancel = [UIAlertAction actionWithTitle:@"Не хочу" style:UIAlertActionStyleDefault handler:nil];
-    UIAlertAction* ok = [UIAlertAction actionWithTitle:@"Обновить!" style:UIAlertActionStyleDefault
-                                               handler:^(UIAlertAction * action) {
-                                                   NSString *iTunesLink = @"https://itunes.apple.com/ru/app/poradomoj-dla-materyh-dedov/id1137886216?mt=8";
-                                                   [[UIApplication sharedApplication] openURL:[NSURL URLWithString:iTunesLink]];
-                                               }];
-    [alert addAction:cancel];
-    [alert addAction:ok];
-    
-    [self presentViewController:alert animated:YES completion:nil];
+    NSString *vkLink = @"https://new.vk.com/public_poradomoi";
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:vkLink]];
 }
 
 - (void) checkNetworkReachability {
