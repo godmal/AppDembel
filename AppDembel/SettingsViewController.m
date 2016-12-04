@@ -84,15 +84,17 @@
 }
 
 - (IBAction)sendEmail:(id)sender {
-    NSString *emailTitle = @"Отзыв/ошибка";
-    NSString *messageBody = @"";
-    NSArray *toRecipents = [NSArray arrayWithObject:@"developer.gorbachev@gmail.com"];
-    MFMailComposeViewController *mc = [[MFMailComposeViewController alloc] init];
-    mc.mailComposeDelegate = self;
-    [mc setSubject:emailTitle];
-    [mc setMessageBody:messageBody isHTML:NO];
-    [mc setToRecipients:toRecipents];
-    [self presentViewController:mc animated:YES completion:NULL];
+    MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
+    if ([MFMailComposeViewController canSendMail]) {
+        picker.mailComposeDelegate = self;
+        NSString *emailTitle = @"Отзыв/ошибка";
+        NSArray *toRecipents = [NSArray arrayWithObject:@"developer.gorbachev@gmail.com"];
+        NSString *messageBody = @"Привет!";
+        [picker setSubject:emailTitle];
+        [picker setToRecipients:toRecipents];
+        [picker setMessageBody:messageBody isHTML:YES];
+        [self presentViewController:picker animated:YES completion:NULL];
+    }
 }
 
 - (IBAction)upgradeButton:(id)sender {

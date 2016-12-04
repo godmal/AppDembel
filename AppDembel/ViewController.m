@@ -117,8 +117,9 @@
     } else if (itemIndex == 1)
         [self performSelector:@selector(moveToOathViewController) withObject:nil afterDelay:0.5f];
     if (itemIndex == 3)
-        (self.model.people.count == 1) ? [self createAddAlert] :  [self performSelector:@selector(moveToAddViewController) withObject:nil afterDelay:0.5f];
-    NSLog(@"Dismissed with item %ld: %@", (long)itemIndex, item.title);
+        [self performSelector:@selector(moveToAddViewController) withObject:nil afterDelay:0.5f];
+//        (self.model.people.count == 1) ? [self createAddAlert] :  [self performSelector:@selector(moveToAddViewController) withObject:nil afterDelay:0.5f];
+//    NSLog(@"Dismissed with item %ld: %@", (long)itemIndex, item.title);
 }
 
 - (void) moveToSettingsViewController {

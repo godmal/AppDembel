@@ -105,8 +105,8 @@
     button.frame = CGRectMake(0, 0, self.popView.frame.size.width / 3, 35);
     button.center = CGPointMake(self.popView.frame.size.width / 2,
                                 self.popView.frame.size.height - 20);
-    button.layer.borderColor = [UIColor whiteColor].CGColor;
-    button.layer.borderWidth = 1.0;
+//    button.layer.borderColor = [UIColor whiteColor].CGColor;
+//    button.layer.borderWidth = 1.0;
     [self.popView addSubview:button];
     [self.popView addSubview:imageView];
     [self.popView expandIntoView:self.view finished:NULL];
@@ -181,8 +181,8 @@
         label.numberOfLines = 0;
         label.textColor = [UIColor whiteColor];
         [self.popView addSubview:label];
-        label.layer.borderColor = [UIColor whiteColor].CGColor;
-        label.layer.borderWidth = 1.0;
+//        label.layer.borderColor = [UIColor whiteColor].CGColor;
+//        label.layer.borderWidth = 1.0;
     }
 }
 - (void)interstitialDidFailToLoadAd {
