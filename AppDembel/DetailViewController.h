@@ -11,7 +11,7 @@
 #import "MBCircularProgressBarView.h"
 #import <MGInstagram/MGInstagram.h>
 
-@interface DetailViewController : BaseViewController <VKSdkDelegate ,UIDocumentInteractionControllerDelegate>
+@interface DetailViewController : BaseViewController <UIDocumentInteractionControllerDelegate>
 
 @property (assign, nonatomic) NSUInteger index;
 @property (assign, nonatomic) BOOL qwerty;

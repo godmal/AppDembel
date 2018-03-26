@@ -9,7 +9,7 @@ target 'AppDembel' do
     pod ‘MBCircularProgressBar’
     pod 'MGSwipeTableCell’
     pod ‘Underscore.m’
-    pod ‘VK-ios-sdk’ 
+    #pod ‘VK-ios-sdk’ 
     pod ‘MTAnimation’
     pod 'ClusterPrePermissions', '~> 0.1'
     pod 'MGInstagram', ‘~> 0.1.0’

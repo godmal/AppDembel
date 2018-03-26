@@ -17,7 +17,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIView+Blur.h"
 
-@interface DetailViewController () <VKSdkUIDelegate, AppodealInterstitialDelegate>
+@interface DetailViewController () <AppodealInterstitialDelegate>
 @property (nonatomic, strong) UIView* popView;
 @end
 
@@ -81,7 +81,6 @@
 
 - (IBAction)instaShare:(id)sender {
     [MGInstagram isAppInstalled] ? [self manageInstagramShare] : [self createInstagramAlert];
-    
 }
 
 - (IBAction)infoButton:(UIButton *)sender {
@@ -288,25 +287,25 @@
          }];
 }
 
-#pragma mark vkSdk methods
-
-- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
-    VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
-    [vc presentIn:self.navigationController.topViewController];
-}
-- (void)vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result {
-    if (result.token) {
-    } else if (result.error) {
-        [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Access denied\n%@", result.error] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-    }
-}
-- (void)vkSdkUserAuthorizationFailed {
-    [[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
-- (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
-    [self.navigationController.topViewController presentViewController:controller animated:YES completion:nil];
-}
+//#pragma mark vkSdk methods
+//
+//- (void)vkSdkNeedCaptchaEnter:(VKError *)captchaError {
+//    VKCaptchaViewController *vc = [VKCaptchaViewController captchaControllerWithError:captchaError];
+//    [vc presentIn:self.navigationController.topViewController];
+//}
+//- (void)vkSdkAccessAuthorizationFinishedWithResult:(VKAuthorizationResult *)result {
+//    if (result.token) {
+//    } else if (result.error) {
+//        [[[UIAlertView alloc] initWithTitle:nil message:[NSString stringWithFormat:@"Access denied\n%@", result.error] delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+//    }
+//}
+//- (void)vkSdkUserAuthorizationFailed {
+//    [[[UIAlertView alloc] initWithTitle:nil message:@"Access denied" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil] show];
+//    [self.navigationController popToRootViewControllerAnimated:YES];
+//}
+//- (void)vkSdkShouldPresentViewController:(UIViewController *)controller {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"EditViewControllerCancelled" object:nil];
+//    [self.navigationController.topViewController presentViewController:controller animated:YES completion:nil];
+//}
 
 @end

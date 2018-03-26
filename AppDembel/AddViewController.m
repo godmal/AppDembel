@@ -37,6 +37,14 @@
 - (void) viewWillAppear:(BOOL)animated {
     [Appodeal showAd:AppodealShowStyleBannerBottom rootViewController:self];
 }
+-(void) aalallalalala {
+    NSLog(@"alalalala");
+}
+
+
+-(void) aalallalalala {
+    NSLog(@"alalalala");
+}
 
 - (IBAction)saveButton:(id)sender {
     if ([self.nameInput.text length] == 0 || [self.dateInput.text length] == 0)  {
